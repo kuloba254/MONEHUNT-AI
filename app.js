@@ -390,7 +390,7 @@ async function loginWithDeriv() {
 
 
 function signUpWithDeriv() {
-    window.location.href = "https://track.deriv.com/_Yi8lkjLk8sFMjdsyM5hasGNd7ZgqdRLk/1/";
+    window.location.href = "https://t.deriv.link?t=FZ7629UP3T6W";
 }
 
 // ================================================================
@@ -1693,7 +1693,9 @@ function updateBulkPreview() {
 // Populate from an AI Scanner signal Ã¢â‚¬â€ used by the two bridge functions below.
 function populateBulkFromSignal(sig) {
     if (!sig) return;
-    const marketSel = document.getElementById('bulk-market');
+
+    // Always normalize AI signal duration before populating Bulk Trading.
+const marketSel = document.getElementById('bulk-market');
     const typeSel    = document.getElementById('bulk-type');
     const predEl     = document.getElementById('bulk-pred');
     const durEl      = document.getElementById('bulk-dur');
@@ -1701,9 +1703,7 @@ function populateBulkFromSignal(sig) {
     if (typeSel) { typeSel.value = sig.type; onBulkTypeChange(); }
     selectBulkDir(sig.botDirection);
     if (sig.pred !== null && sig.pred !== undefined && predEl) predEl.value = sig.pred;
-    if (sig.ticks && durEl) durEl.value = sig.ticks;
-
-    const note = document.getElementById('bulk-signal-note');
+const note = document.getElementById('bulk-signal-note');
     if (note) {
         note.style.display = 'block';
         note.textContent = `Ã°Å¸â€œÂ¡ Populated from AI Scanner: ${sig.label || MKT[sig.symbol] || sig.symbol || ''} Ã¢â‚¬â€ ${sig.direction} (${sig.confidence}% confidence). Review before executing.`;
@@ -3036,6 +3036,7 @@ function analyzeStrategies(symbol) {
                 90,
                 65 + highStrong.length * 3
             ),
+            ticks: 3,
             color: 'var(--blue)',
             reason:
                 `Digits 0-3 below 10% | ` +
@@ -3069,6 +3070,7 @@ function analyzeStrategies(symbol) {
                 90,
                 65 + lowStrong.length * 3
             ),
+            ticks: 3,
             color: 'var(--purple)',
             reason:
                 `Digits 6-9 below 10% | ` +
@@ -3123,6 +3125,7 @@ function analyzeStrategies(symbol) {
                 90,
                 68 + (triggered ? 10 : 0)
             ),
+            ticks: 2,
             color: 'var(--teal)',
             reason:
                 `Top digits are odd | ` +
@@ -3176,6 +3179,7 @@ function analyzeStrategies(symbol) {
                 90,
                 68 + (triggered ? 10 : 0)
             ),
+            ticks: 2,
             color: 'var(--green)',
             reason:
                 `Top digits are even | ` +
@@ -3326,6 +3330,13 @@ function getTopSignals(symbol, n = 5) {
 
     signals.sort((a, b) => b.confidence - a.confidence);
 
+    // Standardize duration and creation time for every AI signal
+    signals.forEach(signal => {
+        if (!signal.createdAt) {
+            signal.createdAt = Date.now();
+        }
+});
+
     return signals.slice(0, Math.max(1, n));
 }
 
@@ -3426,8 +3437,7 @@ function updateAIPanel(sig, symbol) {
                  onclick="applySignalToBot(${JSON.stringify(s).replace(/"/g,'&quot;')})">
                 <div>
                     <div style="font-size:11px;font-weight:900;color:${s.color};">${s.direction}</div>
-                    <div style="font-size:9px;color:var(--muted);">${s.reason}</div>
-                </div>
+                    <div style="font-size:9px;color:var(--muted);">${s.reason}</div>                </div>
                 <div style="text-align:right;flex-shrink:0;margin-left:8px;">
                     <div style="font-size:12px;font-weight:900;color:${s.color};">${s.confidence}%</div>
                     <div style="font-size:9px;color:var(--teal);">Apply Ã¢â€“Â¶</div>
@@ -3619,7 +3629,7 @@ function runFullScan() {
     // Build results with ALL signals per market
     const results = ALL_MKTS.map(sym => ({
         sym,
-        signal:     generateSignal(sym),
+        signal: generateSignal(sym),
         topSignals: getTopSignals(sym, 4),
         data:       digitData[sym] || { ticks: 0 },
         state:      classifyMarket(sym)
@@ -3630,7 +3640,13 @@ function runFullScan() {
     const allStrategySignals = [];
     ALL_MKTS.forEach(sym => {
         const strats = analyzeStrategies(sym);
-        strats.forEach(s => { s.symbol = sym; s.label = MKT[sym]||sym; allStrategySignals.push(s); });
+
+        strats.forEach(s => {
+            s.symbol = sym;
+            s.label = MKT[sym] || sym;
+            s;
+            allStrategySignals.push(s);
+        });
     });
     allStrategySignals.sort((a,b) => {
         if (a.priority && !b.priority) return -1;
@@ -3652,8 +3668,7 @@ function runFullScan() {
                     <span style="font-size:11px;font-weight:900;color:var(--teal);">${s.confidence}%</span>
                 </div>
                 <div style="font-size:12px;font-weight:900;color:${s.color};margin-bottom:3px;">${s.direction} Ã¢â‚¬â€ ${s.label}</div>
-                <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">${s.reason}</div>
-                <div style="font-size:10px;color:var(--teal);font-style:italic;margin-bottom:6px;">Ã°Å¸â€™Â¡ ${s.entryHint}</div>
+                <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">${s.reason}</div>                <div style="font-size:10px;color:var(--teal);font-style:italic;margin-bottom:6px;">Ã°Å¸â€™Â¡ ${s.entryHint}</div>
                 ${s.warning ? `<div style="font-size:9px;color:#f59e0b;">Ã¢Å¡Â Ã¯Â¸Â ${s.warning}</div>` : ''}
                 <div style="display:flex;gap:6px;margin-top:4px;">
                     <button onclick="applySignalToBot(${JSON.stringify(s).replace(/"/g,'&quot;')})"
@@ -3699,8 +3714,7 @@ function runFullScan() {
                     </div>
                     <span class="badge badge-teal" style="font-size:12px;padding:4px 10px;">${best.signal.confidence}%</span>
                 </div>
-                <div style="font-size:15px;font-weight:900;color:${best.signal.color};margin-bottom:6px;">${best.signal.direction}</div>
-                <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">${best.signal.reason}${best.signal.hotDigit !== undefined ? ` | Hot: <b style="color:var(--green);">${best.signal.hotDigit}</b> Cold: <b style="color:var(--red);">${best.signal.coldDigit}</b>` : ''}</div>
+                <div style="font-size:15px;font-weight:900;color:${best.signal.color};margin-bottom:6px;">${best.signal.direction}</div>                <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">${best.signal.reason}${best.signal.hotDigit !== undefined ? ` | Hot: <b style="color:var(--green);">${best.signal.hotDigit}</b> Cold: <b style="color:var(--red);">${best.signal.coldDigit}</b>` : ''}</div>
                 ${best.signal.rsi ? `
                 <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
                     <div style="background:#4299e122;border:1px solid #4299e144;border-radius:8px;padding:8px 12px;text-align:center;">
@@ -3775,9 +3789,13 @@ function runFullScan() {
 
 function applyBestSignal() {
     const results = ALL_MKTS.map(sym => ({
-        sym, signal: generateSignal(sym)
+        sym,
+        signal: generateSignal(sym)
     })).sort((a,b) => (b.signal?.confidence||0) - (a.signal?.confidence||0));
-    if (results[0]?.signal) applySignalToBot(results[0].signal);
+
+    if (results[0]?.signal) {
+        applySignalToBot(results[0].signal);
+    }
 }
 
 function applySignalToBot(sig) {
@@ -3788,7 +3806,8 @@ function applySignalToBot(sig) {
         try { sig = JSON.parse(sig); } catch(e) { return; }
     }
 
-    const mktSel  = document.getElementById('bot-market');
+    // Always normalize AI signal duration before applying it to the bot.
+const mktSel  = document.getElementById('bot-market');
     const typeSel = document.getElementById('bot-type');
     const predEl  = document.getElementById('bot-pred');
     const durEl   = document.getElementById('bot-dur');
@@ -3806,13 +3825,6 @@ function applySignalToBot(sig) {
     if (sig.pred !== null && sig.pred !== undefined && predEl) {
         predEl.value = sig.pred;
     }
-
-    // Apply ticks from signal (BB/RSI sets 2 or 3 for Only Ups/Downs)
-    if (sig.ticks && durEl) {
-        durEl.value = sig.ticks;
-        log(`Ã¢ÂÂ± Duration set to ${sig.ticks} ticks from signal`, 'i');
-    }
-
     updateInfoBar();
     updateActiveBotName();
     log(`Ã°Å¸Â§Â  Applied: ${sig.label||sig.symbol||''} | ${sig.direction} | Pred: ${sig.pred!==null&&sig.pred!==undefined?sig.pred:'Ã¢â‚¬â€'} | ${sig.confidence}%`, 'i');
@@ -6152,5 +6164,4 @@ handleAccuContractUpdate = function(c) {
         }
     }
 };
-
 

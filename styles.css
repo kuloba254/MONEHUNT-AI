@@ -3967,3 +3967,599 @@ html[data-theme="light"] #bulk-history-body {
     }
 }
 
+
+/* ============================================================
+   DOLARHUNTER — FINAL GLOBAL DARK / LIGHT THEME SYSTEM
+   2026-08-18
+   This layer intentionally comes LAST so it wins over older
+   theme overrides without modifying application logic.
+   ============================================================ */
+
+/* -------------------------
+   GLOBAL DARK THEME
+   ------------------------- */
+
+:root,
+html:not([data-theme="light"]) {
+
+    color-scheme: dark;
+
+    --dh-bg: #070b12;
+    --dh-bg-2: #0b111b;
+    --dh-surface: #101722;
+    --dh-surface-2: #141d2a;
+    --dh-surface-3: #192333;
+
+    --dh-text: #f5f7fa;
+    --dh-text-2: #d7dee8;
+    --dh-muted: #8e9aaa;
+
+    --dh-border: rgba(255,255,255,.075);
+    --dh-border-strong: rgba(255,255,255,.12);
+
+    --dh-input-bg: #0d141f;
+    --dh-input-text: #f5f7fa;
+
+    --dh-accent: #00d2c7;
+    --dh-accent-soft: rgba(0,210,199,.10);
+
+    --dh-gold: #d4af37;
+    --dh-gold-light: #f1d77a;
+
+    --dh-shadow:
+        0 12px 35px rgba(0,0,0,.30);
+}
+
+
+/* -------------------------
+   GLOBAL LIGHT THEME
+   ------------------------- */
+
+html[data-theme="light"] {
+
+    color-scheme: light;
+
+    --dh-bg: #f4f7fa;
+    --dh-bg-2: #eef3f7;
+    --dh-surface: #ffffff;
+    --dh-surface-2: #f8fafc;
+    --dh-surface-3: #eef2f6;
+
+    --dh-text: #111827;
+    --dh-text-2: #344054;
+    --dh-muted: #667085;
+
+    --dh-border: rgba(15,23,42,.10);
+    --dh-border-strong: rgba(15,23,42,.16);
+
+    --dh-input-bg: #ffffff;
+    --dh-input-text: #111827;
+
+    --dh-accent: #009f95;
+    --dh-accent-soft: rgba(0,159,149,.09);
+
+    --dh-gold: #a67c00;
+    --dh-gold-light: #8a6500;
+
+    --dh-shadow:
+        0 10px 30px rgba(15,23,42,.10);
+}
+
+
+/* ============================================================
+   PAGE
+   ============================================================ */
+
+html,
+body {
+
+    background: var(--dh-bg) !important;
+    color: var(--dh-text) !important;
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
+}
+
+
+/* ============================================================
+   MAIN APPLICATION AREAS
+   ============================================================ */
+
+#app,
+main,
+section,
+#dashboard-pane,
+#accu-pane,
+#bulk-pane {
+
+    color: var(--dh-text);
+}
+
+
+/* ============================================================
+   DASHBOARD
+   ============================================================ */
+
+#dashboard-pane {
+
+    background:
+        radial-gradient(
+            circle at 8% 0%,
+            var(--dh-accent-soft),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(212,175,55,.055),
+            transparent 26%
+        ),
+        var(--dh-bg) !important;
+
+    color: var(--dh-text) !important;
+}
+
+
+/* LIGHT DASHBOARD */
+
+html[data-theme="light"] #dashboard-pane {
+
+    background:
+        radial-gradient(
+            circle at 8% 0%,
+            rgba(0,159,149,.055),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(166,124,0,.045),
+            transparent 26%
+        ),
+        var(--dh-bg) !important;
+}
+
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+#dashboard-pane .card,
+#dashboard-pane .card-sm,
+#accu-pane .card,
+#bulk-pane .card,
+.accu-card {
+
+    background:
+        var(--dh-surface) !important;
+
+    color: var(--dh-text) !important;
+
+    border-color:
+        var(--dh-border) !important;
+
+    box-shadow:
+        var(--dh-shadow) !important;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease !important;
+}
+
+
+/* LIGHT CARDS */
+
+html[data-theme="light"] #dashboard-pane .card,
+html[data-theme="light"] #dashboard-pane .card-sm,
+html[data-theme="light"] #accu-pane .card,
+html[data-theme="light"] #bulk-pane .card,
+html[data-theme="light"] .accu-card {
+
+    background: #ffffff !important;
+
+    color: #111827 !important;
+
+    border-color: rgba(15,23,42,.09) !important;
+
+    box-shadow:
+        0 8px 25px rgba(15,23,42,.07) !important;
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+nav {
+
+    background:
+        var(--dh-surface) !important;
+
+    color:
+        var(--dh-text) !important;
+
+    border-color:
+        var(--dh-border) !important;
+}
+
+html[data-theme="light"] nav {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #111827 !important;
+
+    border-color:
+        rgba(15,23,42,.09) !important;
+}
+
+
+/* ============================================================
+   TEXT
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+span {
+
+    transition:
+        color .2s ease;
+}
+
+
+/* Don't destroy status colors */
+
+.text-muted,
+.muted,
+.subtitle,
+.description {
+
+    color:
+        var(--dh-muted) !important;
+}
+
+
+/* ============================================================
+   INPUTS / SELECTS / TEXTAREAS
+   ============================================================ */
+
+input,
+select,
+textarea {
+
+    background:
+        var(--dh-input-bg) !important;
+
+    color:
+        var(--dh-input-text) !important;
+
+    border-color:
+        var(--dh-border-strong) !important;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+
+    color:
+        var(--dh-muted) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color:
+        var(--dh-accent) !important;
+
+    box-shadow:
+        0 0 0 3px var(--dh-accent-soft) !important;
+}
+
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+table {
+
+    color:
+        var(--dh-text) !important;
+}
+
+th {
+
+    color:
+        var(--dh-text) !important;
+
+    background:
+        var(--dh-surface-2) !important;
+}
+
+td {
+
+    color:
+        var(--dh-text-2) !important;
+
+    border-color:
+        var(--dh-border) !important;
+}
+
+tr:hover td {
+
+    background:
+        var(--dh-accent-soft) !important;
+}
+
+
+/* ============================================================
+   MODALS / POPUPS / PANELS
+   ============================================================ */
+
+.modal,
+.modal-content,
+.dropdown-menu,
+.dropdown,
+.popup,
+.popover,
+.tooltip,
+.panel {
+
+    color:
+        var(--dh-text) !important;
+
+    background:
+        var(--dh-surface) !important;
+
+    border-color:
+        var(--dh-border) !important;
+}
+
+
+/* ============================================================
+   LIGHT MODE AUTH CARD
+   ============================================================ */
+
+html[data-theme="light"] #auth-card {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #111827 !important;
+
+    border-color:
+        rgba(15,23,42,.10) !important;
+
+    box-shadow:
+        0 15px 45px rgba(15,23,42,.10) !important;
+}
+
+
+/* ============================================================
+   BUTTONS — PRESERVE BRAND COLORS
+   ============================================================ */
+
+button {
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .15s ease;
+}
+
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+
+.dh-theme-toggle {
+
+    border-color:
+        var(--dh-border-strong) !important;
+
+    color:
+        var(--dh-text) !important;
+
+    background:
+        var(--dh-surface) !important;
+}
+
+html[data-theme="light"] .dh-theme-toggle {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #111827 !important;
+}
+
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+a {
+
+    color:
+        var(--dh-accent);
+}
+
+
+/* ============================================================
+   LIGHT MODE SCROLLBAR
+   ============================================================ */
+
+html[data-theme="light"] ::-webkit-scrollbar-track {
+
+    background:
+        #eef2f6;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+
+    background:
+        #c5ced8;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #9da9b6;
+}
+
+
+/* ============================================================
+   DARK MODE SCROLLBAR
+   ============================================================ */
+
+html:not([data-theme="light"]) ::-webkit-scrollbar-track {
+
+    background:
+        #080d15;
+}
+
+html:not([data-theme="light"]) ::-webkit-scrollbar-thumb {
+
+    background:
+        #263244;
+}
+
+
+/* ============================================================
+   SMOOTH THEME CHANGE
+   ============================================================ */
+
+body,
+nav,
+.card,
+.card-sm,
+.accu-card,
+input,
+select,
+textarea,
+#dashboard-pane,
+#accu-pane,
+#bulk-pane,
+.dh-topbar,
+.dh-theme-toggle {
+
+    transition:
+        background-color .25s ease,
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease !important;
+}
+
+/* ============================================================
+   SIGNAL DURATION — DARK / LIGHT MODE
+   ============================================================ */
+
+.dh-signal-duration {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 9px 11px;
+    border: 1px solid var(--dh-dashboard-border, rgba(255,255,255,.075));
+    border-radius: 10px;
+    background: var(--dh-panel, rgba(18,25,38,.88));
+    color: var(--dh-dashboard-text, #f5f7fa);
+    font-size: 11px;
+    line-height: 1;
+}
+
+.dh-signal-duration-icon {
+    font-size: 14px;
+}
+
+.dh-signal-duration-label {
+    color: var(--dh-dashboard-muted, #8e9aaa);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.dh-signal-duration strong {
+    margin-left: auto;
+    color: var(--dh-teal, #00d2c7);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.dh-signal-duration-compact {
+    display: inline-flex;
+    margin-top: 0;
+    padding: 5px 7px;
+    font-size: 9px;
+}
+
+html[data-theme="light"] .dh-signal-duration {
+    background: var(--dh-panel, #fff);
+    border-color: var(--dh-dashboard-border, rgba(15,23,42,.09));
+    color: var(--dh-dashboard-text, #111827);
+}
+
+html[data-theme="light"] .dh-signal-duration-label {
+    color: var(--dh-dashboard-muted, #667085);
+}
+
+/* ============================================================
+   DOLARHUNTER — SIGNAL AGE UI
+   ============================================================ */
+
+.dh-signal-age {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 9px;
+    margin-top:6px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:var(--bg2);
+    font-size:10px;
+}
+
+.dh-signal-age-icon {
+    font-size:12px;
+}
+
+.dh-signal-age-label {
+    color:var(--muted);
+    font-weight:700;
+}
+
+.dh-signal-age strong {
+    color:var(--teal);
+    font-weight:900;
+}
+
+.dh-signal-age-compact {
+    display:inline-flex;
+    align-items:center;
+    gap:3px;
+    padding:2px 5px;
+    margin:0;
+    font-size:9px;
+    border-radius:4px;
+}
+
+html[data-theme="light"] .dh-signal-age {
+    background:var(--bg3);
+}
