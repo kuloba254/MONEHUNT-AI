@@ -574,7 +574,7 @@ body {
 
 
 /* ============================================================
-   DOLARHUNTER — PREMIUM HEADER
+   DOLARHUNTER ï¿½ PREMIUM HEADER
    ============================================================ */
 
 .dh-topbar {
@@ -1322,7 +1322,7 @@ html[data-theme="light"] {
 }
 
 /* ============================================================
-   EXISTING NAVIGATION — KEEP IT
+   EXISTING NAVIGATION ï¿½ KEEP IT
    ============================================================ */
 
 nav {
@@ -1807,7 +1807,7 @@ select {
 
 /* ============================================================
    DOLARHUNTER PREMIUM DASHBOARD V2
-   Header-matched • Dark/Light aware • Safe visual overrides
+   Header-matched ï¿½ Dark/Light aware ï¿½ Safe visual overrides
    ============================================================ */
 
 /* ---------- THEME VARIABLES ---------- */
@@ -2445,7 +2445,7 @@ textarea {
 
 
 /* ============================================================
-   DOLARHUNTER — FINAL PREMIUM DASHBOARD OVERRIDES
+   DOLARHUNTER ï¿½ FINAL PREMIUM DASHBOARD OVERRIDES
    Blends with premium header + full dark/light support
    ============================================================ */
 
@@ -2859,7 +2859,7 @@ html[data-theme="light"] nav .tab-btn.active {
 
 
 /* ============================================================
-   DOLARHUNTER — WELCOME BRAND MATCHES HEADER
+   DOLARHUNTER ï¿½ WELCOME BRAND MATCHES HEADER
    ============================================================ */
 
 #auth-card h2 {
@@ -3969,7 +3969,7 @@ html[data-theme="light"] #bulk-history-body {
 
 
 /* ============================================================
-   DOLARHUNTER — FINAL GLOBAL DARK / LIGHT THEME SYSTEM
+   DOLARHUNTER ï¿½ FINAL GLOBAL DARK / LIGHT THEME SYSTEM
    2026-08-18
    This layer intentionally comes LAST so it wins over older
    theme overrides without modifying application logic.
@@ -4350,7 +4350,7 @@ html[data-theme="light"] #auth-card {
 
 
 /* ============================================================
-   BUTTONS — PRESERVE BRAND COLORS
+   BUTTONS ï¿½ PRESERVE BRAND COLORS
    ============================================================ */
 
 button {
@@ -4468,7 +4468,7 @@ textarea,
 }
 
 /* ============================================================
-   SIGNAL DURATION — DARK / LIGHT MODE
+   SIGNAL DURATION ï¿½ DARK / LIGHT MODE
    ============================================================ */
 
 .dh-signal-duration {
@@ -4521,7 +4521,7 @@ html[data-theme="light"] .dh-signal-duration-label {
 }
 
 /* ============================================================
-   DOLARHUNTER — SIGNAL AGE UI
+   DOLARHUNTER ï¿½ SIGNAL AGE UI
    ============================================================ */
 
 .dh-signal-age {
@@ -4623,4 +4623,38 @@ html[data-theme="light"] .dh-signal-age {
     #dh-header-balance {
         font-size: 10px;
     }
+}
+
+.dh-account-switch {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 7px;
+    margin: 0;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.dh-account-switch:hover {
+    background: rgba(0, 210, 200, 0.12);
+}
+
+.dh-account-switch-arrow {
+    font-size: 15px;
+    opacity: 0.75;
+}
+
+.dh-account-status.real #dh-account-mode-dot {
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+.dh-account-status.demo #dh-account-mode-dot {
+    background: #00d2c8;
+    box-shadow: 0 0 8px rgba(0, 210, 200, 0.8);
 }

@@ -1,4 +1,4 @@
-﻿// ================================================================
+// ================================================================
 // DOLARHUNTER app.js Ã¢â‚¬â€ Clean Focused Build
 // Auth: Amy-verified PKCE (DO NOT CHANGE)
 // ================================================================
@@ -622,6 +622,42 @@ function startKeepAlivePing() {
     }, 30000);
 }
 
+async function toggleHeaderAccount() {
+    if (!Array.isArray(allAccounts) || allAccounts.length === 0) {
+        showStatus("No Deriv accounts available.", "err");
+        return;
+    }
+
+    const current = allAccounts.find(a => a.account_id === accountId);
+    const currentType = current?.account_type;
+
+    const targetType = currentType === "real" ? "demo" : "real";
+    const target = allAccounts.find(a => a.account_type === targetType);
+
+    if (!target) {
+        showStatus(
+            targetType === "real"
+                ? "No LIVE account is available."
+                : "No DEMO account is available.",
+            "err"
+        );
+        return;
+    }
+
+    const modeEl = document.getElementById("dh-account-mode");
+    if (modeEl) modeEl.textContent = "CONNECTING";
+
+    try {
+        await switchAccount(target.account_id);
+        updateHeaderAccountStatus(
+            liveBalance,
+            target.currency || "USD"
+        );
+    } catch (err) {
+        console.error("Account switch failed:", err);
+        showStatus("Failed to switch account.", "err");
+    }
+}
 function updateHeaderAccountStatus(balanceValue, currency) {
     const wrap = document.getElementById('dh-account-status');
     const modeEl = document.getElementById('dh-account-mode');
@@ -6191,4 +6227,3 @@ handleAccuContractUpdate = function(c) {
         }
     }
 };
-
