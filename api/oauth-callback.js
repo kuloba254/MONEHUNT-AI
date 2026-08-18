@@ -1,10 +1,11 @@
-// /api/oauth-callback — decrypts code_verifier from state token
-import { createDecipheriv } from 'crypto';
+﻿// /api/oauth-callback â€” decrypts code_verifier from state token
+const { createDecipheriv } = require("crypto");
 
-const SECRET = process.env.PKCE_SECRET;`r`nif (!SECRET) throw new Error("PKCE_SECRET is not configured");
+const SECRET = process.env.PKCE_SECRET;
+if (!SECRET) throw new Error("PKCE_SECRET is not configured");
 const KEY    = Buffer.from(SECRET.padEnd(32).slice(0,32));
 
-export default async function handler(req, res) {
+async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).end();
 
     const { code, state } = await parseBody(req);
@@ -66,3 +67,6 @@ async function parseBody(req) {
     for await (const c of req) chunks.push(c);
     try { return JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { return {}; }
 }
+
+module.exports = handler;
+
