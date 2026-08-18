@@ -1,7 +1,7 @@
 // /api/oauth-callback — decrypts code_verifier from state token
 import { createDecipheriv } from 'crypto';
 
-const SECRET = process.env.PKCE_SECRET || "btraderhub-pkce-secret-key-32chr!";
+const SECRET = process.env.PKCE_SECRET;`r`nif (!SECRET) throw new Error("PKCE_SECRET is not configured");
 const KEY    = Buffer.from(SECRET.padEnd(32).slice(0,32));
 
 export default async function handler(req, res) {
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const { code, state } = await parseBody(req);
     if (!code || !state) return res.status(400).json({ error: 'Missing code or state' });
 
-    const clientId = process.env.DERIV_CLIENT_ID || "33ByqD0GecGTE5whirko8";
+    const clientId = process.env.DERIV_CLIENT_ID || "34943FQww3Fan7wd7NdB5";
 
     // Decrypt code_verifier from state token
     let code_verifier, redirectUri;

@@ -1,4 +1,4 @@
-/* ✨ Btraderhub — Bright Girly Scrollbar & Base Styles */
+/* ✨ DOLARHUNTER — Bright Girly Scrollbar & Base Styles */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -28,3 +28,547 @@ body {
   background: #f9a8d4;
   color: #831843;
 }
+.logo {
+    display: flex;
+    align-items: center;
+    height: 42px;
+}
+
+.logo img {
+    height: 16px;
+    width: auto;
+    max-width: 75px;
+    object-fit: contain;
+    display: block;
+}
+
+/* DOLARHUNTER startup screen */
+#dolarhunter-splash {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #050b12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2147483647;
+}
+
+#dolarhunter-splash img {
+    width: 100px;
+    height: auto;
+    max-width: 25vw;
+    object-fit: contain;
+}
+/* DOLARHUNTER - CLEAN PREMIUM HEADER */
+
+.dh-premium-header {
+    height: 52px !important;
+    padding: 0 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #050b12 !important;
+    border-bottom: 1px solid rgba(255,255,255,.06) !important;
+    box-shadow: none !important;
+    position: relative !important;
+    top: auto !important;
+    backdrop-filter: none !important;
+}
+
+.dh-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.dh-brand img {
+    width: 70px !important;
+    height: 28px !important;
+    object-fit: contain !important;
+}
+
+.dh-live {
+    padding: 3px 7px !important;
+    font-size: 8px !important;
+    gap: 5px !important;
+    border-radius: 12px !important;
+}
+
+.dh-live-dot {
+    width: 5px !important;
+    height: 5px !important;
+}
+
+.dh-header-center {
+    position: static !important;
+    transform: none !important;
+}
+
+.dh-market-status {
+    font-size: 8px !important;
+}
+
+.dh-header-actions {
+    gap: 6px !important;
+}
+
+.dh-login,
+.dh-signup {
+    height: 29px !important;
+    padding: 0 11px !important;
+    border-radius: 6px !important;
+    font-size: 10px !important;
+    box-shadow: none !important;
+}
+
+.dh-login {
+    background: transparent !important;
+}
+
+.dh-signup {
+    background: #00d2c8 !important;
+}
+
+
+/* Final DOLARHUNTER logo sizing */
+.dh-brand img {
+    width: 58px !important;
+    height: 38px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+
+.dh-premium-header {
+    height: 50px !important;
+    padding: 0 16px !important;
+    background: #050b12 !important;
+    border-bottom: 1px solid rgba(255,255,255,.06) !important;
+}
+
+.dh-brand {
+    gap: 8px !important;
+}
+
+.dh-live {
+    font-size: 7px !important;
+    padding: 3px 6px !important;
+}
+
+.dh-market-status {
+    font-size: 8px !important;
+}
+
+
+/* =====================================================
+   DOLARHUNTER CLEAN TOP BAR
+   ===================================================== */
+
+.dh-topbar {
+    width: 100%;
+    height: 54px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    background: #050b12;
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* BRAND */
+
+.dh-brand-simple {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.dh-brand-simple img {
+    width: 34px;
+    height: 34px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    display: block;
+}
+
+.dh-brand-simple span {
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: .7px;
+
+    color: #f1f5f9;
+}
+
+/* RIGHT */
+
+.dh-topbar-right {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+/* LIVE */
+
+.dh-market-live {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    margin-right: 5px;
+
+    color: #00d2c8;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: .6px;
+}
+
+.dh-market-live span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #00d2c8;
+
+    box-shadow: 0 0 7px rgba(0,210,200,.8);
+}
+
+/* BUTTONS */
+
+.dh-btn-login,
+.dh-btn-signup {
+    height: 29px;
+
+    padding: 0 12px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.dh-btn-login {
+    color: #cbd5e1;
+
+    background: transparent;
+
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.dh-btn-signup {
+    color: #031014;
+
+    background: #00d2c8;
+
+    border: 1px solid #00d2c8;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .dh-topbar {
+        padding: 0 12px;
+    }
+
+    .dh-brand-simple span {
+        font-size: 11px;
+    }
+
+    .dh-market-live {
+        display: none;
+    }
+
+}
+
+/* DOLARHUNTER - SMALL BRAND LOGO */
+.dh-brand-simple img {
+    width: 22px !important;
+    height: 22px !important;
+    max-width: 22px !important;
+    max-height: 22px !important;
+    object-fit: contain !important;
+    border-radius: 4px;
+}
+
+.dh-brand-simple {
+    height: 30px !important;
+    gap: 7px !important;
+}
+
+.dh-brand-simple span {
+    font-size: 11px !important;
+    letter-spacing: .5px !important;
+}
+
+
+/* DOLARHUNTER HEADER LOGO - FITTED */
+.dh-brand-simple {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    height: 32px !important;
+    overflow: hidden !important;
+}
+
+.dh-brand-simple img {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    object-fit: contain !important;
+    display: block !important;
+    border-radius: 5px !important;
+}
+
+.dh-brand-simple span {
+    font-size: 11px !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    letter-spacing: .6px !important;
+    white-space: nowrap !important;
+}
+
+
+/* DOLARHUNTER TEXT BRAND */
+.dh-brand-simple {
+    display: flex !important;
+    align-items: center !important;
+    height: 32px !important;
+}
+
+.dh-brand-simple span {
+    display: block !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.2px !important;
+    color: #ffffff !important;
+    white-space: nowrap !important;
+}
+
+
+/* DOLARHUNTER PREMIUM GOLD + WHITE BRAND */
+.dh-brand-simple span {
+    font-size: 15px !important;
+    font-weight: 950 !important;
+    letter-spacing: 1.4px !important;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #fff7cc 25%,
+        #f5d76e 50%,
+        #d4af37 72%,
+        #ffffff 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* DOLAR [LOGO] HUNTER */
+.dh-brand-simple {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    height: 32px !important;
+}
+
+.dh-brand-simple span {
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.2px !important;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #f5d76e,
+        #d4af37,
+        #ffffff
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.dh-brand-simple img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    display: block !important;
+    border-radius: 4px !important;
+}
+
+
+/* PERFECT DOLAR [LOGO] HUNTER FIT */
+.dh-brand-simple {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 3px !important;
+    height: 28px !important;
+    line-height: 1 !important;
+}
+
+.dh-brand-simple span {
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+    line-height: 20px !important;
+    white-space: nowrap !important;
+}
+
+.dh-brand-simple img {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    max-width: 12px !important;
+    min-height: 12px !important;
+    max-height: 12px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    border-radius: 3px !important;
+    margin: 0 1px !important;
+}
+
+
+/* FINAL DOLARHUNTER WORDMARK */
+.dh-brand-simple {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    height: 26px !important;
+    line-height: 1 !important;
+}
+
+.dh-brand-simple span {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    letter-spacing: .8px !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #f5d76e 45%,
+        #d4af37 65%,
+        #ffffff 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Tiny logo separator */
+.dh-brand-simple img {
+    width: 9px !important;
+    height: 9px !important;
+
+    min-width: 9px !important;
+    max-width: 9px !important;
+    min-height: 9px !important;
+    max-height: 9px !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    display: inline-block !important;
+
+    border-radius: 2px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* MICRO LOGO BETWEEN DOLAR AND HUNTER */
+.dh-brand-simple img {
+    width: 6px !important;
+    height: 14px !important;
+    min-width: 6px !important;
+    max-width: 6px !important;
+    min-height: 14px !important;
+    max-height: 14px !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    border-radius: 1px !important;
+    margin: 0 1px !important;
+    padding: 0 !important;
+}
+
+
+/* DOLAR [ICON] HUNTER */
+.dh-brand-simple {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    height: 26px !important;
+}
+
+.dh-brand-simple img {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    max-width: 12px !important;
+    min-height: 12px !important;
+    max-height: 12px !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 2px !important;
+    margin: 0 !important;
+}
+
+.dh-brand-simple span {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    letter-spacing: .8px !important;
+    line-height: 16px !important;
+    white-space: nowrap !important;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #f5d76e,
+        #d4af37,
+        #ffffff
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+

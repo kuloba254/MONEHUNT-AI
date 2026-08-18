@@ -296,31 +296,23 @@ body{padding-bottom:60px;}
 <div id="notif-wrap"></div>
 
 <!-- ═══ HEADER ═══ -->
-<header class="dh-topbar">
-
-    <div class="dh-brand-simple"><span>DOLAR</span><img src="logo-icon.png" alt=""><span>HUNTER</span></div>
-
-    <div class="dh-topbar-right">
-
-        <div class="dh-market-live">
-            <span></span>
-            LIVE
+<header>
+    <div style="display:flex;align-items:center;gap:12px;">
+        <div class="logo"><img src="logo.jpg" alt="DOLARHUNTER"></div>
+        <div style="display:flex;align-items:center;gap:5px;">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="status-text" style="font-size:11px;font-weight:700;color:var(--muted);">OFFLINE</span>
         </div>
-
-        <button onclick="loginWithDeriv()"
-                id="btn-login"
-                class="dh-btn-login">
-            Log in
-        </button>
-
-        <button onclick="signUpWithDeriv()"
-                id="btn-signup"
-                class="dh-btn-signup">
-            Sign up
-        </button>
-
     </div>
-
+    <div class="header-right">
+        <div id="acct-wrap" style="display:none;align-items:center;gap:8px;">
+            <select id="acct-switcher" onchange="switchAccount(this.value)" style="width:auto;font-size:11px;padding:4px 8px;"></select>
+            <div class="balance-badge">💰 <span id="balance">0.00 USD</span></div>
+            <button onclick="revokeAccess()" class="btn btn-ghost" style="font-size:10px;padding:4px 10px;color:#f87171;border-color:#f87171;" title="Disconnect Deriv Account">🔓 Logout</button>
+        </div>
+        <button onclick="loginWithDeriv()" id="btn-login" class="btn btn-teal" style="font-size:12px;padding:6px 16px;">Log in</button>
+        <button onclick="signUpWithDeriv()" id="btn-signup" class="btn btn-ghost" style="font-size:12px;padding:6px 14px;">Sign up</button>
+    </div>
 </header>
 
 <!-- ═══ NAV ═══ -->
