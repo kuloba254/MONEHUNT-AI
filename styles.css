@@ -4563,3 +4563,64 @@ html[data-theme="light"] .dh-signal-duration-label {
 html[data-theme="light"] .dh-signal-age {
     background:var(--bg3);
 }
+
+/* DOLARHUNTER HEADER ACCOUNT STATUS */
+.dh-account-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 11px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+#dh-account-mode-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+}
+
+#dh-account-mode {
+    font-weight: 800;
+    color: #3b82f6;
+}
+
+#dh-header-balance {
+    font-weight: 900;
+    color: var(--text);
+}
+
+.dh-account-status.real #dh-account-mode-dot {
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+.dh-account-status.real #dh-account-mode {
+    color: #22c55e;
+}
+
+.dh-account-status.demo #dh-account-mode-dot {
+    background: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+}
+
+.dh-account-status.demo #dh-account-mode {
+    color: #3b82f6;
+}
+
+@media (max-width: 768px) {
+    .dh-account-status {
+        padding: 6px 8px;
+        gap: 5px;
+        font-size: 10px;
+    }
+
+    #dh-header-balance {
+        font-size: 10px;
+    }
+}

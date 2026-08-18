@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -334,12 +334,17 @@ body{padding-bottom:60px;}
         <span id="theme-label">Light</span>
     </button>
 
-        <div class="dh-market-live">
-            <span></span>
-            LIVE
-        </div>
+        <div id="dh-account-status" class="dh-account-status">
+    <span id="dh-account-mode-dot"></span>
+    <span id="dh-account-mode">DEMO</span>
+    <strong id="dh-header-balance">$0.00 USD</strong>
+</div>
 
-        <button onclick="loginWithDeriv()"
+<div class="dh-market-live">
+    <span></span>
+    LIVE
+</div>
+<button onclick="loginWithDeriv()"
                 id="btn-login"
                 class="dh-btn-login">
             Log in

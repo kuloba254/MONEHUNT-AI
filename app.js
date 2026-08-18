@@ -622,6 +622,32 @@ function startKeepAlivePing() {
     }, 30000);
 }
 
+function updateHeaderAccountStatus(balanceValue, currency) {
+    const wrap = document.getElementById('dh-account-status');
+    const modeEl = document.getElementById('dh-account-mode');
+    const balanceEl = document.getElementById('dh-header-balance');
+
+    if (!wrap || !modeEl || !balanceEl) return;
+
+    const acct = Array.isArray(allAccounts)
+        ? allAccounts.find(a => a.account_id === accountId)
+        : null;
+
+    const isReal = acct?.account_type === 'real';
+
+    wrap.classList.toggle('real', isReal);
+    wrap.classList.toggle('demo', !isReal);
+
+    modeEl.textContent = isReal ? 'LIVE' : 'DEMO';
+
+    const value = Number(balanceValue);
+    const cur = currency || acct?.currency || 'USD';
+
+    balanceEl.textContent =
+        Number.isFinite(value)
+            ? `$${value.toFixed(2)} ${cur}`
+            : `-- ${cur}`;
+}
 // ================================================================
 // MESSAGE ROUTER
 // ================================================================
@@ -631,6 +657,7 @@ function routeMsg(r) {
         const el = document.getElementById('balance');
         if (el) el.textContent = `${parseFloat(r.balance.balance).toFixed(2)} ${r.balance.currency}`;
         liveBalance = parseFloat(r.balance.balance); // tracked for Bulk Trading's insufficient-balance check
+        updateHeaderAccountStatus(r.balance.balance, r.balance.currency);
         if (document.getElementById('bulk-pane')?.classList.contains('active')) initBulkTab();
     }
 
