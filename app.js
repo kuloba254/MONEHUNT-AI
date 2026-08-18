@@ -1,18 +1,18 @@
-// ================================================================
-// DOLARHUNTER app.js â€” Clean Focused Build
+﻿// ================================================================
+// DOLARHUNTER app.js Ã¢â‚¬â€ Clean Focused Build
 // Auth: Amy-verified PKCE (DO NOT CHANGE)
 // ================================================================
 
 const DERIV_CLIENT_ID = "34943FQww3Fan7wd7NdB5";
 const DERIV_APP_ID    = "34943FQww3Fan7wd7NdB5";
-// Auto-detect domain â€” works for both DOLARHUNTER.com AND DOLARHUNTER.vercel.app
+// Auto-detect domain Ã¢â‚¬â€ works for both DOLARHUNTER.com AND DOLARHUNTER.vercel.app
 // Both must be registered as redirect URIs in your Deriv app dashboard
 const DERIV_REDIRECT = (
     window.location.hostname === 'DOLARHUNTER.com' ||
     window.location.hostname === 'www.DOLARHUNTER.com'
 ) ? 'https://DOLARHUNTER.com/' : 'https://DOLARHUNTER.vercel.app/';
 
-// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ State Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 let derivWS          = null;
 let accessToken      = null;
 let accountId        = null;
@@ -37,7 +37,7 @@ let lastEntrySpot    = null;
 let aiAutoEnabled    = true;
 let pendingContract  = false;
 
-// Digit data â€” real ticks only
+// Digit data Ã¢â‚¬â€ real ticks only
 let digitData        = {};
 let currentDigitMkt  = "R_10";
 let activeTickSubs   = new Set();
@@ -49,7 +49,7 @@ let marketMemory     = {};
 let seenSignals      = new Set();
 let signalHistory    = [];
 
-// Audio â€” coins for win, cash register ding, realistic loss sound
+// Audio Ã¢â‚¬â€ coins for win, cash register ding, realistic loss sound
 const winAudio  = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); // coins
 const lossAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2955/2955-preview.mp3'); // fail thud
 
@@ -78,7 +78,7 @@ function playLoss() {
     } catch(e) { playLossSound(); }
 }
 
-// Web Audio API fallback â€” coin jingle
+// Web Audio API fallback Ã¢â‚¬â€ coin jingle
 function playCoinSound() {
     try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -99,7 +99,7 @@ function playCoinSound() {
     } catch(e) {}
 }
 
-// Web Audio API fallback â€” dull thud for loss
+// Web Audio API fallback Ã¢â‚¬â€ dull thud for loss
 function playLossSound() {
     try {
         const ctx  = new (window.AudioContext || window.webkitAudioContext)();
@@ -117,7 +117,7 @@ function playLossSound() {
     } catch(e) {}
 }
 
-// Market labels â€” valid Deriv underlying_symbols only
+// Market labels Ã¢â‚¬â€ valid Deriv underlying_symbols only
 const MKT = {
     "R_10":     "Volatility 10",
     "R_25":     "Volatility 25",
@@ -144,10 +144,10 @@ let pendingProposalPrice = null;
 let reqIdCounter         = 1;
 function nextReqId() { return ++reqIdCounter; }
 
-// Pip sizes per symbol â€” populated from active_symbols
+// Pip sizes per symbol Ã¢â‚¬â€ populated from active_symbols
 let activePipSizes = {};
 
-// Session tracking â€” resets on each "Reset & Continue"
+// Session tracking Ã¢â‚¬â€ resets on each "Reset & Continue"
 let sessionBasePL = 0; // PL at the start of current session
 
 // Smart Recovery System
@@ -158,7 +158,7 @@ let originalDirection  = null;  // what user originally set
 let originalPrediction = null;  // what user originally set
 const RECOVERY_TRIGGER = 2;     // losses before switching to recovery
 // Recovery map: if trading Over X, recover with Under (9-X) and vice versa
-// e.g. Over 1 â†’ recover with Under 8 | Over 2 â†’ recover with Under 7
+// e.g. Over 1 Ã¢â€ â€™ recover with Under 8 | Over 2 Ã¢â€ â€™ recover with Under 7
 function getRecoveryTrade(direction, pred) {
     if (direction === 'over') {
         // Recovery: switch to Under (9 - pred) for high win probability
@@ -192,7 +192,7 @@ window.addEventListener('load', async () => {
 
     // MT5 signal lifecycle runs independently of which tab is open, so
     // signals keep generating/expiring correctly even if the user never
-    // visits the MT5 tab first â€” give the public WS a moment to connect.
+    // visits the MT5 tab first Ã¢â‚¬â€ give the public WS a moment to connect.
     loadMt5Signals();
     setTimeout(startMt5BackgroundScan, 4000);
 
@@ -226,7 +226,7 @@ window.addEventListener('load', async () => {
                 accessToken = savedToken;
                 if (savedAccountId) accountId = savedAccountId;
                 showStatus("Reconnecting to your account...", 'info');
-                log("ðŸ”„ Auto-reconnecting from saved session...", 'i');
+                log("Ã°Å¸â€â€ž Auto-reconnecting from saved session...", 'i');
                 await loadAccounts();
             }
         }
@@ -257,10 +257,10 @@ function toggleMobileBotSettings() {
     const isOpen = sidebar.classList.contains('mobile-open');
     if (isOpen) {
         sidebar.classList.remove('mobile-open');
-        if (btn) btn.textContent = 'âš™ï¸ Bot Settings';
+        if (btn) btn.textContent = 'Ã¢Å¡â„¢Ã¯Â¸Â Bot Settings';
     } else {
         sidebar.classList.add('mobile-open');
-        if (btn) btn.textContent = 'âœ• Close Settings';
+        if (btn) btn.textContent = 'Ã¢Å“â€¢ Close Settings';
         // Scroll to top of settings
         sidebar.scrollTop = 0;
     }
@@ -271,7 +271,7 @@ function closeMobileBotSettings() {
     const sidebar = document.querySelector('#bot-pane .sidebar');
     const btn     = document.getElementById('mobile-bot-settings-btn');
     if (sidebar) sidebar.classList.remove('mobile-open');
-    if (btn) btn.textContent = 'âš™ï¸ Bot Settings';
+    if (btn) btn.textContent = 'Ã¢Å¡â„¢Ã¯Â¸Â Bot Settings';
 }
 
 function switchTab(id) {
@@ -325,7 +325,7 @@ function switchPanel(name, el) {
 }
 
 // ================================================================
-// AUTH â€” STEP 1: PKCE Login (Amy-verified â€” DO NOT CHANGE)
+// AUTH Ã¢â‚¬â€ STEP 1: PKCE Login (Amy-verified Ã¢â‚¬â€ DO NOT CHANGE)
 // ================================================================
 async function loginWithDeriv() {
     const loginBtn = document.getElementById('btn-login');
@@ -333,7 +333,7 @@ async function loginWithDeriv() {
     showStatus("Starting secure login...", 'info');
 
     try {
-        // Call server to generate PKCE â€” no browser storage needed (Amy's fix)
+        // Call server to generate PKCE Ã¢â‚¬â€ no browser storage needed (Amy's fix)
         const resp = await fetch('/api/oauth-start', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' }
@@ -369,7 +369,7 @@ async function loginWithDeriv() {
         const authUrl = `${cfg.authorization_endpoint}?${params.toString()}`;
         console.log('Redirecting to:', authUrl.substring(0, 80) + '...');
 
-        // Force open in browser tab â€” prevents Deriv app from intercepting on mobile
+        // Force open in browser tab Ã¢â‚¬â€ prevents Deriv app from intercepting on mobile
         // Using window.open with _blank forces browser, not installed app
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if (isMobile) {
@@ -394,10 +394,10 @@ function signUpWithDeriv() {
 }
 
 // ================================================================
-// AUTH â€” STEP 2: Callback
+// AUTH Ã¢â‚¬â€ STEP 2: Callback
 // ================================================================
 async function handleOAuthCallback(code, oauthState) {
-    // Read from localStorage, sessionStorage, or cookie â€” whichever has the value
+    // Read from localStorage, sessionStorage, or cookie Ã¢â‚¬â€ whichever has the value
     function readAndClear(key) {
         let val = null;
         try { val = localStorage.getItem(key); localStorage.removeItem(key); } catch(e) {}
@@ -416,10 +416,10 @@ async function handleOAuthCallback(code, oauthState) {
     if (oauthState !== savedState) {
         if (!savedState) {
             // Storage was fully cleared during redirect (common on mobile)
-            // Continue anyway â€” the code itself is single-use so still secure
-            log('PKCE state not found in storage â€” proceeding without state check', 'x');
+            // Continue anyway Ã¢â‚¬â€ the code itself is single-use so still secure
+            log('PKCE state not found in storage Ã¢â‚¬â€ proceeding without state check', 'x');
         } else {
-            // Real mismatch â€” reject
+            // Real mismatch Ã¢â‚¬â€ reject
             showStatus("Security error. Please click Log in again.", 'err');
             return;
         }
@@ -444,7 +444,7 @@ async function handleOAuthCallback(code, oauthState) {
 }
 
 // ================================================================
-// AUTH â€” STEP 3: Load accounts
+// AUTH Ã¢â‚¬â€ STEP 3: Load accounts
 // ================================================================
 async function loadAccounts() {
     try {
@@ -473,12 +473,12 @@ async function loadAccounts() {
             allAccounts.forEach(acc => {
                 const opt = document.createElement('option');
                 opt.value = acc.account_id;
-                opt.text  = `${acc.account_type === 'demo' ? 'ðŸŸ¡ Demo' : 'ðŸŸ¢ Real'} â€” ${acc.currency || 'USD'}`;
+                opt.text  = `${acc.account_type === 'demo' ? 'Ã°Å¸Å¸Â¡ Demo' : 'Ã°Å¸Å¸Â¢ Real'} Ã¢â‚¬â€ ${acc.currency || 'USD'}`;
                 sw.appendChild(opt);
             });
         }
 
-        // Real account appears first â€” then demo
+        // Real account appears first Ã¢â‚¬â€ then demo
         const real = allAccounts.find(a => a.account_type === 'real');
         const demo = allAccounts.find(a => a.account_type === 'demo');
         const preferred = real || demo || allAccounts[0];
@@ -503,7 +503,7 @@ async function switchAccount(newId) {
 }
 
 // ================================================================
-// AUTH â€” STEP 4: OTP â†’ WebSocket
+// AUTH Ã¢â‚¬â€ STEP 4: OTP Ã¢â€ â€™ WebSocket
 // ================================================================
 async function openWS() {
     try {
@@ -526,7 +526,7 @@ async function openWS() {
         derivWS.onopen = () => {
             isReconnecting = false;
             updateConnStatus(true);
-            showStatus("âœ… Connected!", 'ok');
+            showStatus("Ã¢Å“â€¦ Connected!", 'ok');
             onConnected();
         };
 
@@ -536,7 +536,7 @@ async function openWS() {
             updateConnStatus(false);
             clearInterval(pingInterval);
             log("WS closed. Will reconnect...", 'x');
-            // If Auto Mode was running, pause it (do not lose settings) and notify â€”
+            // If Auto Mode was running, pause it (do not lose settings) and notify Ã¢â‚¬â€
             // per spec, connection loss should stop Auto Mode automatically.
             if (accuAutoEnabled) {
                 stopAccuAuto('connection_lost');
@@ -608,10 +608,10 @@ function onConnected() {
     // Start AI scan loop
     startAILoop();
     startKeepAlivePing();
-    log("âœ… Connected to Deriv API", 'i');
+    log("Ã¢Å“â€¦ Connected to Deriv API", 'i');
 }
 
-// Keep-alive ping â€” Amy's recommendation to prevent silent disconnects
+// Keep-alive ping Ã¢â‚¬â€ Amy's recommendation to prevent silent disconnects
 let pingInterval = null;
 function startKeepAlivePing() {
     clearInterval(pingInterval);
@@ -634,7 +634,7 @@ function routeMsg(r) {
         if (document.getElementById('bulk-pane')?.classList.contains('active')) initBulkTab();
     }
 
-    // Tick and history from authenticated WS â€” routed to stub
+    // Tick and history from authenticated WS Ã¢â‚¬â€ routed to stub
     // (real digit data comes from public WS)
     if (r.msg_type === 'tick' && r.tick) {
         processRealTick(r.tick.symbol, r.tick.quote);
@@ -644,7 +644,7 @@ function routeMsg(r) {
         if (sym) processHistory(sym, r.history);
     }
 
-    // Active symbols â€” store pip sizes per Amy's tip for correct last digit
+    // Active symbols Ã¢â‚¬â€ store pip sizes per Amy's tip for correct last digit
     if (r.msg_type === 'active_symbols' && r.active_symbols) {
         const synthetics = r.active_symbols.filter(s =>
             s.market === 'synthetic_index'
@@ -652,38 +652,38 @@ function routeMsg(r) {
         synthetics.forEach(s => {
             if (s.pip) activePipSizes[s.symbol] = s.pip;
         });
-        log(`ðŸ“¡ ${synthetics.length} synthetic markets loaded | pip sizes stored`, 'i');
+        log(`Ã°Å¸â€œÂ¡ ${synthetics.length} synthetic markets loaded | pip sizes stored`, 'i');
     }
 
-    // STEP 2: Proposal response â€” extract ID and ask_price, then buy
+    // STEP 2: Proposal response Ã¢â‚¬â€ extract ID and ask_price, then buy
     if (r.msg_type === 'proposal') {
         clearProposalTimeout();
         if (r.error) {
             pendingContract = false;
             lastContractId  = null;
-            log(`âŒ Proposal rejected: ${r.error.message}`, 'x');
+            log(`Ã¢ÂÅ’ Proposal rejected: ${r.error.message}`, 'x');
             log(`   Code: ${r.error.code} | Check market symbol and contract params`, 'x');
             // If accumulator proposal failed
             if (accuRunning) {
                 accuRunning = false;
                 notify("Accumulator Error", r.error.message, 'err');
                 resetAccuUI();
-                // Don't silently keep retrying auto mode against a rejected proposal â€”
+                // Don't silently keep retrying auto mode against a rejected proposal Ã¢â‚¬â€
                 // stop it and surface the error instead of looping forever.
                 if (accuAutoEnabled) stopAccuAuto('api_error');
             }
         } else if (r.proposal) {
-            // Accumulator proposal â€” buy immediately
+            // Accumulator proposal Ã¢â‚¬â€ buy immediately
             if (r.proposal.contract_type === 'ACCU' || accuRunning) {
                 const proposalId = r.proposal.id;
                 const askPrice   = r.proposal.ask_price;
-                log(`ðŸ“ˆ Accumulator proposal: ${proposalId} | Ask: $${askPrice}`, 'i');
+                log(`Ã°Å¸â€œË† Accumulator proposal: ${proposalId} | Ask: $${askPrice}`, 'i');
                 derivWS.send(JSON.stringify({ buy: proposalId, price: parseFloat(askPrice), req_id: nextReqId() }));
             } else if (isBotRunning) {
                 // Regular bot proposal
                 const proposalId = r.proposal.id;
                 const askPrice   = r.proposal.ask_price;
-                log(`âœ… Proposal: ${proposalId} | Ask: $${askPrice}`, 'i');
+                log(`Ã¢Å“â€¦ Proposal: ${proposalId} | Ask: $${askPrice}`, 'i');
                 buyFromProposal(proposalId, parseFloat(askPrice));
             }
         }
@@ -695,16 +695,16 @@ function routeMsg(r) {
     // Sell response (for accumulator manual sell)
     if (r.msg_type === 'sell') {
         if (r.error) {
-            log(`âŒ Sell error: ${r.error.message}`, 'x');
+            log(`Ã¢ÂÅ’ Sell error: ${r.error.message}`, 'x');
         } else {
-            log(`âœ… Contract sold | Price: $${r.sell?.sold_for || 'â€”'}`, 'w');
+            log(`Ã¢Å“â€¦ Contract sold | Price: $${r.sell?.sold_for || 'Ã¢â‚¬â€'}`, 'w');
         }
     }
 
     // Contract update/settlement
     if (r.msg_type === 'proposal_open_contract' && r.proposal_open_contract) {
         const c = r.proposal_open_contract;
-        // Full debug log on settlement â€” logs ALL fields so we can see what Deriv sends
+        // Full debug log on settlement Ã¢â‚¬â€ logs ALL fields so we can see what Deriv sends
         if (c.is_sold || c.is_expired) {
             const debugFields = {
                 entry_tick:          c.entry_tick,
@@ -724,7 +724,7 @@ function routeMsg(r) {
                 .filter(([k,v]) => v !== undefined && v !== null && v !== '')
                 .map(([k,v]) => `${k}=${v}`)
                 .join(' | ');
-            log(`ðŸ“‹ Spots: ${found || 'NO SPOT FIELDS FOUND'}`, 'd');
+            log(`Ã°Å¸â€œâ€¹ Spots: ${found || 'NO SPOT FIELDS FOUND'}`, 'd');
         }
         // Route to accumulator handler or bot handler
         if (c.contract_type === 'ACCU' || (accuContractId && c.contract_id === accuContractId)) {
@@ -737,10 +737,10 @@ function routeMsg(r) {
 }
 
 // ================================================================
-// REAL TICK PROCESSING â€” no fake data ever
+// REAL TICK PROCESSING Ã¢â‚¬â€ no fake data ever
 // ================================================================
 // ================================================================
-// DIGIT STATS â€” Amy's verified implementation (public WS)
+// DIGIT STATS Ã¢â‚¬â€ Amy's verified implementation (public WS)
 // Uses separate public WebSocket for market data
 // OTP authenticated WS used only for trading
 // ================================================================
@@ -753,11 +753,11 @@ let publicWsReady = false;
 let pubNextId     = 1;
 function pubReqId() { return pubNextId++; }
 // Symbols Deriv's own active_symbols response has actually confirmed as
-// live/tradable â€” the APA engine treats this as the source of truth for
+// live/tradable Ã¢â‚¬â€ the APA engine treats this as the source of truth for
 // "is this market available" rather than a hard-coded assumption.
 let knownActiveSymbols = new Set();
 
-// â”€â”€ Real OHLC candle fetch (Deriv ticks_history, style:"candles") â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Real OHLC candle fetch (Deriv ticks_history, style:"candles") Ã¢â€â‚¬Ã¢â€â‚¬
 // This is a genuine Deriv API capability (not a synthetic approximation
 // from ticks) and is what the APA multi-timeframe engine below is built on.
 // granularity is in seconds: 60=M1, 300=M5, 900=M15, 1800=M30, 3600=H1,
@@ -788,7 +788,7 @@ function fetchCandles(sym, granularity, count = 120) {
 }
 
 // Small TTL cache so the scanner and setup card don't re-request the same
-// candles on every render â€” cache lifetime is a fraction of the timeframe
+// candles on every render Ã¢â‚¬â€ cache lifetime is a fraction of the timeframe
 // itself so data still feels live.
 let apaCandleCache = {}; // key: `${sym}_${granularity}` -> { candles, fetchedAt }
 async function getCandles(sym, granularity, count = 120) {
@@ -801,7 +801,7 @@ async function getCandles(sym, granularity, count = 120) {
     return candles;
 }
 
-// Amy's exact extractLastDigit â€” normalizes by decimals from pip_size
+// Amy's exact extractLastDigit Ã¢â‚¬â€ normalizes by decimals from pip_size
 function extractLastDigit(quote, decimals) {
     const s = Number(quote).toFixed(decimals || 0);
     for (let i = s.length - 1; i >= 0; i--) {
@@ -811,7 +811,7 @@ function extractLastDigit(quote, decimals) {
     return NaN;
 }
 
-// Amy's addDigit â€” exact rolling window implementation
+// Amy's addDigit Ã¢â‚¬â€ exact rolling window implementation
 function addDigitToRolling(sym, d) {
     if (!digitData[sym]) {
         digitData[sym] = { window: [], counts: Array(10).fill(0), ticks: 0, decimals: 2 };
@@ -828,45 +828,81 @@ function addDigitToRolling(sym, d) {
 
 // Connect to public WebSocket for digit stats (separate from trading WS)
 function connectPublicWS() {
-    if (publicWS && publicWS.readyState === WebSocket.OPEN) return;
+    // Prevent duplicate connections.
+    if (
+        publicWS &&
+        (
+            publicWS.readyState === WebSocket.OPEN ||
+            publicWS.readyState === WebSocket.CONNECTING
+        )
+    ) {
+        return;
+    }
 
     publicWS = new WebSocket(PUBLIC_WS_URL);
 
     publicWS.onopen = () => {
-        publicWsReady = true;
-        log('ðŸ“¡ Public WS connected for digit stats', 'i');
-
-        // Step 1: Get active_symbols to read pip_size per symbol
-        publicWS.send(JSON.stringify({
-            active_symbols: 'brief',
-            req_id: pubReqId()
-        }));
-
-        // Keep-alive ping every 30s
-        setInterval(() => {
-            if (publicWS && publicWS.readyState === WebSocket.OPEN) {
-                publicWS.send(JSON.stringify({ ping: 1 }));
-            }
-        }, 30000);
-    };
-
-    publicWS.onmessage = (ev) => {
-        const data = JSON.parse(ev.data);
-        if (data.error) {
-            log(`ðŸ“¡ Public WS error: ${data.error.code} ${data.error.message}`, 'x');
+        // The browser should report OPEN here, but explicitly verify it
+        // before every send so a reconnect/race cannot throw InvalidStateError.
+        if (!publicWS || publicWS.readyState !== WebSocket.OPEN) {
+            publicWsReady = false;
+            log('Public WS opened callback fired before socket was OPEN; waiting...', 'w');
             return;
         }
 
-        // Step 2: active_symbols â€” read pip_size and seed each symbol
+        publicWsReady = true;
+        log('Public WS connected for digit stats', 'i');
+
+        // Step 1: Get active_symbols to read pip_size per symbol.
+        if (publicWS.readyState === WebSocket.OPEN) {
+            publicWS.send(JSON.stringify({
+                active_symbols: 'brief',
+                req_id: pubReqId()
+            }));
+        }
+
+        // Keep-alive ping every 30 seconds.
+        if (!window._publicWsPingTimer) {
+            window._publicWsPingTimer = setInterval(() => {
+                if (publicWS && publicWS.readyState === WebSocket.OPEN) {
+                    try {
+                        publicWS.send(JSON.stringify({ ping: 1 }));
+                    } catch (err) {
+                        console.warn('Public WS ping failed:', err);
+                    }
+                }
+            }, 30000);
+        }
+    };
+
+    publicWS.onmessage = (ev) => {
+        let data;
+
+        try {
+            data = JSON.parse(ev.data);
+        } catch (err) {
+            console.warn('Public WS invalid JSON:', err);
+            return;
+        }
+
+        if (data.error) {
+            log(
+                `Public WS error: ${data.error.code} ${data.error.message}`,
+                'x'
+            );
+            return;
+        }
+
+        // Step 2: active_symbols — read pip_size and seed each symbol.
         if (data.msg_type === 'active_symbols') {
-            // Record every symbol Deriv confirms as currently active/tradable â€”
-            // the APA engine checks this before treating any market as
-            // available, instead of assuming a hard-coded list is correct.
             (data.active_symbols || []).forEach(s => {
-                if (s.underlying_symbol) knownActiveSymbols.add(s.underlying_symbol);
+                if (s.underlying_symbol) {
+                    knownActiveSymbols.add(s.underlying_symbol);
+                }
             });
 
             const bySymbol = {};
+
             (data.active_symbols || []).forEach(s => {
                 if (ALL_MKTS.includes(s.underlying_symbol)) {
                     bySymbol[s.underlying_symbol] = s;
@@ -877,167 +913,220 @@ function connectPublicWS() {
                 const info = bySymbol[sym];
                 if (!info) return;
 
-                const pipSize  = info.pip_size;
+                const pipSize = info.pip_size;
+
                 const decimals = String(pipSize).includes('.')
                     ? String(pipSize).split('.')[1].length
                     : 0;
 
-                // Initialize with correct decimals from Deriv
                 digitData[sym] = {
-                    window:   [],
-                    counts:   Array(10).fill(0),
-                    ticks:    0,
-                    decimals: decimals
+                    window: [],
+                    counts: Array(10).fill(0),
+                    ticks: 0,
+                    decimals
                 };
+
                 activePipSizes[sym] = pipSize;
 
-                // Step 3: Warm up with ticks_history (1000 ticks)
-                publicWS.send(JSON.stringify({
-                    ticks_history: sym,
-                    end:           'latest',
-                    count:         ROLLING_WINDOW,
-                    style:         'ticks',
-                    req_id:        pubReqId()
-                }));
+                // Never send unless the socket is actually OPEN.
+                if (publicWS && publicWS.readyState === WebSocket.OPEN) {
+                    publicWS.send(JSON.stringify({
+                        ticks_history: sym,
+                        end: 'latest',
+                        count: ROLLING_WINDOW,
+                        style: 'ticks',
+                        req_id: pubReqId()
+                    }));
+                }
             });
+
             return;
         }
 
-        // Step 4: History response â€” seed rolling window
+        // Step 3: History response — seed rolling window.
         if (data.msg_type === 'history' && data.history) {
             const sym = data.echo_req?.ticks_history;
+
             if (!sym || !digitData[sym]) return;
 
-            const st     = digitData[sym];
+            const st = digitData[sym];
             const quotes = data.history.prices || [];
 
-            // Reset and rebuild from history using pip_size decimals
             st.window = [];
             st.counts = Array(10).fill(0);
 
             quotes.forEach(price => {
                 const d = extractLastDigit(price, st.decimals);
-                if (!isNaN(d)) addDigitToRolling(sym, d);
+
+                if (!isNaN(d)) {
+                    addDigitToRolling(sym, d);
+                }
             });
 
-            log(`ðŸ“Š ${MKT[sym]||sym}: ${st.ticks} ticks seeded`, 'i');
+            log(
+                `${MKT[sym] || sym}: ${st.ticks} ticks seeded`,
+                'i'
+            );
 
-            // Step 5: Subscribe to live ticks after warmup
-            publicWS.send(JSON.stringify({
-                ticks:     sym,
-                subscribe: 1,
-                req_id:    pubReqId()
-            }));
+            // Subscribe only while OPEN.
+            if (publicWS && publicWS.readyState === WebSocket.OPEN) {
+                publicWS.send(JSON.stringify({
+                    ticks: sym,
+                    subscribe: 1,
+                    req_id: pubReqId()
+                }));
+            }
 
-            // Update UI if this is the active digit market
             if (sym === currentDigitMkt) {
                 renderDigitCircles(sym);
                 updateDigitStats(sym);
             }
+
             return;
         }
 
-        // Step 6: Live tick â€” update rolling window
+        // Step 4: Live tick — update rolling window.
         if (data.msg_type === 'tick' && data.tick) {
             const sym = data.tick.symbol;
-            const st  = digitData[sym];
+            const st = digitData[sym];
+
             if (!st) return;
 
-            // Use tick.pip_size if available (integer = decimals), else stored decimals
             const decimals = Number.isInteger(data.tick.pip_size)
                 ? data.tick.pip_size
                 : st.decimals;
 
-            const d = extractLastDigit(data.tick.quote, decimals);
+            const d = extractLastDigit(
+                data.tick.quote,
+                decimals
+            );
+
             if (isNaN(d)) return;
 
             addDigitToRolling(sym, d);
 
-            // Update market memory for AI
-            if (!marketMemory[sym]) marketMemory[sym] = { prices: [], digits: [], ticks: 0 };
+            // Update market memory for AI.
+            if (!marketMemory[sym]) {
+                marketMemory[sym] = {
+                    prices: [],
+                    digits: [],
+                    ticks: 0
+                };
+            }
+
             const mm = marketMemory[sym];
+
             mm.prices.push(data.tick.quote);
             mm.digits.push(d);
             mm.ticks++;
-            if (mm.prices.length > 500) { mm.prices.shift(); mm.digits.shift(); }
 
-            // Consecutive tracking
-            if (d === lastDigit) consecutiveSame++;
-            else { consecutiveSame = 1; lastDigit = d; }
+            if (mm.prices.length > 500) {
+                mm.prices.shift();
+                mm.digits.shift();
+            }
 
-            // Update digit stats UI
+            // Consecutive tracking.
+            if (d === lastDigit) {
+                consecutiveSame++;
+            } else {
+                consecutiveSame = 1;
+                lastDigit = d;
+            }
+
+            // Update digit stats UI.
             if (sym === currentDigitMkt) {
                 const lastEl = document.getElementById('d-last');
                 const tickEl = document.getElementById('d-ticks');
+
                 if (lastEl) lastEl.textContent = d;
                 if (tickEl) tickEl.textContent = st.ticks;
+
                 renderDigitCircles(sym);
                 updateDigitStats(sym);
             }
 
-            // AI mini panel update
+            // AI mini panel.
             if (sym === document.getElementById('bot-market')?.value) {
                 updateAIMini(sym);
             }
 
-            // Bot engine
+            // Bot engine.
             const botMkt = document.getElementById('bot-market')?.value;
+
             if (isBotRunning && sym === botMkt) {
                 runBotLogic(d, data.tick.quote);
             }
 
-            // Update accumulator live price display + drive the market behaviour /
-            // confidence engine. Track tick arrival times for the Tick Flow analysis
-            // (speed, acceleration, directional-change frequency).
+            // Accumulator live price + behaviour engine.
             if (sym === accuMarket) {
                 const priceEl = document.getElementById('accu-price');
                 const digitEl = document.getElementById('accu-last-digit');
-                if (priceEl) priceEl.textContent = data.tick.quote;
-                if (digitEl) digitEl.textContent = `Last digit: ${d}`;
 
-                if (!accuTickTimes[sym]) accuTickTimes[sym] = [];
+                if (priceEl) {
+                    priceEl.textContent = data.tick.quote;
+                }
+
+                if (digitEl) {
+                    digitEl.textContent = `Last digit: ${d}`;
+                }
+
+                if (!accuTickTimes[sym]) {
+                    accuTickTimes[sym] = [];
+                }
+
                 accuTickTimes[sym].push(Date.now());
-                if (accuTickTimes[sym].length > 120) accuTickTimes[sym].shift();
 
-                // Update cadence adapts to market speed â€” 1s indices refresh almost
-                // every tick, slower indices refresh less often to save work.
+                if (accuTickTimes[sym].length > 120) {
+                    accuTickTimes[sym].shift();
+                }
+
                 const profile = getMarketProfile(sym);
-                if (st.ticks % profile.updateEveryTicks === 0) updateAccuAnalysis(sym);
+
+                if (
+                    st.ticks % profile.updateEveryTicks === 0
+                ) {
+                    updateAccuAnalysis(sym);
+                }
             }
         }
     };
 
     publicWS.onerror = (e) => {
-        log('ðŸ“¡ Public WS error', 'x');
+        publicWsReady = false;
+        log('Public WS error', 'x');
         console.error(e);
     };
 
     publicWS.onclose = () => {
         publicWsReady = false;
-        log('ðŸ“¡ Public WS closed. Reconnecting in 2s...', 'x');
-        // Amy: reset state and reconnect to avoid gaps
+
+        log(
+            'Public WS closed. Reconnecting in 2s...',
+            'x'
+        );
+
         setTimeout(() => {
             ALL_MKTS.forEach(sym => {
                 if (digitData[sym]) {
                     digitData[sym].window = [];
                     digitData[sym].counts = Array(10).fill(0);
-                    digitData[sym].ticks  = 0;
+                    digitData[sym].ticks = 0;
                 }
             });
+
             connectPublicWS();
         }, 2000);
     };
 }
-
-// Legacy function â€” now routes to public WS
+// Legacy function Ã¢â‚¬â€ now routes to public WS
 function subscribeDigitFeed(symbol) {
-    // Digit feeds handled by public WS â€” just ensure it's connected
+    // Digit feeds handled by public WS Ã¢â‚¬â€ just ensure it's connected
     if (!publicWsReady) connectPublicWS();
 }
 
 // processRealTick still called from authenticated WS for bot logic
 function processRealTick(symbol, quote) {
-    // Digits now handled by public WS â€” this just feeds bot if needed
+    // Digits now handled by public WS Ã¢â‚¬â€ this just feeds bot if needed
     const botMkt = document.getElementById('bot-market')?.value;
     if (isBotRunning && symbol === botMkt) {
         const st  = digitData[symbol];
@@ -1047,9 +1136,9 @@ function processRealTick(symbol, quote) {
     }
 }
 
-// processHistory â€” now handled inside public WS onmessage
+// processHistory Ã¢â‚¬â€ now handled inside public WS onmessage
 function processHistory(symbol, history) {
-    // Handled by public WS â€” kept as stub to avoid errors
+    // Handled by public WS Ã¢â‚¬â€ kept as stub to avoid errors
 }
 
 // ================================================================
@@ -1070,13 +1159,13 @@ function toggleBot() {
     if (!isBotRunning) {
         // Pre-flight validation
         const err = validateBot();
-        if (err) { notify("Cannot Start", err, 'err'); log("âŒ " + err, 'x'); return; }
+        if (err) { notify("Cannot Start", err, 'err'); log("Ã¢ÂÅ’ " + err, 'x'); return; }
 
         isBotRunning = true;
         baseStake    = parseFloat(document.getElementById('bot-stake')?.value || 1);
         currentStake = baseStake;
 
-        if (btn) { btn.textContent = 'â¬› Stop'; btn.classList.remove('btn-run'); btn.classList.add('btn-stop'); }
+        if (btn) { btn.textContent = 'Ã¢Â¬â€º Stop'; btn.classList.remove('btn-run'); btn.classList.add('btn-stop'); }
 
         // Subscribe to bot market feed
         const mkt = document.getElementById('bot-market')?.value || 'R_10';
@@ -1085,7 +1174,7 @@ function toggleBot() {
         updateActiveBotName();
         updateInfoBar();
         closeMobileBotSettings(); // close settings panel on mobile when bot starts
-        log(`ðŸŸ¢ Bot started | ${MKT[mkt]||mkt} | ${document.getElementById('bot-type')?.value} | ${botDirection.toUpperCase()}`, 'i');
+        log(`Ã°Å¸Å¸Â¢ Bot started | ${MKT[mkt]||mkt} | ${document.getElementById('bot-type')?.value} | ${botDirection.toUpperCase()}`, 'i');
         log(`   Stake: $${currentStake.toFixed(2)} | TP: $${document.getElementById('bot-tp')?.value} | SL: $${document.getElementById('bot-sl')?.value}`, 'i');
 
         // Switch to transactions tab
@@ -1106,12 +1195,12 @@ function toggleBot() {
             originalPrediction = null;
             renderDirButtons();
             updateInfoBar();
-            log('ðŸ”„ Recovery mode reset â€” original settings restored', 'i');
+            log('Ã°Å¸â€â€ž Recovery mode reset Ã¢â‚¬â€ original settings restored', 'i');
         }
         consecutiveLosses = 0;
 
-        if (btn) { btn.textContent = 'â–¶ Run'; btn.classList.remove('btn-stop'); btn.classList.add('btn-run'); }
-        log("ðŸ”´ Bot stopped.", 'x');
+        if (btn) { btn.textContent = 'Ã¢â€“Â¶ Run'; btn.classList.remove('btn-stop'); btn.classList.add('btn-run'); }
+        log("Ã°Å¸â€Â´ Bot stopped.", 'x');
     }
 
     updateBotBar();
@@ -1137,7 +1226,7 @@ function runBotLogic(digit, quote) {
     const pred = parseInt(document.getElementById('bot-pred')?.value || 5);
 
     // ALL contract types trade on every tick at full Deriv speed
-    // Deriv's engine decides win/loss â€” we just fire as fast as possible
+    // Deriv's engine decides win/loss Ã¢â‚¬â€ we just fire as fast as possible
     switch(type) {
         case 'over_under':
             // Only trade when digit confirms direction (improves win rate)
@@ -1148,7 +1237,7 @@ function runBotLogic(digit, quote) {
         case 'even_odd':
         case 'rise_fall':
         case 'only_ups_downs':
-            // Trade on EVERY tick â€” maximum speed, same as Deriv
+            // Trade on EVERY tick Ã¢â‚¬â€ maximum speed, same as Deriv
             lastEntrySpot = quote;
             executeContract(quote);
             break;
@@ -1160,7 +1249,7 @@ function startProposalTimeout() {
     clearProposalTimeout();
     proposalTimeout = setTimeout(() => {
         if (pendingContract && lastContractId === "pending") {
-            log("â± Proposal timed out â€” resetting", 'x');
+            log("Ã¢ÂÂ± Proposal timed out Ã¢â‚¬â€ resetting", 'x');
             pendingContract = false;
             lastContractId  = null;
             // Retry immediately
@@ -1182,7 +1271,7 @@ function clearProposalTimeout() {
     }
 }
 
-// â”€â”€ STEP 1: Send proposal (Amy-verified flow) â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ STEP 1: Send proposal (Amy-verified flow) Ã¢â€â‚¬Ã¢â€â‚¬
 function executeContract(entrySpot) {
     if (!isBotRunning || pendingContract) return;
 
@@ -1196,12 +1285,12 @@ function executeContract(entrySpot) {
     const contractType = typeMap?.[botDirection];
 
     if (!contractType) {
-        log(`âŒ Invalid direction "${botDirection}" for type "${type}" â€” auto-fixing...`, 'x');
+        log(`Ã¢ÂÅ’ Invalid direction "${botDirection}" for type "${type}" Ã¢â‚¬â€ auto-fixing...`, 'x');
         // Auto-fix: pick first valid direction for this type
         const validDirs = Object.keys(typeMap || {});
         if (validDirs.length > 0) {
             botDirection = validDirs[0];
-            log(`ðŸ”§ Auto-corrected direction to: ${botDirection}`, 'i');
+            log(`Ã°Å¸â€Â§ Auto-corrected direction to: ${botDirection}`, 'i');
             renderDirButtons();
             updateInfoBar();
             // Retry with fixed direction
@@ -1213,14 +1302,14 @@ function executeContract(entrySpot) {
     // Validate stake minimum
     if (currentStake < 0.35) {
         currentStake = 0.35;
-        log(`âš ï¸ Stake adjusted to minimum $0.35`, 'x');
+        log(`Ã¢Å¡Â Ã¯Â¸Â Stake adjusted to minimum $0.35`, 'x');
     }
 
     const isDigit    = ['DIGITEVEN','DIGITODD','DIGITOVER','DIGITUNDER','DIGITMATCH','DIGITDIFF'].includes(contractType);
     const isRiseFall = ['CALL','PUT'].includes(contractType);
     const isRunHL    = ['RUNHIGH','RUNLOW'].includes(contractType);
 
-    // Build proposal â€” Amy confirmed: use underlying_symbol not symbol
+    // Build proposal Ã¢â‚¬â€ Amy confirmed: use underlying_symbol not symbol
     const proposal = {
         proposal:           1,
         amount:             parseFloat(currentStake.toFixed(2)),
@@ -1252,14 +1341,14 @@ function executeContract(entrySpot) {
     lastContractId   = "pending";
     lastEntrySpot    = entrySpot;
 
-    log(`ðŸ“‹ Proposal: ${contractType} @ $${currentStake.toFixed(2)} | ${MKT[market]||market} | dur:${proposal.duration||'?'}${proposal.duration_unit||''}${proposal.barrier?' barrier:'+proposal.barrier:''}`, 'i');
+    log(`Ã°Å¸â€œâ€¹ Proposal: ${contractType} @ $${currentStake.toFixed(2)} | ${MKT[market]||market} | dur:${proposal.duration||'?'}${proposal.duration_unit||''}${proposal.barrier?' barrier:'+proposal.barrier:''}`, 'i');
     derivWS.send(JSON.stringify(proposal));
 
-    // Start timeout â€” reset if proposal takes more than 5 seconds
+    // Start timeout Ã¢â‚¬â€ reset if proposal takes more than 5 seconds
     startProposalTimeout();
 }
 
-// â”€â”€ STEP 2: Buy using proposal ID (Amy-verified flow) â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ STEP 2: Buy using proposal ID (Amy-verified flow) Ã¢â€â‚¬Ã¢â€â‚¬
 function buyFromProposal(proposalId, askPrice) {
     if (!isBotRunning) return;
 
@@ -1269,7 +1358,7 @@ function buyFromProposal(proposalId, askPrice) {
         req_id: nextReqId()
     };
 
-    log(`ðŸŽ¯ Buying proposal ${proposalId} @ $${askPrice.toFixed(2)}`, 'i');
+    log(`Ã°Å¸Å½Â¯ Buying proposal ${proposalId} @ $${askPrice.toFixed(2)}`, 'i');
     derivWS.send(JSON.stringify(buyOrder));
 }
 
@@ -1281,8 +1370,8 @@ function handleBuyResponse(r) {
         // Reset the per-contract settlement guard for this brand-new contract
         accuSettledContractIds.delete(accuContractId);
         accuTickCount = 0;
-        log(`âœ… Accumulator #${accuContractId} started | Buy price: $${r.buy.buy_price}`, 'w');
-        notify('ðŸ“ˆ Accumulator Running!', `Contract started. Growth: ${(accuGrowthRate*100)}% per tick. Sell anytime!`, 'ok');
+        log(`Ã¢Å“â€¦ Accumulator #${accuContractId} started | Buy price: $${r.buy.buy_price}`, 'w');
+        notify('Ã°Å¸â€œË† Accumulator Running!', `Contract started. Growth: ${(accuGrowthRate*100)}% per tick. Sell anytime!`, 'ok');
         // Subscribe to contract updates
         derivWS.send(JSON.stringify({ proposal_open_contract: 1, contract_id: accuContractId, subscribe: 1 }));
         return;
@@ -1292,7 +1381,7 @@ function handleBuyResponse(r) {
         lastContractId  = null;
         const reason = r.error.message || 'Unknown error';
         const code   = r.error.code   || '';
-        log(`âŒ Buy rejected: ${reason} (${code})`, 'x');
+        log(`Ã¢ÂÅ’ Buy rejected: ${reason} (${code})`, 'x');
         log(`   Market: ${document.getElementById('bot-market')?.value} | Type: ${document.getElementById('bot-type')?.value} | Dir: ${botDirection}`, 'x');
         // Only notify on first rejection per minute to avoid spam
         const nKey = `buy-err-${Math.floor(Date.now()/60000)}`;
@@ -1303,9 +1392,9 @@ function handleBuyResponse(r) {
     } else if (r.buy) {
         lastContractId = r.buy.contract_id;
         totalRuns++;
-        log(`âœ… Contract #${lastContractId} confirmed | Buy price: $${r.buy.buy_price}`, 'w');
+        log(`Ã¢Å“â€¦ Contract #${lastContractId} confirmed | Buy price: $${r.buy.buy_price}`, 'w');
         updateAllStats();
-        // Subscribe to contract updates â€” this gives us entry/exit spots
+        // Subscribe to contract updates Ã¢â‚¬â€ this gives us entry/exit spots
         derivWS.send(JSON.stringify({
             proposal_open_contract: 1,
             contract_id: lastContractId,
@@ -1338,12 +1427,12 @@ function handleContractResult(c) {
                     || c.entry_tick_display_value
                     || c.entry_spot_display_value
                     || lastEntrySpot
-                    || 'â€”';
+                    || 'Ã¢â‚¬â€';
     const exitSpot   = c.exit_spot
                     || c.exit_tick_display_value
                     || c.exit_spot_display_value
                     || c.sell_spot
-                    || 'â€”';
+                    || 'Ã¢â‚¬â€';
 
     totalStake  += buyPrice;
     totalPayout += Math.max(0, payout);
@@ -1354,12 +1443,12 @@ function handleContractResult(c) {
         totalWins++;
         currentStreak     = currentStreak < 0 ? 1 : currentStreak + 1;
         consecutiveLosses = 0;
-        log(`âœ… WIN +$${profit.toFixed(2)} | Payout: $${payout.toFixed(2)}`, 'w');
+        log(`Ã¢Å“â€¦ WIN +$${profit.toFixed(2)} | Payout: $${payout.toFixed(2)}`, 'w');
         addTxRow(c.contract_type, entrySpot2, exitSpot, buyPrice, profit, true);
         // Reset stake on win
         currentStake = baseStake;
 
-        // If in recovery mode â€” switch BACK to original trade after win
+        // If in recovery mode Ã¢â‚¬â€ switch BACK to original trade after win
         const currentType = document.getElementById('bot-type')?.value;
         if (currentType === 'over_under' && isInRecoveryMode && originalDirection !== null) {
             isInRecoveryMode  = false;
@@ -1371,8 +1460,8 @@ function handleContractResult(c) {
             consecutiveLosses  = 0;
             renderDirButtons();
             updateInfoBar();
-            log(`ðŸ”„ Recovery complete! Back to ${botDirection.toUpperCase()} ${document.getElementById('bot-pred')?.value}`, 'i');
-            notify('âœ… Recovery Complete!', `Won in recovery!
+            log(`Ã°Å¸â€â€ž Recovery complete! Back to ${botDirection.toUpperCase()} ${document.getElementById('bot-pred')?.value}`, 'i');
+            notify('Ã¢Å“â€¦ Recovery Complete!', `Won in recovery!
 Switched back to original: ${botDirection.toUpperCase()} ${document.getElementById('bot-pred')?.value}`, 'ok');
         }
 
@@ -1381,17 +1470,17 @@ Switched back to original: ${botDirection.toUpperCase()} ${document.getElementBy
         totalLosses++;
         currentStreak      = currentStreak > 0 ? -1 : currentStreak - 1;
         consecutiveLosses++;
-        log(`âŒ LOSS $${profit.toFixed(2)} | Consecutive: ${consecutiveLosses}`, 'l');
+        log(`Ã¢ÂÅ’ LOSS $${profit.toFixed(2)} | Consecutive: ${consecutiveLosses}`, 'l');
         addTxRow(c.contract_type, entrySpot2, exitSpot, buyPrice, profit, false);
 
         // Martingale
         const mg     = parseFloat(document.getElementById('bot-mg')?.value || 2.1);
         currentStake = parseFloat((currentStake * mg).toFixed(2));
-        log(`ðŸ“ Martingale: next stake $${currentStake.toFixed(2)}`, 'x');
+        log(`Ã°Å¸â€œÂ Martingale: next stake $${currentStake.toFixed(2)}`, 'x');
 
-        // â”€â”€ SMART RECOVERY â€” only for over_under â”€â”€
+        // Ã¢â€â‚¬Ã¢â€â‚¬ SMART RECOVERY Ã¢â‚¬â€ only for over_under Ã¢â€â‚¬Ã¢â€â‚¬
         // After 2 consecutive losses, switch to high-probability recovery trade
-        // Over 1/2 â†’ recover with Under 8/7 and vice versa
+        // Over 1/2 Ã¢â€ â€™ recover with Under 8/7 and vice versa
         const currentType2 = document.getElementById('bot-type')?.value;
         if (currentType2 === 'over_under' &&
             consecutiveLosses >= RECOVERY_TRIGGER &&
@@ -1414,9 +1503,9 @@ Switched back to original: ${botDirection.toUpperCase()} ${document.getElementBy
                 renderDirButtons();
                 updateInfoBar();
 
-                log(`ðŸš¨ ${consecutiveLosses} losses! RECOVERY MODE: ${recovery.direction.toUpperCase()} ${recovery.pred}`, 'x');
+                log(`Ã°Å¸Å¡Â¨ ${consecutiveLosses} losses! RECOVERY MODE: ${recovery.direction.toUpperCase()} ${recovery.pred}`, 'x');
                 notify(
-                    'ðŸš¨ Recovery Mode Activated',
+                    'Ã°Å¸Å¡Â¨ Recovery Mode Activated',
                     `${consecutiveLosses} consecutive losses!
 Switching to ${recovery.direction.toUpperCase()} ${recovery.pred} to recover.
 Will return to ${originalDirection.toUpperCase()} ${originalPrediction} after win.`,
@@ -1428,7 +1517,7 @@ Will return to ${originalDirection.toUpperCase()} ${originalPrediction} after wi
     updateAllStats();
     checkThresholds();
 
-    // IMMEDIATELY fire next trade after result â€” no delay
+    // IMMEDIATELY fire next trade after result Ã¢â‚¬â€ no delay
     // This matches Deriv's own bot speed
     if (isBotRunning && !pendingContract) {
         const mkt = document.getElementById('bot-market')?.value || 'R_10';
@@ -1445,7 +1534,7 @@ Will return to ${originalDirection.toUpperCase()} ${originalPrediction} after wi
         }
     }
 
-    // AI auto-update after result â€” NEVER for over_under (user controls direction+barrier)
+    // AI auto-update after result Ã¢â‚¬â€ NEVER for over_under (user controls direction+barrier)
     if (aiAutoEnabled) {
         const mkt         = document.getElementById('bot-market')?.value || 'R_10';
         const currentType = document.getElementById('bot-type')?.value || 'over_under';
@@ -1457,7 +1546,7 @@ Will return to ${originalDirection.toUpperCase()} ${originalPrediction} after wi
                     const oldDir = botDirection;
                     botDirection = sig.botDirection;
                     if (botDirection !== oldDir) {
-                        log(`ðŸ§  AI updated direction: ${oldDir.toUpperCase()} â†’ ${botDirection.toUpperCase()} (${sig.confidence}% confidence)`, 'i');
+                        log(`Ã°Å¸Â§Â  AI updated direction: ${oldDir.toUpperCase()} Ã¢â€ â€™ ${botDirection.toUpperCase()} (${sig.confidence}% confidence)`, 'i');
                         renderDirButtons();
                         updateInfoBar();
                     }
@@ -1470,7 +1559,7 @@ Will return to ${originalDirection.toUpperCase()} ${originalPrediction} after wi
 
 // ================================================================
 // BULK TRADING ENGINE
-// Configure one setup, execute N trades from it â€” strictly sequential
+// Configure one setup, execute N trades from it Ã¢â‚¬â€ strictly sequential
 // (never parallel), each trade fully round-tripped through the real
 // Deriv proposal -> buy -> settlement flow before the next one is sent,
 // so there is no way for a double-click, re-render, or reconnect to
@@ -1500,8 +1589,8 @@ function makeBulkBatchId() {
     return `BT-${Date.now().toString(36).toUpperCase()}`;
 }
 
-// â”€â”€ Direction controls (namespaced separately from the DBot's so the two
-// tools never fight over shared state) â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Direction controls (namespaced separately from the DBot's so the two
+// tools never fight over shared state) Ã¢â€â‚¬Ã¢â€â‚¬
 function onBulkTypeChange() {
     const type = document.getElementById('bulk-type')?.value || 'over_under';
     const wrap = document.getElementById('bulk-dir-controls');
@@ -1538,7 +1627,7 @@ function selectBulkDir(dir) {
     updateBulkPreview();
 }
 
-// â”€â”€ Number of trades stepper â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Number of trades stepper Ã¢â€â‚¬Ã¢â€â‚¬
 function stepBulkTrades(delta) {
     const el = document.getElementById('bulk-trades');
     if (!el) return;
@@ -1553,7 +1642,7 @@ function setBulkTrades(n) {
     updateBulkPreview();
 }
 
-// â”€â”€ Stake mode toggle (Mode A: per-trade | Mode B: total budget) â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Stake mode toggle (Mode A: per-trade | Mode B: total budget) Ã¢â€â‚¬Ã¢â€â‚¬
 function setBulkStakeMode(mode) {
     bulkStakeMode = mode;
     const btnPer = document.getElementById('bulk-mode-per');
@@ -1587,7 +1676,7 @@ function updateBulkPreview() {
     if (!body) return;
 
     const acct   = allAccounts.find(a => a.account_id === accountId);
-    const acctType = acct ? (acct.account_type === 'real' ? 'REAL' : 'DEMO') : 'â€”';
+    const acctType = acct ? (acct.account_type === 'real' ? 'REAL' : 'DEMO') : 'Ã¢â‚¬â€';
     const acctColor = acctType === 'REAL' ? 'var(--red)' : 'var(--teal)';
 
     body.innerHTML = `
@@ -1601,7 +1690,7 @@ function updateBulkPreview() {
     if (btn && !bulkExecuting) btn.textContent = `EXECUTE ${cfg.trades} TRADE${cfg.trades===1?'':'S'}`;
 }
 
-// Populate from an AI Scanner signal â€” used by the two bridge functions below.
+// Populate from an AI Scanner signal Ã¢â‚¬â€ used by the two bridge functions below.
 function populateBulkFromSignal(sig) {
     if (!sig) return;
     const marketSel = document.getElementById('bulk-market');
@@ -1617,11 +1706,11 @@ function populateBulkFromSignal(sig) {
     const note = document.getElementById('bulk-signal-note');
     if (note) {
         note.style.display = 'block';
-        note.textContent = `ðŸ“¡ Populated from AI Scanner: ${sig.label || MKT[sig.symbol] || sig.symbol || ''} â€” ${sig.direction} (${sig.confidence}% confidence). Review before executing.`;
+        note.textContent = `Ã°Å¸â€œÂ¡ Populated from AI Scanner: ${sig.label || MKT[sig.symbol] || sig.symbol || ''} Ã¢â‚¬â€ ${sig.direction} (${sig.confidence}% confidence). Review before executing.`;
     }
     updateBulkPreview();
     switchTab('bulk');
-    notify('ðŸ“¦ Signal Sent to Bulk Trading', `${sig.direction} Â· ${sig.confidence}% confidence â€” review the setup and choose your trade count.`, 'ok');
+    notify('Ã°Å¸â€œÂ¦ Signal Sent to Bulk Trading', `${sig.direction} Ã‚Â· ${sig.confidence}% confidence Ã¢â‚¬â€ review the setup and choose your trade count.`, 'ok');
 }
 function applySignalToBulk(sig) {
     if (typeof sig === 'string') { try { sig = JSON.parse(sig); } catch(e) { return; } }
@@ -1633,7 +1722,7 @@ function applyBestSignalToBulk() {
     if (results[0]?.signal) populateBulkFromSignal(results[0].signal);
 }
 
-// â”€â”€ Validation / risk protection â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Validation / risk protection Ã¢â€â‚¬Ã¢â€â‚¬
 function validateBulkConfig(cfg) {
     if (!derivWS || derivWS.readyState !== WebSocket.OPEN) return 'Not connected to Deriv. Please log in first.';
     if (!accountId) return 'No trading account selected.';
@@ -1646,9 +1735,9 @@ function validateBulkConfig(cfg) {
     return null;
 }
 
-// â”€â”€ Low-level, self-contained request helpers â€” decoupled from the DBot's
+// Ã¢â€â‚¬Ã¢â€â‚¬ Low-level, self-contained request helpers Ã¢â‚¬â€ decoupled from the DBot's
 // global pendingContract/lastContractId state so Bulk Trading can never
-// interfere with (or be interfered with by) the DBot or Accumulator. â”€â”€
+// interfere with (or be interfered with by) the DBot or Accumulator. Ã¢â€â‚¬Ã¢â€â‚¬
 function derivRequest(payload, timeoutMs = 10000) {
     return new Promise((resolve, reject) => {
         if (!derivWS || derivWS.readyState !== WebSocket.OPEN) { reject(new Error('Not connected')); return; }
@@ -1730,9 +1819,9 @@ function computeBatchStatus(batch) {
     return 'Partially Completed';
 }
 
-// â”€â”€ Main entry point â€” guarded against double-click / re-entrant calls â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Main entry point Ã¢â‚¬â€ guarded against double-click / re-entrant calls Ã¢â€â‚¬Ã¢â€â‚¬
 async function startBulkExecution() {
-    if (bulkExecuting) return; // idempotency guard â€” a second click while running does nothing
+    if (bulkExecuting) return; // idempotency guard Ã¢â‚¬â€ a second click while running does nothing
     const cfg = getBulkConfig();
     const err = validateBulkConfig(cfg);
     if (err) { notify('Cannot Execute', err, 'err'); return; }
@@ -1743,10 +1832,10 @@ async function startBulkExecution() {
     if (isReal) {
         showApaModal(`
             <div style="text-align:center;padding:10px;">
-                <div style="font-size:32px;margin-bottom:8px;">âš ï¸</div>
+                <div style="font-size:32px;margin-bottom:8px;">Ã¢Å¡Â Ã¯Â¸Â</div>
                 <div style="font-size:14px;font-weight:900;margin-bottom:8px;">Confirm REAL Account Execution</div>
                 <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">You are about to execute <b style="color:var(--text);">${cfg.trades} trades</b> on your <b style="color:var(--red);">REAL</b> account. Total stake: <b style="color:var(--text);">$${cfg.totalStake.toFixed(2)}</b>.</div>
-                <button class="btn btn-red" style="width:100%;padding:12px;margin-bottom:8px;font-weight:900;" onclick="closeApaModal();runBulkExecution();">Confirm â€” Execute on REAL Account</button>
+                <button class="btn btn-red" style="width:100%;padding:12px;margin-bottom:8px;font-weight:900;" onclick="closeApaModal();runBulkExecution();">Confirm Ã¢â‚¬â€ Execute on REAL Account</button>
                 <button class="btn btn-ghost" style="width:100%;padding:10px;" onclick="closeApaModal();">Cancel</button>
             </div>`);
         return;
@@ -1769,7 +1858,7 @@ async function runBulkExecution() {
         id: makeBulkBatchId(), createdAt: Date.now(), market: cfg.market, marketLabel: MKT[cfg.market] || cfg.market,
         type: cfg.type, direction: cfg.direction, pred: cfg.pred, trades: cfg.trades,
         stakePerTrade: cfg.stakePerTrade, totalStake: cfg.totalStake,
-        account: acct ? (acct.account_type === 'real' ? 'REAL' : 'DEMO') : 'â€”',
+        account: acct ? (acct.account_type === 'real' ? 'REAL' : 'DEMO') : 'Ã¢â‚¬â€',
         status: 'RUNNING', results: []
     };
     bulkCurrentBatch = batch;
@@ -1786,10 +1875,10 @@ async function runBulkExecution() {
         try {
             const result = await executeSingleBulkTrade(cfg);
             batch.results.push({ index: i+1, ...result, status: 'Completed' });
-            log(`ðŸ“¦ Bulk trade ${i+1}/${cfg.trades} completed | ${result.isWin?'WIN':'LOSS'} $${result.profit.toFixed(2)}`, result.isWin ? 'w' : 'l');
+            log(`Ã°Å¸â€œÂ¦ Bulk trade ${i+1}/${cfg.trades} completed | ${result.isWin?'WIN':'LOSS'} $${result.profit.toFixed(2)}`, result.isWin ? 'w' : 'l');
         } catch(e) {
             batch.results.push({ index: i+1, status: 'Failed', error: e.message, timestamp: Date.now() });
-            log(`ðŸ“¦ Bulk trade ${i+1}/${cfg.trades} FAILED: ${e.message}`, 'x');
+            log(`Ã°Å¸â€œÂ¦ Bulk trade ${i+1}/${cfg.trades} FAILED: ${e.message}`, 'x');
         }
         saveBulkBatches();
         renderBulkProgress(batch);
@@ -1804,8 +1893,8 @@ async function runBulkExecution() {
     const wins = batch.results.filter(r => r.isWin).length;
     const netResult = batch.results.reduce((s,r) => s + (r.profit || 0), 0);
     notify(
-        batch.status === 'Completed' ? 'âœ… Bulk Trade Completed' : batch.status === 'Failed' ? 'âŒ Bulk Trade Failed' : 'âš ï¸ Bulk Trade Partially Completed',
-        `${batch.trades} requested Â· ${batch.results.filter(r=>r.status==='Completed').length} executed Â· ${wins} wins Â· Net: ${netResult>=0?'+':''}$${netResult.toFixed(2)}`,
+        batch.status === 'Completed' ? 'Ã¢Å“â€¦ Bulk Trade Completed' : batch.status === 'Failed' ? 'Ã¢ÂÅ’ Bulk Trade Failed' : 'Ã¢Å¡Â Ã¯Â¸Â Bulk Trade Partially Completed',
+        `${batch.trades} requested Ã‚Â· ${batch.results.filter(r=>r.status==='Completed').length} executed Ã‚Â· ${wins} wins Ã‚Â· Net: ${netResult>=0?'+':''}$${netResult.toFixed(2)}`,
         batch.status === 'Completed' ? 'ok' : batch.status === 'Failed' ? 'err' : 'warn'
     );
     renderBulkHistory();
@@ -1835,11 +1924,11 @@ function renderBulkProgress(batch) {
                 <div style="flex:1;">${r.contractType || batch.type}</div>
                 <div style="width:70px;font-family:monospace;">$${(r.stake ?? batch.stakePerTrade).toFixed(2)}</div>
                 <div style="width:90px;color:${r.status==='Completed'?'var(--green)':'var(--red)'};">${r.status}</div>
-                <div style="width:80px;text-align:right;font-family:monospace;font-weight:700;color:${r.status!=='Completed'?'var(--dim)':r.isWin?'var(--green)':'var(--red)'};">${r.status==='Completed' ? (r.isWin?'+':'')+'$'+r.profit.toFixed(2) : 'â€”'}</div>
+                <div style="width:80px;text-align:right;font-family:monospace;font-weight:700;color:${r.status!=='Completed'?'var(--dim)':r.isWin?'var(--green)':'var(--red)'};">${r.status==='Completed' ? (r.isWin?'+':'')+'$'+r.profit.toFixed(2) : 'Ã¢â‚¬â€'}</div>
             </div>`).join('')
             + Array.from({length: Math.max(0, total-done)}).map((_,i) => `
             <div style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;color:var(--dim);">
-                <div style="width:32px;">${done+i+1}</div><div style="flex:1;">Pending</div><div style="width:70px;">â€”</div><div style="width:90px;">Pending</div><div style="width:80px;text-align:right;">â€”</div>
+                <div style="width:32px;">${done+i+1}</div><div style="flex:1;">Pending</div><div style="width:70px;">Ã¢â‚¬â€</div><div style="width:90px;">Pending</div><div style="width:80px;text-align:right;">Ã¢â‚¬â€</div>
             </div>`).join('');
     }
 }
@@ -1862,7 +1951,7 @@ function renderBulkHistory() {
             <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="toggleBulkBatchDetail('${b.id}')">
                 <div>
                     <div style="font-size:11px;font-weight:900;">Batch #${b.id}</div>
-                    <div style="font-size:9px;color:var(--muted);">${new Date(b.createdAt).toLocaleString()} Â· ${b.marketLabel} Â· ${b.direction.toUpperCase()}</div>
+                    <div style="font-size:9px;color:var(--muted);">${new Date(b.createdAt).toLocaleString()} Ã‚Â· ${b.marketLabel} Ã‚Â· ${b.direction.toUpperCase()}</div>
                 </div>
                 <span class="badge" style="background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}44;">${b.status}</span>
             </div>
@@ -1871,7 +1960,7 @@ function renderBulkHistory() {
                 <div style="text-align:center;"><div style="font-size:8px;color:var(--muted);">TOTAL STAKE</div><div style="font-size:12px;font-weight:900;">$${b.totalStake.toFixed(2)}</div></div>
                 <div style="text-align:center;"><div style="font-size:8px;color:var(--muted);">NET RESULT</div><div style="font-size:12px;font-weight:900;color:${net>=0?'var(--green)':'var(--red)'};">${net>=0?'+':''}$${net.toFixed(2)}</div></div>
             </div>
-            <div style="font-size:9px;color:var(--muted);margin-top:6px;">Wins: <b style="color:var(--green);">${wins}</b> Â· Losses: <b style="color:var(--red);">${losses}</b> Â· Account: <b>${b.account}</b></div>
+            <div style="font-size:9px;color:var(--muted);margin-top:6px;">Wins: <b style="color:var(--green);">${wins}</b> Ã‚Â· Losses: <b style="color:var(--red);">${losses}</b> Ã‚Â· Account: <b>${b.account}</b></div>
             <div id="bulk-batch-detail-${b.id}" style="display:none;margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">
                 ${b.results.map(r => `
                 <div style="display:flex;justify-content:space-between;font-size:10px;padding:3px 0;color:var(--muted);">
@@ -1891,7 +1980,7 @@ function clearBulkHistory() {
     bulkBatches = [];
     saveBulkBatches();
     renderBulkHistory();
-    notify('ðŸ—‘ Bulk History Cleared', 'All bulk trade batches have been removed from this browser.', 'ok');
+    notify('Ã°Å¸â€”â€˜ Bulk History Cleared', 'All bulk trade batches have been removed from this browser.', 'ok');
 }
 
 function initBulkTab() {
@@ -1921,7 +2010,7 @@ function initBulkTab() {
 }
 
 // ================================================================
-// TRANSACTION ROW â€” exactly like screenshot
+// TRANSACTION ROW Ã¢â‚¬â€ exactly like screenshot
 // ================================================================
 // Update exit spot on an existing transaction row
 function updateTxRowExitSpot(contractId, exitSpot) {
@@ -1942,19 +2031,19 @@ function addTxRow(contractType, entrySpot, exitSpot, stake, profit, isWin) {
 
     // Icons matching Deriv's style
     const icons = {
-        DIGITOVER:'â†‘', DIGITUNDER:'â†“', DIGITEVEN:'2x', DIGITODD:'!!',
-        DIGITMATCH:'=', DIGITDIFF:'â‰ ',
-        CALL:'â†‘', PUT:'â†“', RUNHIGH:'â†‘â†‘', RUNLOW:'â†“â†“'
+        DIGITOVER:'Ã¢â€ â€˜', DIGITUNDER:'Ã¢â€ â€œ', DIGITEVEN:'2x', DIGITODD:'!!',
+        DIGITMATCH:'=', DIGITDIFF:'Ã¢â€°Â ',
+        CALL:'Ã¢â€ â€˜', PUT:'Ã¢â€ â€œ', RUNHIGH:'Ã¢â€ â€˜Ã¢â€ â€˜', RUNLOW:'Ã¢â€ â€œÃ¢â€ â€œ'
     };
     const icon       = icons[contractType] || '?';
     const iconBg     = isWin ? '#00d79e18' : '#ff444f18';
     const iconColor  = isWin ? 'var(--green)' : 'var(--red)';
     const profitColor = isWin ? 'var(--green)' : 'var(--red)';
 
-    // Format spots exactly like Deriv â€” show full price
+    // Format spots exactly like Deriv Ã¢â‚¬â€ show full price
     const fmtSpot = (s) => {
-        if (!s || s === 'â€”') return 'â€”';
-        // Return as-is â€” Deriv already formats it correctly
+        if (!s || s === 'Ã¢â‚¬â€') return 'Ã¢â‚¬â€';
+        // Return as-is Ã¢â‚¬â€ Deriv already formats it correctly
         return String(s);
     };
 
@@ -2053,26 +2142,26 @@ function checkThresholds() {
     const tp = parseFloat(document.getElementById('bot-tp')?.value || 0);
     const sl = parseFloat(document.getElementById('bot-sl')?.value || 0);
 
-    // Use session PL â€” measured from last reset, not all-time total
+    // Use session PL Ã¢â‚¬â€ measured from last reset, not all-time total
     const sessionPL = totalPL - sessionBasePL;
 
     if (tp > 0 && sessionPL >= tp) {
-        log(`ðŸ† TAKE PROFIT $${tp} HIT! Session P/L: $${sessionPL.toFixed(2)}`, 'w');
+        log(`Ã°Å¸Ââ€  TAKE PROFIT $${tp} HIT! Session P/L: $${sessionPL.toFixed(2)}`, 'w');
         isBotRunning   = false;
         pendingContract = false;
         lastContractId  = null;
         const btn = document.getElementById('run-btn');
-        if (btn) { btn.textContent = 'â–¶ Run'; btn.classList.remove('btn-stop'); btn.classList.add('btn-run'); }
+        if (btn) { btn.textContent = 'Ã¢â€“Â¶ Run'; btn.classList.remove('btn-stop'); btn.classList.add('btn-run'); }
         updateBotBar();
         showTargetModal('tp', tp, sessionPL);
 
     } else if (sl > 0 && sessionPL <= -sl) {
-        log(`â›” STOP LOSS $${sl} HIT! Session P/L: $${sessionPL.toFixed(2)}`, 'x');
+        log(`Ã¢â€ºâ€ STOP LOSS $${sl} HIT! Session P/L: $${sessionPL.toFixed(2)}`, 'x');
         isBotRunning   = false;
         pendingContract = false;
         lastContractId  = null;
         const btn = document.getElementById('run-btn');
-        if (btn) { btn.textContent = 'â–¶ Run'; btn.classList.remove('btn-stop'); btn.classList.add('btn-run'); }
+        if (btn) { btn.textContent = 'Ã¢â€“Â¶ Run'; btn.classList.remove('btn-stop'); btn.classList.add('btn-run'); }
         updateBotBar();
         showTargetModal('sl', sl, sessionPL);
     }
@@ -2086,7 +2175,7 @@ function showTargetModal(type, amount, sessionPL) {
 
     const isTP   = type === 'tp';
     const color  = isTP ? '#00d2c8' : '#ff444f';
-    const emoji  = isTP ? 'ðŸ†' : 'â›”';
+    const emoji  = isTP ? 'Ã°Å¸Ââ€ ' : 'Ã¢â€ºâ€';
     const title  = isTP ? 'TAKE PROFIT HIT!' : 'STOP LOSS HIT!';
     const msg    = isTP
         ? `Congratulations! You reached your profit target of $${amount.toFixed(2)}.`
@@ -2137,13 +2226,13 @@ function showTargetModal(type, amount, sessionPL) {
                     background:${color};color:${isTP?'#000':'#fff'};border:none;
                     border-radius:10px;padding:14px;font-size:14px;font-weight:900;
                     cursor:pointer;width:100%;letter-spacing:.03em;">
-                    ðŸ”„ Reset & Continue Trading
+                    Ã°Å¸â€â€ž Reset & Continue Trading
                 </button>
                 <button onclick="stopAndClose()" style="
                     background:transparent;color:#718096;border:1px solid #2d3748;
                     border-radius:10px;padding:12px;font-size:13px;font-weight:700;
                     cursor:pointer;width:100%;">
-                    âœ‹ Stop Trading
+                    Ã¢Å“â€¹ Stop Trading
                 </button>
             </div>
         </div>`;
@@ -2159,7 +2248,7 @@ function resetAndContinue() {
     // Remove modal
     document.getElementById('target-modal')?.remove();
 
-    // Reset session tracking â€” totalPL keeps accumulating but session resets
+    // Reset session tracking Ã¢â‚¬â€ totalPL keeps accumulating but session resets
     // TP/SL checks against sessionPL (profit since last reset) not totalPL
     sessionBasePL     = totalPL; // new session starts from current PL
     totalRuns         = 0;
@@ -2173,7 +2262,7 @@ function resetAndContinue() {
     baseStake         = currentStake;
     lastContractId    = null;
     pendingContract   = false;
-    log(`ðŸ”„ New session started. TP/SL reset. Cumulative P/L: $${totalPL.toFixed(2)}`, 'i');
+    log(`Ã°Å¸â€â€ž New session started. TP/SL reset. Cumulative P/L: $${totalPL.toFixed(2)}`, 'i');
 
     // Reset recovery state
     if (isInRecoveryMode && originalDirection !== null) {
@@ -2193,7 +2282,7 @@ function resetAndContinue() {
 
     // Reset summary stats display
     updateAllStats();
-    log('ðŸ”„ Stats reset â€” continuing trading session', 'i');
+    log('Ã°Å¸â€â€ž Stats reset Ã¢â‚¬â€ continuing trading session', 'i');
 
     // Auto-start bot again
     toggleBot();
@@ -2201,13 +2290,13 @@ function resetAndContinue() {
 
 function stopAndClose() {
     document.getElementById('target-modal')?.remove();
-    log('âœ‹ Trading stopped by user after target.', 'i');
+    log('Ã¢Å“â€¹ Trading stopped by user after target.', 'i');
 }
 
 function updateBotBar() {
     const wr  = totalRuns > 0 ? ((totalWins / totalRuns) * 100).toFixed(1) : "0.0";
     const set = (id, val, col) => { const el = document.getElementById(id); if (el) { el.textContent = val; if (col) el.style.color = col; } };
-    set('bar-bot',  document.getElementById('active-bot-name')?.textContent || 'â€”');
+    set('bar-bot',  document.getElementById('active-bot-name')?.textContent || 'Ã¢â‚¬â€');
     set('bar-runs', totalRuns);
     set('bar-pl',   `$${totalPL.toFixed(2)}`, totalPL >= 0 ? 'var(--green)' : 'var(--red)');
     set('bar-wr',   `${wr}%`);
@@ -2215,9 +2304,9 @@ function updateBotBar() {
 }
 
 function updateActiveBotName() {
-    const mkt  = MKT[document.getElementById('bot-market')?.value] || 'â€”';
-    const type = document.getElementById('bot-type')?.value?.replace(/_/g,' ') || 'â€”';
-    const name = `${mkt} Â· ${type} Â· ${botDirection?.toUpperCase() || 'â€”'}`;
+    const mkt  = MKT[document.getElementById('bot-market')?.value] || 'Ã¢â‚¬â€';
+    const type = document.getElementById('bot-type')?.value?.replace(/_/g,' ') || 'Ã¢â‚¬â€';
+    const name = `${mkt} Ã‚Â· ${type} Ã‚Â· ${botDirection?.toUpperCase() || 'Ã¢â‚¬â€'}`;
     const el   = document.getElementById('active-bot-name');
     if (el) el.textContent = name;
 }
@@ -2287,18 +2376,18 @@ function onMarketChange() {
 }
 
 function updateInfoBar() {
-    const mkt  = document.getElementById('bot-market')?.value || 'â€”';
-    const type = document.getElementById('bot-type')?.value || 'â€”';
+    const mkt  = document.getElementById('bot-market')?.value || 'Ã¢â‚¬â€';
+    const type = document.getElementById('bot-type')?.value || 'Ã¢â‚¬â€';
     const set  = (id, val, col) => { const el=document.getElementById(id); if(el){el.textContent=val;if(col)el.style.color=col;} };
     set('info-market', MKT[mkt] || mkt);
     set('info-type',   type.replace(/_/g,' '));
-    set('info-dir',    botDirection?.toUpperCase() || 'â€”',
+    set('info-dir',    botDirection?.toUpperCase() || 'Ã¢â‚¬â€',
         ['under','odd','fall','downs'].includes(botDirection) ? 'var(--red)' : 'var(--teal)');
     set('info-stake',  `$${parseFloat(document.getElementById('bot-stake')?.value||1).toFixed(2)}`);
 }
 
 // ================================================================
-// AI ENGINE â€” real data driven, realistic probability
+// AI ENGINE Ã¢â‚¬â€ real data driven, realistic probability
 // ================================================================
 function generateSignal(symbol) {
     const data = digitData[symbol];
@@ -2665,7 +2754,7 @@ function calcBollingerBands(prices, period = 20, multiplier = 2) {
     };
 }
 
-// â”€â”€ EMA (Exponential Moving Average) â€” used by the accumulator trend filter â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ EMA (Exponential Moving Average) Ã¢â‚¬â€ used by the accumulator trend filter Ã¢â€â‚¬Ã¢â€â‚¬
 function calcEMA(prices, period) {
     if (!prices || prices.length < period) return null;
     const k = 2 / (period + 1);
@@ -2677,10 +2766,10 @@ function calcEMA(prices, period) {
     return ema;
 }
 
-// â”€â”€ ATR (Average True Range) approximation from tick data â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ ATR (Average True Range) approximation from tick data Ã¢â€â‚¬Ã¢â€â‚¬
 // Real ATR needs OHLC bars. Ticks only give us a price stream, so we
 // approximate "true range" per tick as the absolute price change from the
-// previous tick â€” this is a reasonable proxy for short-horizon volatility
+// previous tick Ã¢â‚¬â€ this is a reasonable proxy for short-horizon volatility
 // on synthetic indices, which move on every tick rather than in bars.
 function calcATR(prices, period = 14) {
     if (!prices || prices.length < period + 1) return null;
@@ -2690,7 +2779,7 @@ function calcATR(prices, period = 14) {
     return sum / period;
 }
 
-// â”€â”€ ADX (Average Directional Index) approximation from tick data â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ ADX (Average Directional Index) approximation from tick data Ã¢â€â‚¬Ã¢â€â‚¬
 // Standard ADX needs high/low/close bars. We approximate directional
 // movement using consecutive tick-to-tick price changes as a simplified
 // +DM/-DM proxy, smoothed with Wilder's method. This gives a workable
@@ -2730,7 +2819,7 @@ function calcADX(prices, period = 14) {
     return parseFloat(adx.toFixed(1));
 }
 
-// â”€â”€ Tick stability â€” analyse the last 100 ticks for smoothness â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Tick stability Ã¢â‚¬â€ analyse the last 100 ticks for smoothness Ã¢â€â‚¬Ã¢â€â‚¬
 function calcTickStability(prices) {
     if (!prices || prices.length < 10) return null;
     const recent = prices.slice(-100);
@@ -3254,35 +3343,35 @@ function startAILoop() {
         const sig = generateSignal(mkt);
         updateAIPanel(sig, mkt);
 
-        // AI auto-update â€” ONLY for even_odd and rise_fall types
+        // AI auto-update Ã¢â‚¬â€ ONLY for even_odd and rise_fall types
         // NEVER auto-change direction for over_under (user must set barrier+direction manually)
         if (aiAutoEnabled && isBotRunning && sig && sig.confidence >= 75) {
             const currentType = document.getElementById('bot-type')?.value || 'over_under';
             const validDirs   = Object.keys(CONTRACT_MAP[currentType] || {});
 
-            // Skip auto-update for over_under â€” direction+barrier must be set by user
+            // Skip auto-update for over_under Ã¢â‚¬â€ direction+barrier must be set by user
             if (currentType === 'over_under') {
-                log(`ðŸ§  AI signal: ${sig.direction} (${sig.confidence}%) â€” over/under direction locked by user`, 'd');
+                log(`Ã°Å¸Â§Â  AI signal: ${sig.direction} (${sig.confidence}%) Ã¢â‚¬â€ over/under direction locked by user`, 'd');
             }
             else if (sig.type === currentType && validDirs.includes(sig.botDirection)) {
                 const oldDir = botDirection;
                 botDirection = sig.botDirection;
                 if (botDirection !== oldDir) {
-                    log(`ðŸ§  AI updated direction: ${oldDir.toUpperCase()} â†’ ${botDirection.toUpperCase()} (${sig.confidence}% confidence)`, 'i');
+                    log(`Ã°Å¸Â§Â  AI updated direction: ${oldDir.toUpperCase()} Ã¢â€ â€™ ${botDirection.toUpperCase()} (${sig.confidence}% confidence)`, 'i');
                     renderDirButtons();
                     updateInfoBar();
                 }
             }
         }
 
-        // Notify on strong signals â€” show top 3
+        // Notify on strong signals Ã¢â‚¬â€ show top 3
         const topSigsForNotif = getTopSignals(mkt, 3);
         topSigsForNotif.forEach(s => {
             if (s.confidence >= 78) {
                 const key = `${mkt}-${s.direction}-${Math.floor(Date.now()/90000)}`;
                 if (!seenSignals.has(key)) {
                     seenSignals.add(key);
-                    notify(`ðŸ§  ${MKT[mkt]||mkt}`, `${s.direction} | ${s.confidence}% confidence\n${s.reason}`, 'ok');
+                    notify(`Ã°Å¸Â§Â  ${MKT[mkt]||mkt}`, `${s.direction} | ${s.confidence}% confidence\n${s.reason}`, 'ok');
                     addSignalHistory(s);
                 }
             }
@@ -3297,7 +3386,7 @@ function updateAIPanel(sig, symbol) {
     const data    = digitData[symbol] || { counts: new Array(10).fill(0), ticks: 0 };
     const topSigs = getTopSignals(symbol, 5);
 
-    // Confidence meter â€” best signal
+    // Confidence meter Ã¢â‚¬â€ best signal
     const confVal = document.getElementById('ai-confidence-val');
     const confBar = document.getElementById('ai-conf-bar');
     const confLbl = document.getElementById('ai-conf-label');
@@ -3306,14 +3395,14 @@ function updateAIPanel(sig, symbol) {
         const col = sig.confidence >= 75 ? 'var(--teal)' : sig.confidence >= 60 ? 'var(--amber)' : 'var(--red)';
         if (confVal) { confVal.textContent = `${sig.confidence}%`; confVal.style.color = col; }
         if (confBar) { confBar.style.width = `${sig.confidence}%`; confBar.style.background = col; }
-        if (confLbl) confLbl.textContent = sig.confidence >= 75 ? 'ðŸ”¥ High probability setup' : sig.confidence >= 60 ? 'âš¡ Moderate setup' : 'ðŸ“‰ Weak signal';
+        if (confLbl) confLbl.textContent = sig.confidence >= 75 ? 'Ã°Å¸â€Â¥ High probability setup' : sig.confidence >= 60 ? 'Ã¢Å¡Â¡ Moderate setup' : 'Ã°Å¸â€œâ€° Weak signal';
 
         const st = document.getElementById('ai-signal-text');
         const sd = document.getElementById('ai-signal-detail');
         if (st) { st.textContent = sig.direction; st.style.color = sig.color || 'var(--teal)'; }
         if (sd) sd.textContent = `${sig.reason}${sig.hotDigit !== undefined ? ' | Hot: ' + sig.hotDigit + ' Cold: ' + sig.coldDigit : ''}`;
     } else {
-        if (confVal) { confVal.textContent = 'â€”%'; confVal.style.color = 'var(--muted)'; }
+        if (confVal) { confVal.textContent = 'Ã¢â‚¬â€%'; confVal.style.color = 'var(--muted)'; }
         if (confBar) confBar.style.width = '0%';
         if (confLbl) confLbl.textContent = data.ticks < 50 ? `Collecting... (${data.ticks}/50 ticks)` : 'No strong signal';
         const st = document.getElementById('ai-signal-text');
@@ -3325,7 +3414,7 @@ function updateAIPanel(sig, symbol) {
     const ms = document.getElementById('ai-market-state');
     const md = document.getElementById('ai-market-detail');
     if (ms) ms.textContent = state.label;
-    if (md) md.textContent = `${data.ticks} ticks | Even: ${sig?.evenPct || 'â€”'}%`;
+    if (md) md.textContent = `${data.ticks} ticks | Even: ${sig?.evenPct || 'Ã¢â‚¬â€'}%`;
 
     // Show ALL top signals in sidebar
     const sigBox = document.getElementById('ai-signal-box');
@@ -3341,13 +3430,13 @@ function updateAIPanel(sig, symbol) {
                 </div>
                 <div style="text-align:right;flex-shrink:0;margin-left:8px;">
                     <div style="font-size:12px;font-weight:900;color:${s.color};">${s.confidence}%</div>
-                    <div style="font-size:9px;color:var(--teal);">Apply â–¶</div>
+                    <div style="font-size:9px;color:var(--teal);">Apply Ã¢â€“Â¶</div>
                 </div>
             </div>`).join('');
 
         sigBox.innerHTML = `
             <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">
-                Top Signals â€” ${MKT[symbol]||symbol}
+                Top Signals Ã¢â‚¬â€ ${MKT[symbol]||symbol}
             </div>
             ${sigsHtml}
             ${data.ticks < 50 ? `<div style="font-size:10px;color:var(--dim);text-align:center;padding:8px;">Loading... ${data.ticks}/50 ticks</div>` : ''}`;
@@ -3517,7 +3606,7 @@ function addSignalHistory(sig) {
 }
 
 // ================================================================
-// AI SCANNER TAB â€” all markets
+// AI SCANNER TAB Ã¢â‚¬â€ all markets
 // ================================================================
 function runFullScan() {
     const container = document.getElementById('scan-results');
@@ -3536,7 +3625,7 @@ function runFullScan() {
         state:      classifyMarket(sym)
     })).sort((a,b) => (b.signal?.confidence||0) - (a.signal?.confidence||0));
 
-    // â”€â”€ Strategy signals box (priority) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Strategy signals box (priority) Ã¢â€â‚¬Ã¢â€â‚¬
     // Scan all markets for professional strategy conditions
     const allStrategySignals = [];
     ALL_MKTS.forEach(sym => {
@@ -3558,36 +3647,36 @@ function runFullScan() {
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
                     <div>
                         <span style="font-size:11px;font-weight:900;color:${s.color};">${s.strategy}</span>
-                        ${s.priority ? '<span style="background:#00d2c822;color:var(--teal);font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;">âœ… TRIGGERED</span>' : '<span style="background:#f59e0b22;color:#f59e0b;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;">â³ WATCHING</span>'}
+                        ${s.priority ? '<span style="background:#00d2c822;color:var(--teal);font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;">Ã¢Å“â€¦ TRIGGERED</span>' : '<span style="background:#f59e0b22;color:#f59e0b;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;">Ã¢ÂÂ³ WATCHING</span>'}
                     </div>
                     <span style="font-size:11px;font-weight:900;color:var(--teal);">${s.confidence}%</span>
                 </div>
-                <div style="font-size:12px;font-weight:900;color:${s.color};margin-bottom:3px;">${s.direction} â€” ${s.label}</div>
+                <div style="font-size:12px;font-weight:900;color:${s.color};margin-bottom:3px;">${s.direction} Ã¢â‚¬â€ ${s.label}</div>
                 <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">${s.reason}</div>
-                <div style="font-size:10px;color:var(--teal);font-style:italic;margin-bottom:6px;">ðŸ’¡ ${s.entryHint}</div>
-                ${s.warning ? `<div style="font-size:9px;color:#f59e0b;">âš ï¸ ${s.warning}</div>` : ''}
+                <div style="font-size:10px;color:var(--teal);font-style:italic;margin-bottom:6px;">Ã°Å¸â€™Â¡ ${s.entryHint}</div>
+                ${s.warning ? `<div style="font-size:9px;color:#f59e0b;">Ã¢Å¡Â Ã¯Â¸Â ${s.warning}</div>` : ''}
                 <div style="display:flex;gap:6px;margin-top:4px;">
                     <button onclick="applySignalToBot(${JSON.stringify(s).replace(/"/g,'&quot;')})"
                         style="flex:1;background:var(--teal);color:#000;border:none;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:700;cursor:pointer;">
-                        âœ… Apply to Bot
+                        Ã¢Å“â€¦ Apply to Bot
                     </button>
                     <button onclick="applySignalToBulk(${JSON.stringify(s).replace(/"/g,'&quot;')})"
                         style="flex:1;background:var(--bg2);color:var(--teal);border:1px solid var(--teal);border-radius:6px;padding:5px 8px;font-size:10px;font-weight:700;cursor:pointer;">
-                        ðŸ“¦ Use in Bulk
+                        Ã°Å¸â€œÂ¦ Use in Bulk
                     </button>
                 </div>
             </div>`).join('');
 
         stratBox.innerHTML = `
-            <div style="font-size:10px;font-weight:900;color:var(--teal);text-transform:uppercase;margin-bottom:10px;">ðŸŽ¯ Professional Strategy Signals</div>
+            <div style="font-size:10px;font-weight:900;color:var(--teal);text-transform:uppercase;margin-bottom:10px;">Ã°Å¸Å½Â¯ Professional Strategy Signals</div>
             ${stratHtml}
             ${allStrategySignals.length === 0 ? '<div style="color:var(--muted);font-size:12px;">No strategy conditions met yet. Markets need more data.</div>' : ''}`;
     } else if (stratBox) {
-        stratBox.innerHTML = `<div style="font-size:10px;font-weight:900;color:var(--teal);text-transform:uppercase;margin-bottom:8px;">ðŸŽ¯ Professional Strategy Signals</div>
+        stratBox.innerHTML = `<div style="font-size:10px;font-weight:900;color:var(--teal);text-transform:uppercase;margin-bottom:8px;">Ã°Å¸Å½Â¯ Professional Strategy Signals</div>
             <div style="color:var(--muted);font-size:12px;padding:10px 0;">Analyzing market conditions... Strategies need 100+ ticks per market.</div>`;
     }
 
-    // â”€â”€ Best opportunity box â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Best opportunity box Ã¢â€â‚¬Ã¢â€â‚¬
     const best = results[0];
     if (bestBox) {
         if (best.signal && best.signal.confidence > 0) {
@@ -3605,7 +3694,7 @@ function runFullScan() {
             bestBox.innerHTML = `
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
                     <div>
-                        <div style="font-size:13px;font-weight:900;color:var(--text);">ðŸ¥‡ ${best.signal.label}</div>
+                        <div style="font-size:13px;font-weight:900;color:var(--text);">Ã°Å¸Â¥â€¡ ${best.signal.label}</div>
                         <div style="font-size:10px;color:var(--muted);margin-top:2px;">${best.state.label} | ${best.signal.totalTicks} real ticks</div>
                     </div>
                     <span class="badge badge-teal" style="font-size:12px;padding:4px 10px;">${best.signal.confidence}%</span>
@@ -3633,21 +3722,21 @@ function runFullScan() {
                 </div>` : ''}
                 ${topSigs.length > 1 ? `<div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:6px;">All Signals for this market:</div><div style="display:flex;flex-direction:column;gap:4px;">${sigsHtml}</div>` : ''}
                 <div style="display:flex;gap:8px;margin-top:12px;">
-                    <button onclick="applyBestSignal()" class="btn btn-teal" style="flex:1;padding:8px 20px;font-size:12px;">âœ… Apply Best Signal to Bot</button>
-                    <button onclick="applyBestSignalToBulk()" class="btn btn-ghost" style="flex:1;padding:8px 20px;font-size:12px;border:1px solid var(--teal);color:var(--teal);">ðŸ“¦ Use in Bulk Trading</button>
+                    <button onclick="applyBestSignal()" class="btn btn-teal" style="flex:1;padding:8px 20px;font-size:12px;">Ã¢Å“â€¦ Apply Best Signal to Bot</button>
+                    <button onclick="applyBestSignalToBulk()" class="btn btn-ghost" style="flex:1;padding:8px 20px;font-size:12px;border:1px solid var(--teal);color:var(--teal);">Ã°Å¸â€œÂ¦ Use in Bulk Trading</button>
                 </div>`;
         } else {
             bestBox.innerHTML = '<div style="color:var(--muted);font-size:12px;">Loading tick data... Each market needs 50+ ticks. Please wait.</div>';
         }
     }
 
-    // â”€â”€ All markets grid â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ All markets grid Ã¢â€â‚¬Ã¢â€â‚¬
     container.innerHTML = '';
     results.forEach((r, idx) => {
         const sig      = r.signal;
         const topSigs  = r.topSignals || [];
         const color    = sig ? (sig.color || 'var(--teal)') : 'var(--border)';
-        const medals   = ['ðŸ¥‡','ðŸ¥ˆ','ðŸ¥‰'];
+        const medals   = ['Ã°Å¸Â¥â€¡','Ã°Å¸Â¥Ë†','Ã°Å¸Â¥â€°'];
 
         const card = document.createElement('div');
         card.className = 'scanner-signal' + (sig && sig.confidence >= 75 ? ' strong' : sig && sig.confidence >= 60 ? ' medium' : '');
@@ -3667,7 +3756,7 @@ function runFullScan() {
         card.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                 <div style="display:flex;align-items:center;gap:5px;">
-                    <span>${medals[idx] || 'ðŸ“Š'}</span>
+                    <span>${medals[idx] || 'Ã°Å¸â€œÅ '}</span>
                     <span style="font-size:12px;font-weight:900;">${MKT[r.sym]||r.sym}</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:5px;">
@@ -3721,13 +3810,13 @@ function applySignalToBot(sig) {
     // Apply ticks from signal (BB/RSI sets 2 or 3 for Only Ups/Downs)
     if (sig.ticks && durEl) {
         durEl.value = sig.ticks;
-        log(`â± Duration set to ${sig.ticks} ticks from signal`, 'i');
+        log(`Ã¢ÂÂ± Duration set to ${sig.ticks} ticks from signal`, 'i');
     }
 
     updateInfoBar();
     updateActiveBotName();
-    log(`ðŸ§  Applied: ${sig.label||sig.symbol||''} | ${sig.direction} | Pred: ${sig.pred!==null&&sig.pred!==undefined?sig.pred:'â€”'} | ${sig.confidence}%`, 'i');
-    notify("AI Signal Applied âœ…", `${sig.direction}
+    log(`Ã°Å¸Â§Â  Applied: ${sig.label||sig.symbol||''} | ${sig.direction} | Pred: ${sig.pred!==null&&sig.pred!==undefined?sig.pred:'Ã¢â‚¬â€'} | ${sig.confidence}%`, 'i');
+    notify("AI Signal Applied Ã¢Å“â€¦", `${sig.direction}
 Confidence: ${sig.confidence}%${sig.pred!==null&&sig.pred!==undefined?' | Barrier: '+sig.pred:''}`, 'ok');
     switchTab('bot');
     // On mobile, open settings panel so user can review and adjust
@@ -3736,7 +3825,7 @@ Confidence: ${sig.confidence}%${sig.pred!==null&&sig.pred!==undefined?' | Barrie
         if (sidebar && window.innerWidth <= 768) {
             sidebar.classList.add('mobile-open');
             const btn = document.getElementById('mobile-bot-settings-btn');
-            if (btn) btn.textContent = 'âœ• Close Settings';
+            if (btn) btn.textContent = 'Ã¢Å“â€¢ Close Settings';
             sidebar.scrollTop = 0;
         }
     }, 300);
@@ -3760,8 +3849,8 @@ function toggleAIAuto() {
     const badge = document.getElementById('ai-status-badge');
     if (track) track.style.background = aiAutoEnabled ? 'var(--teal)' : 'var(--border)';
     if (thumb) thumb.style.left       = aiAutoEnabled ? '18px' : '3px';
-    if (badge) { badge.textContent    = aiAutoEnabled ? 'ðŸ§  AI Active' : 'ðŸ§  AI Off'; badge.className = aiAutoEnabled ? 'badge badge-teal' : 'badge badge-amber'; }
-    log(`ðŸ§  AI Auto-Update: ${aiAutoEnabled ? 'ON' : 'OFF'}`, 'i');
+    if (badge) { badge.textContent    = aiAutoEnabled ? 'Ã°Å¸Â§Â  AI Active' : 'Ã°Å¸Â§Â  AI Off'; badge.className = aiAutoEnabled ? 'badge badge-teal' : 'badge badge-amber'; }
+    log(`Ã°Å¸Â§Â  AI Auto-Update: ${aiAutoEnabled ? 'ON' : 'OFF'}`, 'i');
 }
 
 // ================================================================
@@ -3769,7 +3858,7 @@ function toggleAIAuto() {
 // ================================================================
 function changeDigitMarket(symbol) {
     currentDigitMkt = symbol;
-    // Data comes from public WS â€” just update display
+    // Data comes from public WS Ã¢â‚¬â€ just update display
     const data = digitData[symbol];
     if (data && data.ticks > 0) {
         renderDigitCircles(symbol);
@@ -3838,8 +3927,8 @@ function renderDigitCircles(symbol) {
 
     // Update hot/cold
     const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
-    set('d-hot',  ranked[0]?.d ?? 'â€”');
-    set('d-cold', ranked[9]?.d ?? 'â€”');
+    set('d-hot',  ranked[0]?.d ?? 'Ã¢â‚¬â€');
+    set('d-cold', ranked[9]?.d ?? 'Ã¢â‚¬â€');
 }
 
 function updateDigitStats(symbol) {
@@ -3947,7 +4036,7 @@ function notify(title, body, type = 'info') {
                 <div style="font-size:12px;font-weight:900;color:${color};margin-bottom:4px;">${title}</div>
                 <div style="font-size:10px;color:var(--muted);white-space:pre-line;line-height:1.4;">${body}</div>
             </div>
-            <button onclick="this.parentElement.parentElement.remove()" style="background:none;border:none;color:var(--dim);cursor:pointer;font-size:14px;padding:0;flex-shrink:0;">âœ•</button>
+            <button onclick="this.parentElement.parentElement.remove()" style="background:none;border:none;color:var(--dim);cursor:pointer;font-size:14px;padding:0;flex-shrink:0;">Ã¢Å“â€¢</button>
         </div>`;
     container.appendChild(notif);
     setTimeout(() => { try { notif.remove(); } catch(e){} }, 8000);
@@ -3997,8 +4086,8 @@ function revokeAccess() {
     updateConnStatus(false);
     switchTab('dashboard');
 
-    notify('âœ… Disconnected', 'Your Deriv account has been disconnected. You can reconnect anytime.', 'ok');
-    log('ðŸ”“ Access revoked â€” token cleared', 'i');
+    notify('Ã¢Å“â€¦ Disconnected', 'Your Deriv account has been disconnected. You can reconnect anytime.', 'ok');
+    log('Ã°Å¸â€â€œ Access revoked Ã¢â‚¬â€ token cleared', 'i');
 }
 
 function clearJournal() {
@@ -4024,8 +4113,8 @@ function resetBotStats() {
     if (txList) txList.innerHTML = '<div style="font-size:11px;color:var(--dim);text-align:center;padding:30px;">No transactions yet.</div>';
 
     updateAllStats();
-    log('ðŸ”„ Stats reset by user', 'i');
-    notify('ðŸ”„ Stats Reset', 'All trading stats have been cleared.', 'ok');
+    log('Ã°Å¸â€â€ž Stats reset by user', 'i');
+    notify('Ã°Å¸â€â€ž Stats Reset', 'All trading stats have been cleared.', 'ok');
 }
 
 function showStrategyGuide() {
@@ -4039,13 +4128,13 @@ function closeStrategyGuide() {
 }
 
 // ================================================================
-// LEGAL â€” Terms, Privacy, Risk Disclaimer
+// LEGAL Ã¢â‚¬â€ Terms, Privacy, Risk Disclaimer
 // ================================================================
 
 const LEGAL_CONTENT = {
 
     terms: {
-        title: "ðŸ“„ Terms of Service",
+        title: "Ã°Å¸â€œâ€ž Terms of Service",
         body: `
 <h3 style="color:#e2e8f0;font-size:15px;margin-bottom:12px;">Terms of Service</h3>
 <p style="margin-bottom:10px;"><b style="color:#e2e8f0;">Effective Date:</b> 1 January 2026</p>
@@ -4087,7 +4176,7 @@ const LEGAL_CONTENT = {
     },
 
     privacy: {
-        title: "ðŸ”’ Privacy Policy",
+        title: "Ã°Å¸â€â€™ Privacy Policy",
         body: `
 <h3 style="color:#e2e8f0;font-size:15px;margin-bottom:12px;">Privacy Policy</h3>
 <p style="margin-bottom:10px;"><b style="color:#e2e8f0;">Effective Date:</b> 1 January 2026</p>
@@ -4119,9 +4208,9 @@ const LEGAL_CONTENT = {
 <h4 style="color:#00d2c8;margin:14px 0 6px;">5. Third-Party Services</h4>
 <p>We use the following third-party services:</p>
 <ul style="margin:6px 0 6px 20px;">
-    <li><b style="color:#e2e8f0;">Deriv API</b> â€” for trade execution and market data</li>
-    <li><b style="color:#e2e8f0;">Vercel</b> â€” for hosting (subject to Vercel's privacy policy)</li>
-    <li><b style="color:#e2e8f0;">TradingView</b> â€” for charting widgets</li>
+    <li><b style="color:#e2e8f0;">Deriv API</b> Ã¢â‚¬â€ for trade execution and market data</li>
+    <li><b style="color:#e2e8f0;">Vercel</b> Ã¢â‚¬â€ for hosting (subject to Vercel's privacy policy)</li>
+    <li><b style="color:#e2e8f0;">TradingView</b> Ã¢â‚¬â€ for charting widgets</li>
 </ul>
 
 <h4 style="color:#00d2c8;margin:14px 0 6px;">6. Affiliate Disclosure</h4>
@@ -4132,10 +4221,10 @@ const LEGAL_CONTENT = {
     },
 
     risk: {
-        title: "âš ï¸ Risk Disclaimer",
+        title: "Ã¢Å¡Â Ã¯Â¸Â Risk Disclaimer",
         body: `
 <div style="background:#ff444f14;border:1px solid #ff444f44;border-radius:8px;padding:14px;margin-bottom:16px;">
-    <p style="color:#ff444f;font-weight:700;font-size:14px;">âš ï¸ HIGH RISK WARNING</p>
+    <p style="color:#ff444f;font-weight:700;font-size:14px;">Ã¢Å¡Â Ã¯Â¸Â HIGH RISK WARNING</p>
     <p style="margin-top:6px;">Trading binary options and synthetic indices carries a high level of risk and may not be suitable for all investors. You may lose some or all of your invested capital.</p>
 </div>
 
@@ -4171,7 +4260,7 @@ const LEGAL_CONTENT = {
 <p>DOLARHUNTER makes no representation or warranty that use of the platform will result in profits. All trading results depend on market conditions, your settings, and factors beyond our control.</p>
 
 <div style="background:#00d2c814;border:1px solid #00d2c844;border-radius:8px;padding:14px;margin-top:16px;">
-    <p style="color:#00d2c8;font-weight:700;">âœ… By using DOLARHUNTER, you confirm that:</p>
+    <p style="color:#00d2c8;font-weight:700;">Ã¢Å“â€¦ By using DOLARHUNTER, you confirm that:</p>
     <ul style="margin:8px 0 0 20px;color:#a0aec0;">
         <li>You are 18 years or older</li>
         <li>You understand the risks of binary options trading</li>
@@ -4214,18 +4303,18 @@ document.addEventListener('click', (e) => {
 // multi-timeframe price-action analysis + Deriv MT5 hand-off flow.
 //
 // HONEST SCOPE NOTE (see chat write-up for the full audit): Deriv's public
-// API has no method to place or manage an MT5 order from a browser â€” MT5
+// API has no method to place or manage an MT5 order from a browser Ã¢â‚¬â€ MT5
 // execution only happens inside the real MT5 terminal. So "Apply to MT5"
 // here validates the account, market, and signal, then hands the user a
 // ready-to-place trade inside the real MT5 terminal via deep link. It
 // never claims a trade was executed, because this app cannot confirm that.
 // ================================================================
 
-// â”€â”€ Market configuration: Display name -> Deriv symbol -> MT5 symbol -> category â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Market configuration: Display name -> Deriv symbol -> MT5 symbol -> category Ã¢â€â‚¬Ã¢â€â‚¬
 // `confirmed` markets are ones we're confident exist on Deriv's synthetic
 // index list; others are included per your requested market list but are
 // validated live against `knownActiveSymbols` (from the real active_symbols
-// API response) before ever being shown as tradable â€” never assumed.
+// API response) before ever being shown as tradable Ã¢â‚¬â€ never assumed.
 const APA_MARKETS = [
     // Volatility Indices
     { deriv:'R_10',     mt5:'Volatility 10 Index',      display:'Volatility 10 Index',      cat:'volatility',    confirmed:true },
@@ -4238,10 +4327,10 @@ const APA_MARKETS = [
     { deriv:'1HZ50V',   mt5:'Volatility 50 (1s) Index', display:'Volatility 50 (1s) Index', cat:'volatility_1s', confirmed:true },
     { deriv:'1HZ75V',   mt5:'Volatility 75 (1s) Index', display:'Volatility 75 (1s) Index', cat:'volatility_1s', confirmed:true },
     { deriv:'1HZ100V',  mt5:'Volatility 100 (1s) Index',display:'Volatility 100 (1s) Index',cat:'volatility_1s', confirmed:true },
-    // Step Indices â€” Deriv's actual live symbol list only has ONE Step
+    // Step Indices Ã¢â‚¬â€ Deriv's actual live symbol list only has ONE Step
     // Index (stpRNG). "Step Index 200/300/400/500" are included below
     // because they were requested, but they have no real Deriv symbol to
-    // fetch live data from â€” `deriv:null` means they can never pass the
+    // fetch live data from Ã¢â‚¬â€ `deriv:null` means they can never pass the
     // live-availability check and will always show as unavailable rather
     // than being faked. See the chat write-up for the full explanation.
     { deriv:'stpRNG',   mt5:'Step Index',       display:'Step Index',     cat:'step', confirmed:true },
@@ -4250,7 +4339,7 @@ const APA_MARKETS = [
     { deriv:null,       mt5:'Step Index 300',   display:'Step Index 300', cat:'step', confirmed:false },
     { deriv:null,       mt5:'Step Index 400',   display:'Step Index 400', cat:'step', confirmed:false },
     { deriv:null,       mt5:'Step Index 500',   display:'Step Index 500', cat:'step', confirmed:false },
-    // Boom / Crash â€” symbol codes below are validated live; anything not
+    // Boom / Crash Ã¢â‚¬â€ symbol codes below are validated live; anything not
     // confirmed by Deriv's own active_symbols response is shown as
     // unavailable rather than assumed to exist.
     { deriv:'BOOM300N', mt5:'Boom 300 Index',   display:'Boom 300 Index',   cat:'boom',  confirmed:false },
@@ -4268,18 +4357,18 @@ const APA_CATEGORY_LABEL = { volatility:'Volatility', volatility_1s:'Volatility 
 
 // A market is only ever presented as tradable once Deriv's own
 // active_symbols response has confirmed it (see connectPublicWS above).
-// Until then â€” or if Deriv never confirms it â€” it's shown as unavailable.
+// Until then Ã¢â‚¬â€ or if Deriv never confirms it Ã¢â‚¬â€ it's shown as unavailable.
 function isMarketAvailable(mkt) {
     if (!mkt.deriv) return false; // no real Deriv symbol to check at all
     return knownActiveSymbols.size > 0 && knownActiveSymbols.has(mkt.deriv);
 }
 
-// â”€â”€ Trading styles â†’ timeframe stack + expiry â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Trading styles Ã¢â€ â€™ timeframe stack + expiry Ã¢â€â‚¬Ã¢â€â‚¬
 // granularities in seconds: M1=60 M5=300 M15=900 M30=1800 H1=3600 H4=14400 D1=86400
 const APA_STYLES = {
     quick: { label: 'Quick Profit',  desc: 'High-quality setups, closed out relatively quickly.', bias: 900,   setup: 300,  entry: 60,   expiryMin: 4  },
     day:   { label: 'Day Trading',   desc: 'Capture intraday moves, closed within the session.',   bias: 14400, setup: 900,  entry: 300,  expiryMin: 20 },
-    swing: { label: 'Swing Trading', desc: 'Fewer, larger setups â€” willing to hold longer.',        bias: 86400, setup: 14400,entry: 900,  expiryMin: 90 },
+    swing: { label: 'Swing Trading', desc: 'Fewer, larger setups Ã¢â‚¬â€ willing to hold longer.',        bias: 86400, setup: 14400,entry: 900,  expiryMin: 90 },
 };
 const GRAN_LABEL = { 60:'M1', 300:'M5', 900:'M15', 1800:'M30', 3600:'H1', 14400:'H4', 86400:'D1' };
 
@@ -4299,7 +4388,7 @@ function logApaAudit(entry) {
     saveApaAudit();
 }
 
-// â”€â”€ User preferences (client-side only â€” no server DB exists to persist to) â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ User preferences (client-side only Ã¢â‚¬â€ no server DB exists to persist to) Ã¢â€â‚¬Ã¢â€â‚¬
 function loadApaPrefs() {
     try {
         const p = JSON.parse(localStorage.getItem('bth_apa_prefs') || '{}');
@@ -4321,7 +4410,7 @@ function saveApaPrefs() {
 // PRICE-ACTION PRIMITIVES (operate on real OHLC candle arrays)
 // ================================================================
 
-// Fractal swing points â€” a 5-candle pivot high/low
+// Fractal swing points Ã¢â‚¬â€ a 5-candle pivot high/low
 function findSwings(candles) {
     const swings = [];
     for (let i = 2; i < candles.length - 2; i++) {
@@ -4354,13 +4443,13 @@ function analyzeStructure(candles) {
     else if (highLabel === 'HH' || lowLabel === 'HL') bias = 'bullish';
     else if (highLabel === 'LH' || lowLabel === 'LL') bias = 'bearish';
 
-    // BOS â€” close breaks beyond the most recent swing in the bias direction
+    // BOS Ã¢â‚¬â€ close breaks beyond the most recent swing in the bias direction
     const lastSwingHigh = highs[highs.length-1];
     const lastSwingLow  = lows[lows.length-1];
     let bos = false, choch = false;
     if (bias === 'bullish' && lastSwingHigh && last.close > lastSwingHigh.price) bos = true;
     if (bias === 'bearish' && lastSwingLow  && last.close < lastSwingLow.price)  bos = true;
-    // CHoCH â€” price breaks structure opposite to the prevailing bias
+    // CHoCH Ã¢â‚¬â€ price breaks structure opposite to the prevailing bias
     if (bias === 'bullish' && lastSwingLow && last.close < lastSwingLow.price) choch = true;
     if (bias === 'bearish' && lastSwingHigh && last.close > lastSwingHigh.price) choch = true;
 
@@ -4380,7 +4469,7 @@ function analyzeLiquidity(candles, structure) {
         return avg * 0.15;
     })();
 
-    // Equal highs/lows â€” swings within tolerance of each other
+    // Equal highs/lows Ã¢â‚¬â€ swings within tolerance of each other
     const equalHighs = highs.filter((h,i) => highs.some((h2,j) => j !== i && Math.abs(h.price - h2.price) < tol));
     const equalLows  = lows.filter((l,i) => lows.some((l2,j) => j !== i && Math.abs(l.price - l2.price) < tol));
 
@@ -4398,7 +4487,7 @@ function analyzeLiquidity(candles, structure) {
     return { equalHighs, equalLows, nearestHigh, nearestLow, sweep };
 }
 
-// Displacement â€” body significantly larger than recent average, breaking structure
+// Displacement Ã¢â‚¬â€ body significantly larger than recent average, breaking structure
 function analyzeDisplacement(candles, structure) {
     if (!candles || candles.length < 10 || !structure) return null;
     const bodies = candles.slice(-15, -1).map(c => Math.abs(c.close - c.open));
@@ -4412,7 +4501,7 @@ function analyzeDisplacement(candles, structure) {
     return { strong, alignedWithBias, isBullish, lastBody, avgBody, confirmsBreak: strong && (structure.bos || structure.choch) };
 }
 
-// Fair Value Gap â€” classic 3-candle imbalance
+// Fair Value Gap Ã¢â‚¬â€ classic 3-candle imbalance
 function findFVG(candles) {
     if (!candles || candles.length < 3) return null;
     for (let i = candles.length - 1; i >= 2; i--) {
@@ -4423,7 +4512,7 @@ function findFVG(candles) {
     return null;
 }
 
-// Order block â€” last opposite candle before the displacement move
+// Order block Ã¢â‚¬â€ last opposite candle before the displacement move
 function findOrderBlock(candles, displacement) {
     if (!candles || candles.length < 5 || !displacement || !displacement.strong) return null;
     const idx = candles.length - 2; // candle immediately before the displacement candle
@@ -4447,7 +4536,7 @@ function analyzePremiumDiscount(candles) {
 }
 
 // ================================================================
-// APA SIGNAL â€” combines everything into a scored, directional setup
+// APA SIGNAL Ã¢â‚¬â€ combines everything into a scored, directional setup
 // (or an honest "no trade")
 // ================================================================
 async function computeApaSignal(sym, styleKey) {
@@ -4482,7 +4571,7 @@ async function computeApaSignal(sym, styleKey) {
     if (setupStruct.bias === 'bullish' && (liquidity?.sweep?.type === 'sell_side' || setupStruct.bos)) direction = 'BUY';
     else if (setupStruct.bias === 'bearish' && (liquidity?.sweep?.type === 'buy_side' || setupStruct.bos)) direction = 'SELL';
 
-    // â”€â”€ MARKET STRUCTURE (20) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ MARKET STRUCTURE (20) Ã¢â€â‚¬Ã¢â€â‚¬
     let structureScore = 0;
     if (setupStruct.bias !== 'neutral') structureScore += 8;
     if (setupStruct.bos) structureScore += 7;
@@ -4491,35 +4580,35 @@ async function computeApaSignal(sym, styleKey) {
     if (direction === 'SELL' && premiumDiscount.zone === 'premium') structureScore += 2;
     structureScore = Math.min(20, structureScore);
 
-    // â”€â”€ LIQUIDITY (20) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ LIQUIDITY (20) Ã¢â€â‚¬Ã¢â€â‚¬
     let liquidityScore = 0;
     if (liquidity?.sweep) liquidityScore += 12;
     if (liquidity?.nearestHigh || liquidity?.nearestLow) liquidityScore += 4;
     if ((liquidity?.equalHighs?.length || 0) + (liquidity?.equalLows?.length || 0) > 0) liquidityScore += 4;
     liquidityScore = Math.min(20, liquidityScore);
 
-    // â”€â”€ DISPLACEMENT (15) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ DISPLACEMENT (15) Ã¢â€â‚¬Ã¢â€â‚¬
     let displacementScore = 0;
     if (displacement?.strong) displacementScore += 8;
     if (displacement?.alignedWithBias) displacementScore += 4;
     if (displacement?.confirmsBreak) displacementScore += 3;
     displacementScore = Math.min(15, displacementScore);
 
-    // â”€â”€ FVG / IMBALANCE (10) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ FVG / IMBALANCE (10) Ã¢â€â‚¬Ã¢â€â‚¬
     let fvgScore = 0;
     if (fvg) {
         const aligned = (direction === 'BUY' && fvg.direction === 'bullish') || (direction === 'SELL' && fvg.direction === 'bearish');
         fvgScore = aligned ? 10 : 4;
     }
 
-    // â”€â”€ ORDER BLOCK / SUPPLY-DEMAND (10) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ ORDER BLOCK / SUPPLY-DEMAND (10) Ã¢â€â‚¬Ã¢â€â‚¬
     let obScore = 0;
     if (ob) {
         const aligned = (direction === 'BUY' && ob.direction === 'bullish') || (direction === 'SELL' && ob.direction === 'bearish');
         obScore = aligned ? 10 : 3;
     }
 
-    // â”€â”€ MULTI-TIMEFRAME ALIGNMENT (15) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ MULTI-TIMEFRAME ALIGNMENT (15) Ã¢â€â‚¬Ã¢â€â‚¬
     let mtfScore = 0;
     const biasDir = biasStruct?.bias, entryDir = entryStruct?.bias;
     if (direction) {
@@ -4530,7 +4619,7 @@ async function computeApaSignal(sym, styleKey) {
     }
     mtfScore = Math.min(15, mtfScore);
 
-    // â”€â”€ ENTRY / SL / TP + RISK:REWARD (10) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ ENTRY / SL / TP + RISK:REWARD (10) Ã¢â€â‚¬Ã¢â€â‚¬
     const lastPrice = entryC[entryC.length-1].close;
     let entry = lastPrice, sl = null, tp1 = null, tp2 = null, rr = 0, rrScore = 0;
     if (direction === 'BUY') {
@@ -4557,14 +4646,14 @@ async function computeApaSignal(sym, styleKey) {
         const reasons = [];
         if (!direction) reasons.push('No aligned structure + liquidity setup');
         if (rr && rr < 1) reasons.push('Poor risk/reward');
-        if (setupStruct.choch) reasons.push('Structure just shifted (CHoCH) â€” bias unclear');
+        if (setupStruct.choch) reasons.push('Structure just shifted (CHoCH) Ã¢â‚¬â€ bias unclear');
         return { noTrade: true, reason: reasons[0] || 'Setup quality below threshold', score, breakdown: { structureScore, liquidityScore, displacementScore, fvgScore, obScore, mtfScore, rrScore } };
     }
 
     let label, color;
-    if (score >= 85)      { label = 'ðŸŸ¢ GREAT ENTRY'; color = 'var(--green)'; }
-    else if (score >= 70) { label = 'ðŸŸ¡ GOOD SETUP';  color = 'var(--amber)'; }
-    else                  { label = 'ðŸŸ  WATCH';        color = '#f97316'; }
+    if (score >= 85)      { label = 'Ã°Å¸Å¸Â¢ GREAT ENTRY'; color = 'var(--green)'; }
+    else if (score >= 70) { label = 'Ã°Å¸Å¸Â¡ GOOD SETUP';  color = 'var(--amber)'; }
+    else                  { label = 'Ã°Å¸Å¸Â  WATCH';        color = '#f97316'; }
 
     const tags = [];
     if (liquidity?.sweep) tags.push('Liquidity Sweep');
@@ -4590,24 +4679,24 @@ async function computeApaSignal(sym, styleKey) {
 }
 
 // ================================================================
-// UI â€” Style selector, scanner, setup card
+// UI Ã¢â‚¬â€ Style selector, scanner, setup card
 // ================================================================
 // ================================================================
 // MT5 SIGNAL LIFECYCLE ENGINE
-// Generated signals are never deleted when they go stale â€” they move
+// Generated signals are never deleted when they go stale Ã¢â‚¬â€ they move
 // NEW -> ACTIVE -> EXPIRED and stay in Signal History. Persisted to
 // localStorage (no server DB exists in this app) so history survives a
-// page refresh. The underlying strategy math is untouched â€” this layer
+// page refresh. The underlying strategy math is untouched Ã¢â‚¬â€ this layer
 // just wraps computeApaSignal() with persistence, lifecycle and dedup.
 // ================================================================
 
-// Configurable, not hard-coded through the app â€” change these two knobs only.
+// Configurable, not hard-coded through the app Ã¢â‚¬â€ change these two knobs only.
 const MT5_SIGNAL_VALIDITY_MINUTES        = 15; // how long a signal stays ACTIVE
 const MT5_SIGNAL_HISTORY_RETENTION_DAYS  = 7;  // how long EXPIRED signals stay in History
 const MT5_SIGNAL_MIN_SCORE               = 70; // generation threshold (APA "Good Setup" or better)
 const MT5_SCAN_INTERVAL_MS               = 25000; // background re-scan cadence
 
-let mt5Signals        = [];          // the persisted signal list â€” single source of truth
+let mt5Signals        = [];          // the persisted signal list Ã¢â‚¬â€ single source of truth
 let mt5HistoryFilter   = { cat: 'all', instrument: 'all', status: 'all', range: 'all' };
 let mt5HistoryTab      = 'active';   // 'active' | 'history'
 let mt5ScanTimer       = null;
@@ -4632,15 +4721,15 @@ function makeSignalId(mkt, date) {
     return `${code}-${stamp}`;
 }
 
-// Idempotent upsert â€” never creates a duplicate ACTIVE signal for the same
+// Idempotent upsert Ã¢â‚¬â€ never creates a duplicate ACTIVE signal for the same
 // market+direction. A genuinely new signal event only happens when this
 // market currently has no ACTIVE signal, or the direction has reversed
 // (in which case the old one is expired immediately, not deleted).
 function upsertMt5Signal(mkt, sig) {
     const existingActive = mt5Signals.find(s => s.market === mkt.deriv && s.status === 'ACTIVE');
     if (existingActive) {
-        if (existingActive.direction === sig.direction) return; // same setup still developing â€” no duplicate
-        existingActive.status = 'EXPIRED'; // direction reversed â€” retire the old one into History
+        if (existingActive.direction === sig.direction) return; // same setup still developing Ã¢â‚¬â€ no duplicate
+        existingActive.status = 'EXPIRED'; // direction reversed Ã¢â‚¬â€ retire the old one into History
     }
     const now = new Date();
     const record = {
@@ -4655,7 +4744,7 @@ function upsertMt5Signal(mkt, sig) {
     };
     mt5Signals.push(record);
     saveMt5Signals();
-    notify('ðŸŸ¢ NEW SIGNAL', `${mkt.display} ${sig.direction} â€” ${sig.score}% confidence`, 'ok');
+    notify('Ã°Å¸Å¸Â¢ NEW SIGNAL', `${mkt.display} ${sig.direction} Ã¢â‚¬â€ ${sig.score}% confidence`, 'ok');
     return record;
 }
 
@@ -4666,7 +4755,7 @@ function updateMt5SignalStatuses() {
     if (changed) { saveMt5Signals(); renderMt5SignalsUI(); }
 }
 
-// Background scan â€” evaluates every confirmed/available market on the
+// Background scan Ã¢â‚¬â€ evaluates every confirmed/available market on the
 // currently-selected style and lets upsertMt5Signal() decide whether a new
 // record is warranted. Runs independently of which internal tab is open.
 async function mt5BackgroundScan() {
@@ -4679,7 +4768,7 @@ async function mt5BackgroundScan() {
                 const sig = await computeApaSignal(mkt.deriv, apaStyle);
                 if (!sig.noTrade && sig.score >= MT5_SIGNAL_MIN_SCORE) upsertMt5Signal(mkt, sig);
             } catch(e) {}
-            await new Promise(r => setTimeout(r, 150)); // pacing â€” avoid hammering the candle API
+            await new Promise(r => setTimeout(r, 150)); // pacing Ã¢â‚¬â€ avoid hammering the candle API
         }
     } finally {
         mt5ScanInFlight = false;
@@ -4693,7 +4782,7 @@ function startMt5BackgroundScan() {
     mt5ScanTimer = setInterval(mt5BackgroundScan, MT5_SCAN_INTERVAL_MS);
 }
 
-// Age ticks every second without a full re-render â€” just updates the text.
+// Age ticks every second without a full re-render Ã¢â‚¬â€ just updates the text.
 setInterval(() => {
     updateMt5SignalStatuses();
     document.querySelectorAll('.mt5-age[data-t]').forEach(el => {
@@ -4708,7 +4797,7 @@ function formatSignalAge(sinceMs) {
 }
 
 // ================================================================
-// UI â€” Style selector, market picker, on-demand setup card
+// UI Ã¢â‚¬â€ Style selector, market picker, on-demand setup card
 // ================================================================
 function selectApaStyle(styleKey, btn) {
     apaStyle = styleKey;
@@ -4727,11 +4816,11 @@ function onApaMarketChange(sym) {
 async function runApaAnalysis() {
     const card = document.getElementById('apa-setup-card');
     if (!card) return;
-    card.innerHTML = `<div style="font-size:12px;color:var(--muted);text-align:center;padding:20px;">ðŸ”Ž Analyzing ${MKT[apaMarket]||apaMarket} on ${APA_STYLES[apaStyle].label} timeframes...</div>`;
+    card.innerHTML = `<div style="font-size:12px;color:var(--muted);text-align:center;padding:20px;">Ã°Å¸â€Å½ Analyzing ${MKT[apaMarket]||apaMarket} on ${APA_STYLES[apaStyle].label} timeframes...</div>`;
 
     const mkt = APA_MARKETS.find(m => m.deriv === apaMarket);
     if (mkt && !mkt.confirmed && !isMarketAvailable(mkt)) {
-        card.innerHTML = `<div style="font-size:12px;color:var(--red);text-align:center;padding:20px;">Market currently unavailable â€” Deriv hasn't confirmed a live symbol for this instrument.</div>`;
+        card.innerHTML = `<div style="font-size:12px;color:var(--red);text-align:center;padding:20px;">Market currently unavailable Ã¢â‚¬â€ Deriv hasn't confirmed a live symbol for this instrument.</div>`;
         apaCurrentSignal = null;
         return;
     }
@@ -4749,7 +4838,7 @@ function renderApaSetupCard(sig) {
     if (!sig || sig.noTrade) {
         card.innerHTML = `
             <div style="text-align:center;padding:24px 16px;">
-                <div style="font-size:32px;margin-bottom:8px;">ðŸ”´</div>
+                <div style="font-size:32px;margin-bottom:8px;">Ã°Å¸â€Â´</div>
                 <div style="font-size:15px;font-weight:900;color:var(--red);margin-bottom:4px;">NO TRADE</div>
                 <div style="font-size:11px;color:var(--muted);">${sig?.reason || 'No qualifying setup right now'}${sig?.score !== undefined ? ` (score ${sig.score}/100)` : ''}</div>
             </div>`;
@@ -4757,14 +4846,14 @@ function renderApaSetupCard(sig) {
     }
 
     const dirColor = sig.direction === 'BUY' ? 'var(--green)' : 'var(--red)';
-    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'â€”';
+    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'Ã¢â‚¬â€';
     const expiresIn = Math.max(0, Math.round((sig.expiresAt - Date.now()) / 60000));
 
     card.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
             <div>
                 <div style="font-size:15px;font-weight:900;">${sig.display}</div>
-                <div style="font-size:10px;color:var(--muted);">${sig.styleLabel} Â· Bias ${sig.biasGranLabel} / Setup ${sig.setupGranLabel} / Entry ${sig.entryGranLabel}</div>
+                <div style="font-size:10px;color:var(--muted);">${sig.styleLabel} Ã‚Â· Bias ${sig.biasGranLabel} / Setup ${sig.setupGranLabel} / Entry ${sig.entryGranLabel}</div>
             </div>
             <div style="text-align:right;">
                 <div style="font-size:20px;font-weight:900;color:${sig.color};">${sig.score}/100</div>
@@ -4772,10 +4861,10 @@ function renderApaSetupCard(sig) {
             </div>
         </div>
         <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-            <span class="badge" style="background:${dirColor}22;color:${dirColor};border:1px solid ${dirColor}44;font-size:12px;padding:4px 10px;">${sig.direction === 'BUY' ? 'ðŸ“ˆ' : 'ðŸ“‰'} ${sig.direction}</span>
+            <span class="badge" style="background:${dirColor}22;color:${dirColor};border:1px solid ${dirColor}44;font-size:12px;padding:4px 10px;">${sig.direction === 'BUY' ? 'Ã°Å¸â€œË†' : 'Ã°Å¸â€œâ€°'} ${sig.direction}</span>
             <span class="badge badge-blue">HTF Bias: ${sig.htfBias}</span>
             <span class="badge badge-teal">Confidence: ${sig.confidence}</span>
-            <span class="badge badge-amber">â± Expires in ${expiresIn}m</span>
+            <span class="badge badge-amber">Ã¢ÂÂ± Expires in ${expiresIn}m</span>
         </div>
         <div class="accu-row-3" style="margin-bottom:10px;">
             <div class="card-sm" style="padding:8px;text-align:center;"><div style="font-size:9px;color:var(--muted);">ENTRY</div><div style="font-size:13px;font-weight:900;font-family:monospace;">${fmt(sig.entry)}</div></div>
@@ -4786,19 +4875,19 @@ function renderApaSetupCard(sig) {
             <div class="card-sm" style="padding:8px;text-align:center;"><div style="font-size:9px;color:var(--muted);">TAKE PROFIT 1</div><div style="font-size:13px;font-weight:900;font-family:monospace;color:var(--green);">${fmt(sig.tp1)}</div></div>
             <div class="card-sm" style="padding:8px;text-align:center;"><div style="font-size:9px;color:var(--muted);">TAKE PROFIT 2</div><div style="font-size:13px;font-weight:900;font-family:monospace;color:var(--green);">${fmt(sig.tp2)}</div></div>
         </div>
-        <div style="font-size:10px;color:var(--muted);margin-bottom:10px;">Setup: <b style="color:var(--text);">${sig.tags.join(' + ') || 'â€”'}</b></div>
-        <button onclick="copySignalText({display:'${sig.display.replace(/'/g,"\\'")}',direction:'${sig.direction}',confidence:${sig.score},generatedAt:${Date.now()},entry:${sig.entry},target:${sig.tp1},invalidation:${sig.sl},id:'ondemand-${Date.now()}'})" class="btn btn-teal" style="width:100%;padding:12px;font-size:14px;font-weight:900;border-radius:8px;">ðŸ“‹ COPY SIGNAL</button>
-        <div style="font-size:9px;color:var(--muted);text-align:center;margin-top:6px;">Deriv doesn't allow this site to place MT5 orders directly â€” copy these levels into the real MT5 terminal to enter manually.</div>`;
+        <div style="font-size:10px;color:var(--muted);margin-bottom:10px;">Setup: <b style="color:var(--text);">${sig.tags.join(' + ') || 'Ã¢â‚¬â€'}</b></div>
+        <button onclick="copySignalText({display:'${sig.display.replace(/'/g,"\\'")}',direction:'${sig.direction}',confidence:${sig.score},generatedAt:${Date.now()},entry:${sig.entry},target:${sig.tp1},invalidation:${sig.sl},id:'ondemand-${Date.now()}'})" class="btn btn-teal" style="width:100%;padding:12px;font-size:14px;font-weight:900;border-radius:8px;">Ã°Å¸â€œâ€¹ COPY SIGNAL</button>
+        <div style="font-size:9px;color:var(--muted);text-align:center;margin-top:6px;">Deriv doesn't allow this site to place MT5 orders directly Ã¢â‚¬â€ copy these levels into the real MT5 terminal to enter manually.</div>`;
 }
 
 // ================================================================
-// COPY SIGNAL â€” replaces the old "Apply to MT5" flow. Deriv's public API
+// COPY SIGNAL Ã¢â‚¬â€ replaces the old "Apply to MT5" flow. Deriv's public API
 // cannot place or manage MT5 orders from a browser, so instead of a
 // misleading execute button, every signal offers a clean, copyable summary
 // for fast manual entry.
 // ================================================================
 function formatSignalText(sig) {
-    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'â€”';
+    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'Ã¢â‚¬â€';
     const risk = document.getElementById('apa-risk')?.value;
     return [
         'DOLARHUNTER Signal',
@@ -4818,7 +4907,7 @@ function copySignalText(sig) {
     const text = formatSignalText(sig);
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text)
-            .then(() => notify('ðŸ“‹ Signal Copied', 'Paste it into MT5 or your notes to enter the trade manually.', 'ok'))
+            .then(() => notify('Ã°Å¸â€œâ€¹ Signal Copied', 'Paste it into MT5 or your notes to enter the trade manually.', 'ok'))
             .catch(() => window.prompt('Copy this signal:', text));
     } else {
         window.prompt('Copy this signal:', text);
@@ -4862,19 +4951,19 @@ function signalCardHtml(sig, opts) {
     opts = opts || {};
     const dirColor = sig.direction === 'BUY' ? 'var(--green)' : 'var(--red)';
     const statusColor = sig.status === 'ACTIVE' ? 'var(--green)' : 'var(--muted)';
-    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'â€”';
+    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'Ã¢â‚¬â€';
     return `
     <div class="card-sm" style="padding:12px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
             <div>
                 <div style="font-size:13px;font-weight:900;">${sig.display}</div>
-                <div style="font-size:9px;color:var(--muted);">${sig.strategy || 'APA'} Â· ${sig.styleLabel || ''}</div>
+                <div style="font-size:9px;color:var(--muted);">${sig.strategy || 'APA'} Ã‚Â· ${sig.styleLabel || ''}</div>
             </div>
-            <span class="badge" style="background:${dirColor}22;color:${dirColor};border:1px solid ${dirColor}44;">${sig.direction === 'BUY' ? 'ðŸ“ˆ' : 'ðŸ“‰'} ${sig.direction}</span>
+            <span class="badge" style="background:${dirColor}22;color:${dirColor};border:1px solid ${dirColor}44;">${sig.direction === 'BUY' ? 'Ã°Å¸â€œË†' : 'Ã°Å¸â€œâ€°'} ${sig.direction}</span>
         </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
             <span class="badge badge-teal">Confidence: ${sig.confidence}%</span>
-            <span class="badge" style="background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}44;">â— ${sig.status}</span>
+            <span class="badge" style="background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}44;">Ã¢â€”Â ${sig.status}</span>
         </div>
         <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Generated: ${new Date(sig.generatedAt).toLocaleString()}</div>
         <div style="font-size:10px;color:var(--muted);margin-bottom:8px;">Age: <span class="mt5-age" data-t="${sig.generatedAt}">${formatSignalAge(sig.generatedAt)}</span></div>
@@ -4886,7 +4975,7 @@ function signalCardHtml(sig, opts) {
         </div>` : ''}
         <div style="display:flex;gap:6px;">
             <button onclick="showSignalDetail('${sig.id}')" class="btn btn-ghost" style="flex:1;font-size:10px;padding:6px;">View</button>
-            <button onclick="copySignalById('${sig.id}')" class="btn btn-teal" style="flex:1;font-size:10px;padding:6px;">ðŸ“‹ Copy</button>
+            <button onclick="copySignalById('${sig.id}')" class="btn btn-teal" style="flex:1;font-size:10px;padding:6px;">Ã°Å¸â€œâ€¹ Copy</button>
         </div>
     </div>`;
 }
@@ -4904,7 +4993,7 @@ function applyMt5HistoryFilters(list) {
 }
 
 function renderMt5SignalsUI() {
-    // â”€â”€ Active Signals â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Active Signals Ã¢â€â‚¬Ã¢â€â‚¬
     const activeList = mt5Signals.filter(s => s.status === 'ACTIVE').sort((a,b) => b.generatedAt - a.generatedAt);
     const activeBody  = document.getElementById('mt5-active-body');
     const activeCount = document.getElementById('mt5-active-count');
@@ -4915,7 +5004,7 @@ function renderMt5SignalsUI() {
             : `<div style="font-size:11px;color:var(--dim);text-align:center;padding:20px;">No active signals right now. The scanner keeps checking every ${Math.round(MT5_SCAN_INTERVAL_MS/1000)}s across all available markets.</div>`;
     }
 
-    // â”€â”€ Signal History â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Signal History Ã¢â€â‚¬Ã¢â€â‚¬
     const historyAll = mt5Signals.slice().sort((a,b) => b.generatedAt - a.generatedAt);
     const filtered = applyMt5HistoryFilters(historyAll);
     const histBody  = document.getElementById('mt5-history-body');
@@ -4931,7 +5020,7 @@ function renderMt5SignalsUI() {
 function showSignalDetail(id) {
     const sig = mt5Signals.find(s => s.id === id);
     if (!sig) return;
-    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'â€”';
+    const fmt = (n) => n !== null && n !== undefined ? Number(n).toFixed(5) : 'Ã¢â‚¬â€';
     const dirColor = sig.direction === 'BUY' ? 'var(--green)' : 'var(--red)';
     showApaModal(`
         <div style="font-size:14px;font-weight:900;text-align:center;margin-bottom:12px;">SIGNAL DETAILS</div>
@@ -4946,10 +5035,10 @@ function showSignalDetail(id) {
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Entry</span><b style="font-family:monospace;">${fmt(sig.entry)}</b></div>
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Target</span><b style="font-family:monospace;color:var(--green);">${fmt(sig.target)}</b></div>
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Invalidation</span><b style="font-family:monospace;color:var(--red);">${fmt(sig.invalidation)}</b></div>
-            <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Setup</span><b style="text-align:right;max-width:60%;">${(sig.tags||[]).join(' + ') || 'â€”'}</b></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Setup</span><b style="text-align:right;max-width:60%;">${(sig.tags||[]).join(' + ') || 'Ã¢â‚¬â€'}</b></div>
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Signal ID</span><b style="font-size:10px;">${sig.id}</b></div>
         </div>
-        <button class="btn btn-teal" style="width:100%;padding:12px;margin-bottom:8px;font-weight:900;" onclick="copySignalById('${sig.id}')">ðŸ“‹ COPY SIGNAL</button>
+        <button class="btn btn-teal" style="width:100%;padding:12px;margin-bottom:8px;font-weight:900;" onclick="copySignalById('${sig.id}')">Ã°Å¸â€œâ€¹ COPY SIGNAL</button>
         <button class="btn btn-ghost" style="width:100%;padding:10px;" onclick="closeApaModal()">Close</button>
     `);
 }
@@ -5015,7 +5104,7 @@ function updateChartIndicators(symbol) {
         set('chart-bb-lower', bb.lower.toFixed(4));
         set('chart-bb-width', bb.bandwidth.toFixed(2) + '%');
         const bbLabel = document.getElementById('chart-bb-label');
-        if (bbLabel) bbLabel.textContent = bb.bandwidth > 0.2 ? 'Expanding ðŸ“ˆ' : bb.bandwidth < 0.05 ? 'Squeezing âš ï¸' : 'Normal';
+        if (bbLabel) bbLabel.textContent = bb.bandwidth > 0.2 ? 'Expanding Ã°Å¸â€œË†' : bb.bandwidth < 0.05 ? 'Squeezing Ã¢Å¡Â Ã¯Â¸Â' : 'Normal';
     }
 
     // Show BB+RSI signal for Only Ups/Downs
@@ -5023,7 +5112,7 @@ function updateChartIndicators(symbol) {
     const sigEl   = document.getElementById('chart-signal');
     if (sigEl) {
         if (sig) {
-            sigEl.textContent  = `${sig.direction} ${sig.confidence}% â€” ${sig.ticks} ticks`;
+            sigEl.textContent  = `${sig.direction} ${sig.confidence}% Ã¢â‚¬â€ ${sig.ticks} ticks`;
             sigEl.style.color  = sig.color;
         } else {
             sigEl.textContent  = 'No clear signal';
@@ -5052,9 +5141,9 @@ let accuTickCount    = 0;
 let accuCurrentProfit = 0;
 let accuMarket       = 'R_10';
 let accuAnalysisTimer = null;
-let accuTickTimes    = {}; // sym -> [timestamps] â€” feeds the Tick Flow analysis
+let accuTickTimes    = {}; // sym -> [timestamps] Ã¢â‚¬â€ feeds the Tick Flow analysis
 
-// Idempotency guard â€” Deriv can (and does) send more than one
+// Idempotency guard Ã¢â‚¬â€ Deriv can (and does) send more than one
 // proposal_open_contract update for the same settled contract. Without this
 // guard the settlement branch below would run twice for one trade, which is
 // what caused duplicate TP/Loss notifications and double-counted stats, and
@@ -5063,8 +5152,8 @@ let accuTickTimes    = {}; // sym -> [timestamps] â€” feeds the Tick Flow a
 // settlement once.
 let accuSettledContractIds = new Set();
 
-// Rolling bandwidth history per market â€” used to detect a BB squeeze
-// followed by a healthy expansion (the "compression â†’ breakout" filter).
+// Rolling bandwidth history per market Ã¢â‚¬â€ used to detect a BB squeeze
+// followed by a healthy expansion (the "compression Ã¢â€ â€™ breakout" filter).
 let accuBandwidthHistory = {};
 
 // Cache of the latest confidence breakdown per market so the history table
@@ -5097,7 +5186,7 @@ function selectAccuGrowth(rate, btn) {
 // ADAPTIVE MARKET PROFILES
 // Detects market "speed class" from the symbol and returns indicator
 // periods tuned for it, so the same engine works sensibly on fast 1s
-// indices as well as slow Volatility 75/100 and Jump/Step indices â€”
+// indices as well as slow Volatility 75/100 and Jump/Step indices Ã¢â‚¬â€
 // without any manual per-market configuration.
 // ================================================================
 function getMarketProfile(sym) {
@@ -5105,11 +5194,11 @@ function getMarketProfile(sym) {
     const isSlow = ['R_75','R_100','jump_75','jump_100','stpRNG'].includes(sym);
 
     if (is1s) {
-        // Fast markets â€” shorter lookbacks, faster confidence refresh
+        // Fast markets Ã¢â‚¬â€ shorter lookbacks, faster confidence refresh
         return { speedClass: 'fast', emaFast: 5, emaSlow: 13, rsiPeriod: 7, bbPeriod: 10, atrPeriod: 7, updateEveryTicks: 2, volTolerance: 1.4 };
     }
     if (isSlow) {
-        // Slow / high-volatility markets â€” longer smoothing, wider tolerance
+        // Slow / high-volatility markets Ã¢â‚¬â€ longer smoothing, wider tolerance
         return { speedClass: 'slow', emaFast: 12, emaSlow: 26, rsiPeriod: 21, bbPeriod: 30, atrPeriod: 21, updateEveryTicks: 8, volTolerance: 0.7 };
     }
     // Balanced medium-speed markets (R_10/25/50, jump_10/25/50)
@@ -5117,7 +5206,7 @@ function getMarketProfile(sym) {
 }
 
 // ================================================================
-// ADAPTIVE LEARNING â€” nudges factor weights based on completed-trade
+// ADAPTIVE LEARNING Ã¢â‚¬â€ nudges factor weights based on completed-trade
 // history. Every 100 trades (per market) we compare the average score
 // of each factor between winning and losing trades; factors that ran
 // meaningfully higher on wins get a small weight boost next time,
@@ -5148,7 +5237,7 @@ function runAdaptiveLearning(sym) {
         const winAvg  = avg(wins, f);
         const lossAvg = avg(losses, f);
         const edge    = winAvg - lossAvg; // positive = factor correlates with wins
-        // Nudge by up to Â±0.03 per learning pass, bounded to [0.08, 0.35]
+        // Nudge by up to Ã‚Â±0.03 per learning pass, bounded to [0.08, 0.35]
         const delta   = Math.max(-0.03, Math.min(0.03, edge / 400));
         weights[f]    = Math.max(0.08, Math.min(0.35, (weights[f] ?? ACCU_BASE_WEIGHTS[f]) + delta));
         total += weights[f];
@@ -5157,12 +5246,12 @@ function runAdaptiveLearning(sym) {
     factors.forEach(f => weights[f] = weights[f] / total);
 
     accuAdaptiveWeights[sym] = weights;
-    log(`ðŸ§  Adaptive learning: recalibrated weights for ${MKT[sym]||sym} after ${trades.length} trades`, 'i');
+    log(`Ã°Å¸Â§Â  Adaptive learning: recalibrated weights for ${MKT[sym]||sym} after ${trades.length} trades`, 'i');
 }
 
 // ================================================================
 // MARKET BEHAVIOUR ENGINE
-// Looks at raw tick flow rather than lagging indicators â€” speed,
+// Looks at raw tick flow rather than lagging indicators Ã¢â‚¬â€ speed,
 // acceleration, directional-change frequency, stability/noise, a
 // short-horizon micro-trend read, and spike/reversal detection.
 // ================================================================
@@ -5172,14 +5261,14 @@ function analyzeTickFlow(sym) {
     const prices = mm?.prices || [];
     if (prices.length < 10) return null;
 
-    // Tick speed â€” ticks per second from real arrival timestamps
+    // Tick speed Ã¢â‚¬â€ ticks per second from real arrival timestamps
     let ticksPerSec = null;
     if (times.length >= 5) {
         const span = (times[times.length-1] - times[0]) / 1000;
         ticksPerSec = span > 0 ? (times.length - 1) / span : null;
     }
 
-    // Acceleration â€” is tick speed increasing or decreasing?
+    // Acceleration Ã¢â‚¬â€ is tick speed increasing or decreasing?
     let accel = 'steady';
     if (times.length >= 10) {
         const half = Math.floor(times.length / 2);
@@ -5191,7 +5280,7 @@ function analyzeTickFlow(sym) {
         else if (secondRate < firstRate * 0.8) accel = 'decelerating';
     }
 
-    // Directional change frequency â€” how often does tick-to-tick direction flip?
+    // Directional change frequency Ã¢â‚¬â€ how often does tick-to-tick direction flip?
     const recent = prices.slice(-30);
     let flips = 0;
     for (let i = 2; i < recent.length; i++) {
@@ -5201,7 +5290,7 @@ function analyzeTickFlow(sym) {
     }
     const flipRate = recent.length > 2 ? flips / (recent.length - 2) : 0;
 
-    // Momentum â€” net directional bias over the recent window
+    // Momentum Ã¢â‚¬â€ net directional bias over the recent window
     const netMove  = recent.length > 1 ? recent[recent.length-1] - recent[0] : 0;
     const avgAbs   = recent.length > 1
         ? recent.slice(1).reduce((s,p,i) => s + Math.abs(p - recent[i]), 0) / (recent.length - 1)
@@ -5211,9 +5300,9 @@ function analyzeTickFlow(sym) {
     return { ticksPerSec, accel, flipRate, tickMomentum };
 }
 
-// Micro trend over the last 20-100 ticks â€” up / down / sideways bias
+// Micro trend over the last 20-100 ticks Ã¢â‚¬â€ up / down / sideways bias
 function detectMicroTrend(prices) {
-    if (!prices || prices.length < 20) return { bias: 'unknown', strength: 0, label: 'â€”' };
+    if (!prices || prices.length < 20) return { bias: 'unknown', strength: 0, label: 'Ã¢â‚¬â€' };
     const window = prices.slice(-Math.min(100, prices.length));
     const up   = window.filter((p,i) => i > 0 && p > window[i-1]).length;
     const down = window.filter((p,i) => i > 0 && p < window[i-1]).length;
@@ -5221,14 +5310,14 @@ function detectMicroTrend(prices) {
     const upPct = total > 0 ? up / total : 0.5;
     const downPct = total > 0 ? down / total : 0.5;
 
-    let bias = 'sideways', label = 'âž¡ Sideways';
-    if (upPct >= 0.58) { bias = 'up'; label = 'ðŸ“ˆ Upward bias'; }
-    else if (downPct >= 0.58) { bias = 'down'; label = 'ðŸ“‰ Downward bias'; }
+    let bias = 'sideways', label = 'Ã¢Å¾Â¡ Sideways';
+    if (upPct >= 0.58) { bias = 'up'; label = 'Ã°Å¸â€œË† Upward bias'; }
+    else if (downPct >= 0.58) { bias = 'down'; label = 'Ã°Å¸â€œâ€° Downward bias'; }
     const strength = Math.round(Math.abs(upPct - downPct) * 100);
     return { bias, strength, label };
 }
 
-// Reversal / spike guard â€” true when the market just did something the
+// Reversal / spike guard Ã¢â‚¬â€ true when the market just did something the
 // engine should wait out rather than trade into immediately.
 function detectReversalRisk(prices) {
     if (!prices || prices.length < 12) return { risk: false, reason: null };
@@ -5243,12 +5332,12 @@ function detectReversalRisk(prices) {
     if (avgAbsMove > 0 && Math.abs(lastMove) > avgAbsMove * 4) {
         return { risk: true, reason: 'Very large spike on the last tick' };
     }
-    // Rapid reversal â€” sharp move immediately followed by an opposite sharp move
+    // Rapid reversal Ã¢â‚¬â€ sharp move immediately followed by an opposite sharp move
     if (avgAbsMove > 0 && Math.abs(prevMove) > avgAbsMove * 2.5 &&
         Math.sign(prevMove) !== Math.sign(lastMove) && Math.abs(lastMove) > avgAbsMove * 2) {
         return { risk: true, reason: 'Rapid reversal just occurred' };
     }
-    // Unusually long directional run â€” market is stretched, due for a pause
+    // Unusually long directional run Ã¢â‚¬â€ market is stretched, due for a pause
     let runLen = 1;
     for (let i = moves.length - 1; i > 0; i--) {
         if (Math.sign(moves[i]) === Math.sign(moves[i-1]) && Math.sign(moves[i]) !== 0) runLen++;
@@ -5260,21 +5349,21 @@ function detectReversalRisk(prices) {
     return { risk: false, reason: null };
 }
 
-// Market regime classification â€” combines trend strength and volatility
+// Market regime classification Ã¢â‚¬â€ combines trend strength and volatility
 // into one label, and the confidence threshold adapts to it (calm markets
 // can trade at a lower bar, explosive markets need a much higher one).
 function classifyRegime(trendStrength, stabilityScore, flipRate) {
     // trendStrength: 0-100 (how directional), stabilityScore: 0-100 (higher = calmer)
-    if (stabilityScore >= 80 && trendStrength < 20) return { regime: 'Calm',      icon: 'ðŸŸ¢', thresholdAdj: -5  };
-    if (stabilityScore >= 55 && trendStrength >= 35) return { regime: 'Trending', icon: 'ðŸŸ¢', thresholdAdj: 0   };
-    if (stabilityScore < 30 || flipRate > 0.65)      return { regime: 'Explosive',icon: 'ðŸ”´', thresholdAdj: 15  };
-    if (stabilityScore < 50)                          return { regime: 'Volatile', icon: 'ðŸŸ ', thresholdAdj: 8   };
-    return { regime: 'Normal', icon: 'ðŸŸ¡', thresholdAdj: 0 };
+    if (stabilityScore >= 80 && trendStrength < 20) return { regime: 'Calm',      icon: 'Ã°Å¸Å¸Â¢', thresholdAdj: -5  };
+    if (stabilityScore >= 55 && trendStrength >= 35) return { regime: 'Trending', icon: 'Ã°Å¸Å¸Â¢', thresholdAdj: 0   };
+    if (stabilityScore < 30 || flipRate > 0.65)      return { regime: 'Explosive',icon: 'Ã°Å¸â€Â´', thresholdAdj: 15  };
+    if (stabilityScore < 50)                          return { regime: 'Volatile', icon: 'Ã°Å¸Å¸Â ', thresholdAdj: 8   };
+    return { regime: 'Normal', icon: 'Ã°Å¸Å¸Â¡', thresholdAdj: 0 };
 }
 
 // ================================================================
 // DYNAMIC WEIGHTED CONFIDENCE ENGINE
-// Every factor contributes partial credit rather than gating the trade â€”
+// Every factor contributes partial credit rather than gating the trade Ã¢â‚¬â€
 // this keeps trade frequency healthy (including on fast 1s markets)
 // while still steering away from poor-quality entries.
 // Weighting: Trend 25% | Momentum 20% | Volatility 20% | Price Behaviour 20% | Market Structure 15%
@@ -5301,18 +5390,18 @@ function calcAccuConfidence(sym) {
     const micro   = detectMicroTrend(prices);
     const reversal = detectReversalRisk(prices);
 
-    // â”€â”€ TREND (25%) â€” EMA fast>slow +15, price above EMA +10 â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ TREND (25%) Ã¢â‚¬â€ EMA fast>slow +15, price above EMA +10 Ã¢â€â‚¬Ã¢â€â‚¬
     let trendScore = 0;
-    let emaTrendLabel = 'â€”';
+    let emaTrendLabel = 'Ã¢â‚¬â€';
     if (emaFast !== null && emaSlow !== null) {
         const aligned = emaFast > emaSlow;
-        emaTrendLabel = aligned ? `ðŸ“ˆ Bullish (EMA${profile.emaFast}>${profile.emaSlow})` : `ðŸ“‰ Bearish (EMA${profile.emaFast}<${profile.emaSlow})`;
+        emaTrendLabel = aligned ? `Ã°Å¸â€œË† Bullish (EMA${profile.emaFast}>${profile.emaSlow})` : `Ã°Å¸â€œâ€° Bearish (EMA${profile.emaFast}<${profile.emaSlow})`;
         if (aligned) trendScore += 60; // scaled to 100, weighted below (15/25 of trend)
         if (last > emaFast) trendScore += 40; // (10/25 of trend)
     }
     trendScore = Math.min(100, trendScore);
 
-    // â”€â”€ MOMENTUM (20%) â€” RSI 48-65 +10, RSI rising +10 â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ MOMENTUM (20%) Ã¢â‚¬â€ RSI 48-65 +10, RSI rising +10 Ã¢â€â‚¬Ã¢â€â‚¬
     let momentumScore = 0;
     if (rsi !== null) {
         if (rsi >= 48 && rsi <= 65) momentumScore += 50;
@@ -5322,7 +5411,7 @@ function calcAccuConfidence(sym) {
     }
     momentumScore = Math.min(100, momentumScore);
 
-    // â”€â”€ VOLATILITY (20%) â€” BB not excessively wide +10, stable volatility +10 â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ VOLATILITY (20%) Ã¢â‚¬â€ BB not excessively wide +10, stable volatility +10 Ã¢â€â‚¬Ã¢â€â‚¬
     let volatilityScore = 0;
     if (bb) {
         const wideCeiling = 0.5 * profile.volTolerance;
@@ -5332,24 +5421,24 @@ function calcAccuConfidence(sym) {
     if (stab) volatilityScore += Math.round(stab.score * 0.5);
     volatilityScore = Math.min(100, volatilityScore);
 
-    // â”€â”€ PRICE BEHAVIOUR (20%) â€” no sudden spikes +10, smooth tick movement +10 â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ PRICE BEHAVIOUR (20%) Ã¢â‚¬â€ no sudden spikes +10, smooth tick movement +10 Ã¢â€â‚¬Ã¢â€â‚¬
     let priceBehaviorScore = 0;
     if (!reversal.risk) priceBehaviorScore += 50;
     if (stab) priceBehaviorScore += Math.round(Math.max(0, 100 - stab.jumpFreq * 300) * 0.5);
     priceBehaviorScore = Math.min(100, priceBehaviorScore);
 
-    // â”€â”€ MARKET STRUCTURE (15%) â€” directional consistency +10, not right after a big move +5 â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ MARKET STRUCTURE (15%) Ã¢â‚¬â€ directional consistency +10, not right after a big move +5 Ã¢â€â‚¬Ã¢â€â‚¬
     let structureScore = 0;
     if (micro.bias !== 'sideways' && micro.bias !== 'unknown') structureScore += Math.min(67, 40 + micro.strength);
     else structureScore += 20;
     if (!reversal.risk) structureScore += 33;
     structureScore = Math.min(100, structureScore);
 
-    // â”€â”€ REGIME DETECTION â€” adjusts the effective entry threshold â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ REGIME DETECTION Ã¢â‚¬â€ adjusts the effective entry threshold Ã¢â€â‚¬Ã¢â€â‚¬
     const trendStrength = Math.abs((micro.strength || 0));
     const regimeInfo = classifyRegime(trendStrength, stab ? stab.score : 50, flow ? flow.flipRate : 0.3);
 
-    // â”€â”€ WEIGHTED SCORE (adaptive weights, learned per market over time) â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ WEIGHTED SCORE (adaptive weights, learned per market over time) Ã¢â€â‚¬Ã¢â€â‚¬
     const w = getAdaptiveWeights(sym);
     const score = Math.round(
         trendScore         * w.trend +
@@ -5362,12 +5451,12 @@ function calcAccuConfidence(sym) {
     const effectiveThreshold = 75 + regimeInfo.thresholdAdj; // baseline "Good Entry" bar, shifted by regime
 
     let label, color;
-    if (score >= 90)      { label = 'ðŸŸ¢ Excellent Entry'; color = 'var(--green)'; }
-    else if (score >= 80) { label = 'ðŸŸ¢ Great Entry';     color = 'var(--green)'; }
-    else if (score >= 75) { label = 'ðŸŸ¡ Good Entry';      color = 'var(--amber)'; }
-    else                  { label = 'ðŸ”´ No Trade';        color = 'var(--red)';   }
+    if (score >= 90)      { label = 'Ã°Å¸Å¸Â¢ Excellent Entry'; color = 'var(--green)'; }
+    else if (score >= 80) { label = 'Ã°Å¸Å¸Â¢ Great Entry';     color = 'var(--green)'; }
+    else if (score >= 75) { label = 'Ã°Å¸Å¸Â¡ Good Entry';      color = 'var(--amber)'; }
+    else                  { label = 'Ã°Å¸â€Â´ No Trade';        color = 'var(--red)';   }
 
-    // Loss-prevention overrides â€” these can block a trade even if the
+    // Loss-prevention overrides Ã¢â‚¬â€ these can block a trade even if the
     // weighted score alone looks acceptable.
     const blockers = [];
     if (reversal.risk) blockers.push(reversal.reason);
@@ -5388,7 +5477,7 @@ function calcAccuConfidence(sym) {
 
 // Human-readable spike-risk label for the dashboard
 function spikeRiskLabel(conf) {
-    if (!conf.ready) return { text: 'â€”', color: 'var(--muted)' };
+    if (!conf.ready) return { text: 'Ã¢â‚¬â€', color: 'var(--muted)' };
     if (conf.reversal?.risk) return { text: 'High', color: 'var(--red)' };
     if (conf.stab && conf.stab.jumpFreq > 0.08) return { text: 'Elevated', color: 'var(--amber)' };
     return { text: 'Low', color: 'var(--green)' };
@@ -5401,38 +5490,38 @@ function updateAccuAnalysis(sym) {
     const set = (id,v,col) => { const el=document.getElementById(id); if(el){ el.textContent=v; if(col) el.style.color=col; } };
 
     if (!conf.ready) {
-        set('accu-rsi', 'â€”'); set('accu-rsi-label', 'Collecting...');
-        set('accu-bb-width', 'â€”'); set('accu-bb-label', 'Collecting...');
-        set('accu-adx', 'â€”'); set('accu-adx-label', 'Collecting...');
-        set('accu-ema-trend', 'â€”');
-        set('accu-atr', 'â€”');
-        set('accu-tick-stability', 'â€”');
-        set('accu-regime', 'â€”'); set('accu-spike-risk', 'â€”'); set('accu-micro-trend', 'â€”');
+        set('accu-rsi', 'Ã¢â‚¬â€'); set('accu-rsi-label', 'Collecting...');
+        set('accu-bb-width', 'Ã¢â‚¬â€'); set('accu-bb-label', 'Collecting...');
+        set('accu-adx', 'Ã¢â‚¬â€'); set('accu-adx-label', 'Collecting...');
+        set('accu-ema-trend', 'Ã¢â‚¬â€');
+        set('accu-atr', 'Ã¢â‚¬â€');
+        set('accu-tick-stability', 'Ã¢â‚¬â€');
+        set('accu-regime', 'Ã¢â‚¬â€'); set('accu-spike-risk', 'Ã¢â‚¬â€'); set('accu-micro-trend', 'Ã¢â‚¬â€');
         const sigBox = document.getElementById('accu-signal-box');
         if (sigBox) sigBox.innerHTML = `<div style="font-size:11px;color:var(--muted);">Collecting data... need ${conf.ticksNeeded} more ticks (${conf.profile.speedClass} market profile)</div>`;
         return;
     }
 
     // RSI
-    set('accu-rsi', conf.rsi ?? 'â€”', conf.rsi > 70 ? 'var(--red)' : conf.rsi < 30 ? 'var(--green)' : '#60a5fa');
+    set('accu-rsi', conf.rsi ?? 'Ã¢â‚¬â€', conf.rsi > 70 ? 'var(--red)' : conf.rsi < 30 ? 'var(--green)' : '#60a5fa');
     set('accu-rsi-label', conf.rsi > 70 ? 'Overbought' : conf.rsi < 30 ? 'Oversold' : (conf.rsi >= 48 && conf.rsi <= 65) ? 'Sweet spot' : 'Neutral');
 
     // BB
     if (conf.bb) {
         set('accu-bb-width', conf.bb.bandwidth.toFixed(2) + '%', conf.breakdown.volatilityScore >= 60 ? 'var(--green)' : conf.breakdown.volatilityScore >= 35 ? 'var(--amber)' : 'var(--red)');
-        set('accu-bb-label', conf.bb.bandwidth < 0.1 ? 'Squeezing âœ…' : conf.bb.bandwidth < 0.4 ? 'Normal' : 'Wide âš ï¸');
+        set('accu-bb-label', conf.bb.bandwidth < 0.1 ? 'Squeezing Ã¢Å“â€¦' : conf.bb.bandwidth < 0.4 ? 'Normal' : 'Wide Ã¢Å¡Â Ã¯Â¸Â');
     }
 
     // Tick speed (repurposed "ADX" tile)
     const tps = conf.flow?.ticksPerSec;
-    set('accu-adx', tps !== null && tps !== undefined ? `${tps.toFixed(1)}/s` : 'â€”', 'var(--amber)');
-    set('accu-adx-label', conf.flow ? (conf.flow.accel === 'accelerating' ? 'Accelerating' : conf.flow.accel === 'decelerating' ? 'Decelerating' : 'Steady') : 'â€”');
+    set('accu-adx', tps !== null && tps !== undefined ? `${tps.toFixed(1)}/s` : 'Ã¢â‚¬â€', 'var(--amber)');
+    set('accu-adx-label', conf.flow ? (conf.flow.accel === 'accelerating' ? 'Accelerating' : conf.flow.accel === 'decelerating' ? 'Decelerating' : 'Steady') : 'Ã¢â‚¬â€');
 
     // EMA trend
     set('accu-ema-trend', conf.emaTrendLabel, conf.emaFast > conf.emaSlow ? 'var(--green)' : 'var(--red)');
 
     // ATR
-    set('accu-atr', conf.atr !== null ? conf.atr.toFixed(5) : 'â€”', 'var(--muted)');
+    set('accu-atr', conf.atr !== null ? conf.atr.toFixed(5) : 'Ã¢â‚¬â€', 'var(--muted)');
 
     // Tick stability
     if (conf.stab) {
@@ -5449,12 +5538,12 @@ function updateAccuAnalysis(sym) {
     // Micro trend
     set('accu-micro-trend', conf.micro.label, conf.micro.bias === 'up' ? 'var(--green)' : conf.micro.bias === 'down' ? 'var(--red)' : 'var(--muted)');
 
-    // Volatility meter â€” driven by the volatility sub-score
+    // Volatility meter Ã¢â‚¬â€ driven by the volatility sub-score
     const volBar   = document.getElementById('accu-vol-bar');
     const volLabel = document.getElementById('accu-vol-label');
     const volPct   = 100 - conf.breakdown.volatilityScore;
     if (volBar)   { volBar.style.width = Math.max(5, volPct) + '%'; volBar.style.background = conf.breakdown.volatilityScore >= 60 ? 'var(--green)' : conf.breakdown.volatilityScore >= 35 ? 'var(--amber)' : 'var(--red)'; }
-    if (volLabel) { volLabel.textContent = conf.breakdown.volatilityScore >= 60 ? 'Low âœ…' : conf.breakdown.volatilityScore >= 35 ? 'Medium âš ï¸' : 'High âŒ'; volLabel.style.color = volBar ? volBar.style.background : ''; }
+    if (volLabel) { volLabel.textContent = conf.breakdown.volatilityScore >= 60 ? 'Low Ã¢Å“â€¦' : conf.breakdown.volatilityScore >= 35 ? 'Medium Ã¢Å¡Â Ã¯Â¸Â' : 'High Ã¢ÂÅ’'; volLabel.style.color = volBar ? volBar.style.background : ''; }
 
     // Safe ticks in a row (kept for the "Live Price" card context)
     const safeTicks = document.getElementById('accu-safe-ticks');
@@ -5471,16 +5560,16 @@ function updateAccuAnalysis(sym) {
         safeTicks.style.color = consecutive > 10 ? 'var(--green)' : consecutive > 5 ? 'var(--amber)' : 'var(--red)';
     }
 
-    // â”€â”€ AI Market Scanner dashboard â€” Market Health + Recommendation â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ AI Market Scanner dashboard Ã¢â‚¬â€ Market Health + Recommendation Ã¢â€â‚¬Ã¢â€â‚¬
     const sigBox    = document.getElementById('accu-signal-box');
     const growthRec = document.getElementById('accu-growth-rec');
     if (sigBox) {
         const b = conf.breakdown;
         const recommend = conf.tradeOk
-            ? `<span style="color:var(--green);">ðŸŸ¢ ENTER</span>`
+            ? `<span style="color:var(--green);">Ã°Å¸Å¸Â¢ ENTER</span>`
             : conf.blockers.length > 0
-                ? `<span style="color:var(--red);">ðŸ”´ WAIT â€” ${conf.blockers[0]}</span>`
-                : `<span style="color:var(--amber);">ðŸŸ¡ WAIT â€” below ${conf.effectiveThreshold}% threshold</span>`;
+                ? `<span style="color:var(--red);">Ã°Å¸â€Â´ WAIT Ã¢â‚¬â€ ${conf.blockers[0]}</span>`
+                : `<span style="color:var(--amber);">Ã°Å¸Å¸Â¡ WAIT Ã¢â‚¬â€ below ${conf.effectiveThreshold}% threshold</span>`;
 
         sigBox.innerHTML = `
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
@@ -5496,7 +5585,7 @@ function updateAccuAnalysis(sym) {
                 <div>Volatility (${Math.round(conf.weights.volatility*100)}%): <b style="color:var(--text);">${Math.round(b.volatilityScore)}</b></div>
                 <div>Price Behaviour (${Math.round(conf.weights.priceBehavior*100)}%): <b style="color:var(--text);">${Math.round(b.priceBehaviorScore)}</b></div>
                 <div>Structure (${Math.round(conf.weights.structure*100)}%): <b style="color:var(--text);">${Math.round(b.structureScore)}</b></div>
-                <div>Tick Stability: <b style="color:var(--text);">${conf.stab ? conf.stab.score : 'â€”'}%</b></div>
+                <div>Tick Stability: <b style="color:var(--text);">${conf.stab ? conf.stab.score : 'Ã¢â‚¬â€'}%</b></div>
             </div>
             <div style="font-size:11px;font-weight:700;text-align:left;">Recommendation: ${recommend}</div>`;
 
@@ -5543,8 +5632,8 @@ function toggleAccumulator() {
         // Check confidence score before starting
         const conf = calcAccuConfidence(accuMarket);
         if (conf.ready && !conf.tradeOk) {
-            notify('âš ï¸ Poor Entry Conditions', `Confidence ${conf.score}% (${conf.label}). Waiting for a better entry...`, 'warn');
-            log(`â³ Waiting for a qualifying entry (current: ${conf.score}%)...`, 'x');
+            notify('Ã¢Å¡Â Ã¯Â¸Â Poor Entry Conditions', `Confidence ${conf.score}% (${conf.label}). Waiting for a better entry...`, 'warn');
+            log(`Ã¢ÂÂ³ Waiting for a qualifying entry (current: ${conf.score}%)...`, 'x');
             startWatchingForGreatEntry(stake, tp);
             return;
         }
@@ -5553,7 +5642,7 @@ function toggleAccumulator() {
         accuTickCount     = 0;
         accuCurrentProfit = 0;
 
-        if (btn)     { btn.textContent = 'â¬› Stop Accumulator'; btn.classList.remove('btn-teal'); btn.classList.add('btn-red'); }
+        if (btn)     { btn.textContent = 'Ã¢Â¬â€º Stop Accumulator'; btn.classList.remove('btn-teal'); btn.classList.add('btn-red'); }
         if (sellBtn)  sellBtn.style.display = 'block';
 
         // Send accumulator proposal
@@ -5569,11 +5658,11 @@ function toggleAccumulator() {
             req_id:            nextReqId()
         };
 
-        log(`ðŸ“ˆ Accumulator proposal: ${MKT[accuMarket]||accuMarket} | Growth: ${(accuGrowthRate*100)}% | Stake: $${stake} | TP: $${tp} | Confidence: ${conf.ready ? conf.score+'%' : 'n/a'}`, 'i');
+        log(`Ã°Å¸â€œË† Accumulator proposal: ${MKT[accuMarket]||accuMarket} | Growth: ${(accuGrowthRate*100)}% | Stake: $${stake} | TP: $${tp} | Confidence: ${conf.ready ? conf.score+'%' : 'n/a'}`, 'i');
         derivWS.send(JSON.stringify(proposal));
 
     } else {
-        // Stop â€” sell the contract
+        // Stop Ã¢â‚¬â€ sell the contract
         sellAccumulator();
     }
 }
@@ -5586,7 +5675,7 @@ function sellAccumulator() {
     }
     // Sell contract to take profit
     derivWS.send(JSON.stringify({ sell: accuContractId, price: 0, req_id: nextReqId() }));
-    log(`ðŸ’° Selling accumulator contract #${accuContractId}`, 'i');
+    log(`Ã°Å¸â€™Â° Selling accumulator contract #${accuContractId}`, 'i');
 }
 
 function resetAccuUI() {
@@ -5594,20 +5683,20 @@ function resetAccuUI() {
     const sellBtn = document.getElementById('accu-sell-btn');
     accuRunning    = false;
     accuContractId = null;
-    if (btn)     { btn.textContent = 'â–¶ Start Accumulator'; btn.classList.remove('btn-red'); btn.classList.add('btn-teal'); }
+    if (btn)     { btn.textContent = 'Ã¢â€“Â¶ Start Accumulator'; btn.classList.remove('btn-red'); btn.classList.add('btn-teal'); }
     if (sellBtn)  sellBtn.style.display = 'none';
     const info = document.getElementById('accu-contract-info');
     if (info) info.textContent = 'No active contract';
 }
 
-// â”€â”€ FULL RESET â€” clears everything for a fresh Accumulator session
-// without reloading the page, similar to DBot's Reset button. â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ FULL RESET Ã¢â‚¬â€ clears everything for a fresh Accumulator session
+// without reloading the page, similar to DBot's Reset button. Ã¢â€â‚¬Ã¢â€â‚¬
 function resetAccumulator() {
     // Stop any running contract / watcher / auto mode first
     if (accuWatchInterval) { clearInterval(accuWatchInterval); accuWatchInterval = null; }
     accuWaiting = false;
     if (accuAutoEnabled) {
-        // Silent stop â€” we're about to reset everything anyway
+        // Silent stop Ã¢â‚¬â€ we're about to reset everything anyway
         accuAutoEnabled = false;
         const track = document.getElementById('accu-auto-track');
         const thumb = document.getElementById('accu-auto-thumb');
@@ -5640,8 +5729,8 @@ function resetAccumulator() {
     const digitEl  = document.getElementById('accu-last-digit');
     const tickEl   = document.getElementById('accu-tick-count');
     const profitEl = document.getElementById('accu-current-profit');
-    if (priceEl)  priceEl.textContent  = 'â€”';
-    if (digitEl)  digitEl.textContent  = 'Last digit: â€”';
+    if (priceEl)  priceEl.textContent  = 'Ã¢â‚¬â€';
+    if (digitEl)  digitEl.textContent  = 'Last digit: Ã¢â‚¬â€';
     if (tickEl)   tickEl.textContent   = '0';
     if (profitEl) { profitEl.textContent = '$0.00'; profitEl.style.color = 'var(--green)'; }
 
@@ -5652,8 +5741,8 @@ function resetAccumulator() {
     const btn = document.getElementById('accu-run-btn');
     if (btn) { btn.style.opacity = '1'; }
 
-    log('ðŸ”„ Accumulator session reset â€” ready for a fresh start', 'i');
-    notify('ðŸ”„ Accumulator Reset', 'Session cleared. Profit/loss, history and counters are back to zero.', 'ok');
+    log('Ã°Å¸â€â€ž Accumulator session reset Ã¢â‚¬â€ ready for a fresh start', 'i');
+    notify('Ã°Å¸â€â€ž Accumulator Reset', 'Session cleared. Profit/loss, history and counters are back to zero.', 'ok');
 }
 
 function handleAccuContractUpdate(c) {
@@ -5680,12 +5769,12 @@ function handleAccuContractUpdate(c) {
 
     if (infoEl) {
         infoEl.innerHTML = `
-            <div style="font-size:11px;">Contract: <b style="color:var(--teal);">#${c.contract_id||'â€”'}</b></div>
+            <div style="font-size:11px;">Contract: <b style="color:var(--teal);">#${c.contract_id||'Ã¢â‚¬â€'}</b></div>
             <div style="font-size:11px;">Growth Rate: <b style="color:var(--teal);">${((accuGrowthRate||0.02)*100)}%</b></div>
             <div style="font-size:11px;">Ticks: <b style="color:var(--green);">${accuTickCount}</b></div>`;
     }
 
-    // Contract settled â€” this path is superseded by the idempotent override
+    // Contract settled Ã¢â‚¬â€ this path is superseded by the idempotent override
     // installed below, which is the one actually wired up at runtime.
     if (c.is_sold || c.is_expired) {
         if (accuSettledContractIds.has(c.contract_id)) return; // already processed
@@ -5698,7 +5787,7 @@ function handleAccuContractUpdate(c) {
         // Add to history
         addAccuHistory(accuMarket, accuGrowthRate, stake, accuTickCount, profit, isWin);
 
-        log(`${isWin ? 'âœ…' : 'âŒ'} Accumulator ${isWin ? 'sold' : 'knocked out'} | ${accuTickCount} ticks | P/L: $${profit.toFixed(2)}`, isWin ? 'w' : 'l');
+        log(`${isWin ? 'Ã¢Å“â€¦' : 'Ã¢ÂÅ’'} Accumulator ${isWin ? 'sold' : 'knocked out'} | ${accuTickCount} ticks | P/L: $${profit.toFixed(2)}`, isWin ? 'w' : 'l');
 
         if (isWin) { try { playWin(); } catch(e) {} }
         else       { try { playLoss(); } catch(e) {} }
@@ -5714,7 +5803,7 @@ function addAccuHistory(market, growth, stake, ticks, profit, isWin, confidence)
     const empty = container.querySelector('[style*="text-align:center"]');
     if (empty) empty.remove();
 
-    const confStr = (confidence !== undefined && confidence !== null) ? `${confidence}%` : 'â€”';
+    const confStr = (confidence !== undefined && confidence !== null) ? `${confidence}%` : 'Ã¢â‚¬â€';
 
     const row = document.createElement('div');
     row.style.cssText = `display:flex;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;`;
@@ -5732,7 +5821,7 @@ function addAccuHistory(market, growth, stake, ticks, profit, isWin, confidence)
 // handled in existing proposal and proposal_open_contract handlers
 
 // ================================================================
-// ACCUMULATOR ENTRY QUALITY CHECK â€” now backed by the multi-factor
+// ACCUMULATOR ENTRY QUALITY CHECK Ã¢â‚¬â€ now backed by the multi-factor
 // confidence engine above. Kept as a thin wrapper for readability at
 // call sites and for backwards compatibility with existing code paths.
 // ================================================================
@@ -5765,7 +5854,7 @@ function meetsAutoThreshold(conf) {
 let accuWatchInterval = null;
 let accuWaiting       = false;
 
-// Continuous market monitor â€” this is the "Smart Auto Mode" watcher.
+// Continuous market monitor Ã¢â‚¬â€ this is the "Smart Auto Mode" watcher.
 // It keeps re-evaluating market health (not just polling for one static
 // condition), automatically pausing through Explosive/blocked regimes and
 // resuming the instant a qualifying reading returns.
@@ -5775,33 +5864,33 @@ function startWatchingForGreatEntry(stake, tp) {
 
     // Update run button to show waiting state
     const btn = document.getElementById('accu-run-btn');
-    if (btn) { btn.textContent = 'â³ Monitoring market...'; btn.style.opacity = '0.7'; }
+    if (btn) { btn.textContent = 'Ã¢ÂÂ³ Monitoring market...'; btn.style.opacity = '0.7'; }
 
-    log('â³ Smart monitor active â€” watching for a qualifying entry...', 'i');
+    log('Ã¢ÂÂ³ Smart monitor active Ã¢â‚¬â€ watching for a qualifying entry...', 'i');
 
     accuWatchInterval = setInterval(() => {
         if (!accuWaiting) { clearInterval(accuWatchInterval); return; }
 
         const conf = calcAccuConfidence(accuMarket);
-        if (!conf.ready) { log('ðŸ“Š Still collecting data for confidence score...', 'd'); return; }
+        if (!conf.ready) { log('Ã°Å¸â€œÅ  Still collecting data for confidence score...', 'd'); return; }
 
         const isAutoRestart = accuAutoRunning;
         const qualifies = isAutoRestart ? meetsAutoThreshold(conf) : conf.tradeOk;
 
         if (!qualifies) {
             const why = conf.blockers.length ? conf.blockers[0] : `score ${conf.score}% below ${conf.effectiveThreshold}% threshold`;
-            log(`ðŸ“Š Waiting â€” ${conf.regime.icon} ${conf.regime.regime} | ${why}`, 'd');
+            log(`Ã°Å¸â€œÅ  Waiting Ã¢â‚¬â€ ${conf.regime.icon} ${conf.regime.regime} | ${why}`, 'd');
             return;
         }
 
         clearInterval(accuWatchInterval);
         accuWaiting = false;
         const btn2 = document.getElementById('accu-run-btn');
-        if (btn2) { btn2.textContent = 'â–¶ Start Accumulator'; btn2.style.opacity = '1'; }
-        notify('âœ… Qualifying Entry Found!', `Confidence ${conf.score}% (${conf.label}) | Regime: ${conf.regime.regime}. Starting accumulator now!`, 'ok');
-        log(`âœ… Qualifying entry detected (${conf.score}%, ${conf.regime.regime}) â€” starting accumulator!`, 'w');
+        if (btn2) { btn2.textContent = 'Ã¢â€“Â¶ Start Accumulator'; btn2.style.opacity = '1'; }
+        notify('Ã¢Å“â€¦ Qualifying Entry Found!', `Confidence ${conf.score}% (${conf.label}) | Regime: ${conf.regime.regime}. Starting accumulator now!`, 'ok');
+        log(`Ã¢Å“â€¦ Qualifying entry detected (${conf.score}%, ${conf.regime.regime}) Ã¢â‚¬â€ starting accumulator!`, 'w');
         toggleAccumulator();
-    }, 1500); // fast poll â€” Smart Auto Mode reacts quickly to changing conditions
+    }, 1500); // fast poll Ã¢â‚¬â€ Smart Auto Mode reacts quickly to changing conditions
 }
 
 // Stop watching if user clicks run button again
@@ -5809,14 +5898,14 @@ function cancelWaiting() {
     if (accuWatchInterval) clearInterval(accuWatchInterval);
     accuWaiting = false;
     const btn = document.getElementById('accu-run-btn');
-    if (btn) { btn.textContent = 'â–¶ Start Accumulator'; btn.style.opacity = '1'; }
-    log('âŒ Entry watch cancelled', 'x');
+    if (btn) { btn.textContent = 'Ã¢â€“Â¶ Start Accumulator'; btn.style.opacity = '1'; }
+    log('Ã¢ÂÅ’ Entry watch cancelled', 'x');
 }
 
 // ================================================================
 // ACCUMULATOR AUTO MODE
-// Runs continuously â€” entering a new trade whenever a qualifying signal
-// appears â€” until Take Profit, Stop Loss, manual stop, connection loss,
+// Runs continuously Ã¢â‚¬â€ entering a new trade whenever a qualifying signal
+// appears Ã¢â‚¬â€ until Take Profit, Stop Loss, manual stop, connection loss,
 // or an unrecoverable API error. See toggleAccuAuto / stopAccuAuto and the
 // idempotent settlement handler below for the restart / stop logic.
 // ================================================================
@@ -5840,14 +5929,14 @@ function toggleAccuAuto() {
     if (stats) stats.style.display    = accuAutoEnabled ? 'block' : 'none';
     if (bar)   bar.style.display      = accuAutoEnabled && accuAutoRunning ? 'flex' : 'none';
 
-    log(`ðŸ¤– Accumulator Auto Mode: ${accuAutoEnabled ? 'ON' : 'OFF'}`, 'i');
+    log(`Ã°Å¸Â¤â€“ Accumulator Auto Mode: ${accuAutoEnabled ? 'ON' : 'OFF'}`, 'i');
     if (accuAutoEnabled) {
         const sl = parseFloat(document.getElementById('accu-sl')?.value || 0);
-        notify('ðŸ¤– Auto Mode ON', `Bot will trade continuously.\nTP: $${document.getElementById('accu-tp')?.value || 0.10} per session${sl > 0 ? ` | SL: -$${sl.toFixed(2)} total` : ''}`, 'ok');
+        notify('Ã°Å¸Â¤â€“ Auto Mode ON', `Bot will trade continuously.\nTP: $${document.getElementById('accu-tp')?.value || 0.10} per session${sl > 0 ? ` | SL: -$${sl.toFixed(2)} total` : ''}`, 'ok');
     }
 }
 
-// reason is optional â€” 'connection_lost' | 'api_error' | 'stop_loss' | undefined (manual)
+// reason is optional Ã¢â‚¬â€ 'connection_lost' | 'api_error' | 'stop_loss' | undefined (manual)
 function stopAccuAuto(reason) {
     accuAutoEnabled  = false;
     accuAutoRunning  = false;
@@ -5861,20 +5950,20 @@ function stopAccuAuto(reason) {
     if (thumb) thumb.style.left       = '3px';
     if (bar)   bar.style.display      = 'none';
 
-    // Stop current contract if running (skip for connection loss â€” socket is already gone)
+    // Stop current contract if running (skip for connection loss Ã¢â‚¬â€ socket is already gone)
     if (accuRunning && reason !== 'connection_lost') sellAccumulator();
 
     const summary = `Sessions: ${accuSessions} | TP Hits: ${accuTpHits} | Total P/L: $${accuTotalPL.toFixed(2)}`;
-    log(`ðŸ¤– Auto Mode stopped${reason ? ' (' + reason + ')' : ''}. ${summary}`, 'i');
+    log(`Ã°Å¸Â¤â€“ Auto Mode stopped${reason ? ' (' + reason + ')' : ''}. ${summary}`, 'i');
 
     if (reason === 'stop_loss') {
-        notify('â›” Stop Loss Reached', `Auto Mode stopped â€” Stop Loss hit.\n${summary}`, 'err');
+        notify('Ã¢â€ºâ€ Stop Loss Reached', `Auto Mode stopped Ã¢â‚¬â€ Stop Loss hit.\n${summary}`, 'err');
     } else if (reason === 'connection_lost') {
-        notify('ðŸ“¡ Connection Lost', `Auto Mode stopped â€” API connection dropped.\n${summary}`, 'err');
+        notify('Ã°Å¸â€œÂ¡ Connection Lost', `Auto Mode stopped Ã¢â‚¬â€ API connection dropped.\n${summary}`, 'err');
     } else if (reason === 'api_error') {
-        notify('âš ï¸ API Error', `Auto Mode stopped â€” unrecoverable API error.\n${summary}`, 'err');
+        notify('Ã¢Å¡Â Ã¯Â¸Â API Error', `Auto Mode stopped Ã¢â‚¬â€ unrecoverable API error.\n${summary}`, 'err');
     } else {
-        notify('ðŸ¤– Auto Mode Stopped', summary, 'ok');
+        notify('Ã°Å¸Â¤â€“ Auto Mode Stopped', summary, 'ok');
     }
 }
 
@@ -5894,7 +5983,7 @@ function updateAccuAutoStats() {
 // Every proposal_open_contract update for a settled contract is routed
 // here; accuSettledContractIds ensures we only act on it ONCE no matter
 // how many duplicate update messages Deriv sends for the same contract_id.
-// This is also what fixes "Auto Mode stops unexpectedly" â€” before this
+// This is also what fixes "Auto Mode stops unexpectedly" Ã¢â‚¬â€ before this
 // guard, a duplicate settlement message could re-enter the settlement
 // branch, sell/reset state a second time, and desync accuRunning from
 // what the UI showed, silently breaking the restart chain.
@@ -5906,7 +5995,7 @@ handleAccuContractUpdate = function(c) {
     const profitEl = document.getElementById('accu-current-profit');
     const infoEl   = document.getElementById('accu-contract-info');
 
-    // Count ticks ourselves â€” increment on every contract update message
+    // Count ticks ourselves Ã¢â‚¬â€ increment on every contract update message
     // Deriv sends proposal_open_contract on every tick while contract is active
     if (!c.is_sold && !c.is_expired && accuContractId && c.contract_id === accuContractId) {
         accuTickCount++;
@@ -5938,11 +6027,11 @@ handleAccuContractUpdate = function(c) {
             <div style="font-size:11px;">Ticks: <b style="color:var(--green);">${accuTickCount}</b></div>`;
     }
 
-    // Contract settled (sold or knocked out) â€” IDEMPOTENT GUARD
+    // Contract settled (sold or knocked out) Ã¢â‚¬â€ IDEMPOTENT GUARD
     if (c.is_sold || c.is_expired) {
         if (!c.contract_id || accuSettledContractIds.has(c.contract_id)) {
             // Either no contract id to key on, or we've already fully
-            // processed this settlement â€” ignore the duplicate update.
+            // processed this settlement Ã¢â‚¬â€ ignore the duplicate update.
             return;
         }
         accuSettledContractIds.add(c.contract_id);
@@ -5953,7 +6042,7 @@ handleAccuContractUpdate = function(c) {
         const tp     = parseFloat(document.getElementById('accu-tp')?.value || 0.10);
         const sl     = parseFloat(document.getElementById('accu-sl')?.value || 0);
 
-        // Final tick count from contract â€” check all possible fields
+        // Final tick count from contract Ã¢â‚¬â€ check all possible fields
         const finalTicks = c.current_spot_count || c.number_of_ticks || accuTickCount || 0;
         accuTickCount = parseInt(finalTicks) || accuTickCount;
 
@@ -5967,7 +6056,7 @@ handleAccuContractUpdate = function(c) {
         if (isWin && profit >= tp) accuTpHits++;
         updateAccuAutoStats();
 
-        // Trade analytics log â€” confidence + underlying factors for this trade.
+        // Trade analytics log Ã¢â‚¬â€ confidence + underlying factors for this trade.
         // `factors` stores the 0-100 sub-scores that runAdaptiveLearning()
         // compares between wins and losses to recalibrate weights over time.
         accuTradeAnalytics.push({
@@ -5989,33 +6078,33 @@ handleAccuContractUpdate = function(c) {
         });
         if (accuTradeAnalytics.length > 500) accuTradeAnalytics.shift();
 
-        // Adaptive learning â€” recalibrate this market's factor weights every 100 trades
+        // Adaptive learning Ã¢â‚¬â€ recalibrate this market's factor weights every 100 trades
         runAdaptiveLearning(accuMarket);
 
         // Add to history (with confidence column)
         addAccuHistory(accuMarket, accuGrowthRate, stake, accuTickCount, profit, isWin, confScore);
 
-        log(`${isWin ? 'âœ…' : 'âŒ'} Accumulator ${isWin?'sold':'knocked out'} | ${accuTickCount} ticks | P/L: $${profit.toFixed(2)} | Total: $${accuTotalPL.toFixed(2)}`, isWin ? 'w' : 'l');
+        log(`${isWin ? 'Ã¢Å“â€¦' : 'Ã¢ÂÅ’'} Accumulator ${isWin?'sold':'knocked out'} | ${accuTickCount} ticks | P/L: $${profit.toFixed(2)} | Total: $${accuTotalPL.toFixed(2)}`, isWin ? 'w' : 'l');
 
         if (isWin) { try { playWin(); } catch(e) {} }
         else       { try { playLoss(); } catch(e) {} }
 
-        // Reset UI â€” exactly once per settled contract, thanks to the guard above
+        // Reset UI Ã¢â‚¬â€ exactly once per settled contract, thanks to the guard above
         resetAccuUI();
         accuLastSettleTime = Date.now(); // starts the stabilization cooldown before the next entry
         if (profitEl) { profitEl.textContent = `$${profit.toFixed(2)}`; profitEl.style.color = isWin ? 'var(--green)' : 'var(--red)'; }
 
-        // â”€â”€ STOP LOSS CHECK â€” takes priority over auto-restart â”€â”€
+        // Ã¢â€â‚¬Ã¢â€â‚¬ STOP LOSS CHECK Ã¢â‚¬â€ takes priority over auto-restart Ã¢â€â‚¬Ã¢â€â‚¬
         if (accuAutoEnabled && sl > 0 && accuTotalPL <= -sl) {
             stopAccuAuto('stop_loss');
-            return; // do not restart â€” Stop Loss reached
+            return; // do not restart Ã¢â‚¬â€ Stop Loss reached
         }
 
-        // AUTO MODE â€” restart after TP hit or after any settled contract
+        // AUTO MODE Ã¢â‚¬â€ restart after TP hit or after any settled contract
         if (accuAutoEnabled) {
             if (isWin) {
-                if (!accuNotifFired) { accuNotifFired = true; notify('âœ… TP Hit â€” Auto Restarting!', `+$${profit.toFixed(2)} | Session ${accuSessions} | Total: $${accuTotalPL.toFixed(2)}`, 'ok'); setTimeout(()=>{accuNotifFired=false;},3000); }
-                log(`ðŸ¤– Auto restart in 1 second... (Session ${accuSessions + 1})`, 'i');
+                if (!accuNotifFired) { accuNotifFired = true; notify('Ã¢Å“â€¦ TP Hit Ã¢â‚¬â€ Auto Restarting!', `+$${profit.toFixed(2)} | Session ${accuSessions} | Total: $${accuTotalPL.toFixed(2)}`, 'ok'); setTimeout(()=>{accuNotifFired=false;},3000); }
+                log(`Ã°Å¸Â¤â€“ Auto restart in 1 second... (Session ${accuSessions + 1})`, 'i');
                 setTimeout(() => {
                     if (accuAutoEnabled && derivWS && derivWS.readyState === WebSocket.OPEN) {
                         accuAutoRunning = true;
@@ -6026,20 +6115,20 @@ handleAccuContractUpdate = function(c) {
                             toggleAccumulator();
                         } else {
                             const threshold = parseFloat(document.getElementById('accu-conf-threshold')?.value || 75);
-                            log(`â³ Auto mode: waiting for a qualifying entry (â‰¥${threshold}%, regime-aware) before next session...`, 'i');
+                            log(`Ã¢ÂÂ³ Auto mode: waiting for a qualifying entry (Ã¢â€°Â¥${threshold}%, regime-aware) before next session...`, 'i');
                             const stakeVal = parseFloat(document.getElementById('accu-stake')?.value || 1);
                             startWatchingForGreatEntry(stakeVal, tp);
                         }
                     }
                 }, 1500);
             } else {
-                // Knocked out â€” notify but also auto restart if still enabled and SL not hit
+                // Knocked out Ã¢â‚¬â€ notify but also auto restart if still enabled and SL not hit
                 if (!accuNotifFired) {
                     accuNotifFired = true;
-                    notify('ðŸ’¥ Knocked Out â€” Auto Restarting!', `Lost $${Math.abs(profit).toFixed(2)} | Total: $${accuTotalPL.toFixed(2)}`, 'warn');
+                    notify('Ã°Å¸â€™Â¥ Knocked Out Ã¢â‚¬â€ Auto Restarting!', `Lost $${Math.abs(profit).toFixed(2)} | Total: $${accuTotalPL.toFixed(2)}`, 'warn');
                     setTimeout(() => { accuNotifFired = false; }, 3000);
                 }
-                log(`ðŸ¤– Knocked out! Auto restarting in 2 seconds...`, 'x');
+                log(`Ã°Å¸Â¤â€“ Knocked out! Auto restarting in 2 seconds...`, 'x');
                 setTimeout(() => {
                     if (accuAutoEnabled && derivWS && derivWS.readyState === WebSocket.OPEN) {
                         accuAutoRunning = true;
@@ -6056,11 +6145,12 @@ handleAccuContractUpdate = function(c) {
         } else {
             // Manual mode notification
             notify(
-                isWin ? 'ðŸ’° Accumulator Profit!' : 'ðŸ’¥ Accumulator Knocked Out!',
+                isWin ? 'Ã°Å¸â€™Â° Accumulator Profit!' : 'Ã°Å¸â€™Â¥ Accumulator Knocked Out!',
                 `${accuTickCount} ticks | P/L: ${isWin?'+':''}$${profit.toFixed(2)}`,
                 isWin ? 'ok' : 'err'
             );
         }
     }
 };
+
 
