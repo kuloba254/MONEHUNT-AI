@@ -572,3 +572,3398 @@ body {
     background-clip: text !important;
 }
 
+
+/* ============================================================
+   DOLARHUNTER — PREMIUM HEADER
+   ============================================================ */
+
+.dh-topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    padding: 0 22px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 22, 32, 0.98),
+            rgba(9, 14, 22, 0.96)
+        ) !important;
+
+    border-bottom: 1px solid rgba(0, 210, 199, 0.14) !important;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.28),
+        inset 0 -1px 0 rgba(255,255,255,0.025) !important;
+
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+}
+
+/* -- Brand ----------------------------------------------- */
+
+.dh-brand-simple {
+    width: auto !important;
+    height: 40px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 4px !important;
+    overflow: visible !important;
+
+    color: #ffffff !important;
+
+    font-size: 17px !important;
+    font-weight: 950 !important;
+    letter-spacing: 1.2px !important;
+
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+    user-select: none !important;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease !important;
+}
+
+.dh-brand-simple:hover {
+    transform: translateY(-1px) !important;
+    opacity: .92 !important;
+}
+
+.dh-brand-simple span {
+    color: #ffffff !important;
+    font-size: inherit !important;
+    font-weight: 950 !important;
+    letter-spacing: inherit !important;
+}
+
+.dh-brand-simple span:last-child {
+    color: #00d2c7 !important;
+
+    text-shadow:
+        0 0 18px rgba(0,210,199,.28) !important;
+}
+
+.dh-brand-simple img {
+    width: 30px !important;
+    height: 30px !important;
+
+    max-width: 30px !important;
+    max-height: 30px !important;
+
+    object-fit: contain !important;
+
+    border-radius: 8px !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,210,199,.22)) !important;
+
+    transition:
+        transform .25s ease,
+        filter .25s ease !important;
+}
+
+.dh-brand-simple:hover img {
+    transform: rotate(-4deg) scale(1.05) !important;
+
+    filter:
+        drop-shadow(0 0 13px rgba(0,210,199,.42)) !important;
+}
+
+/* -- Right side ------------------------------------------ */
+
+.dh-topbar-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 10px !important;
+
+    min-width: 0 !important;
+}
+
+/* -- Live market indicator ------------------------------- */
+
+.dh-market-live {
+    height: 34px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 8px !important;
+
+    padding: 0 11px !important;
+
+    border-radius: 9px !important;
+
+    background: rgba(0,210,199,.055) !important;
+    border: 1px solid rgba(0,210,199,.13) !important;
+
+    color: #8d9aa9 !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: .7px !important;
+    text-transform: uppercase !important;
+
+    white-space: nowrap !important;
+}
+
+.dh-market-live > span {
+    width: 7px !important;
+    height: 7px !important;
+
+    flex: 0 0 7px !important;
+
+    border-radius: 50% !important;
+
+    background: #00d2c7 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0,210,199,.08),
+        0 0 12px rgba(0,210,199,.65) !important;
+
+    animation: dh-live-pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes dh-live-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .55;
+        transform: scale(.82);
+    }
+}
+
+/* -- Balance --------------------------------------------- */
+
+.balance-badge {
+    height: 38px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 7px !important;
+
+    padding: 0 13px !important;
+
+    background: rgba(255,255,255,.035) !important;
+
+    border: 1px solid rgba(255,255,255,.075) !important;
+
+    border-radius: 10px !important;
+
+    color: #e9f0f7 !important;
+
+    font-size: 12px !important;
+    font-weight: 800 !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+.balance-badge::before {
+    content: "$" !important;
+
+    width: 19px !important;
+    height: 19px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 6px !important;
+
+    background: rgba(0,210,199,.10) !important;
+
+    color: #00d2c7 !important;
+
+    font-size: 10px !important;
+    font-weight: 950 !important;
+}
+
+/* -- Status dot ------------------------------------------ */
+
+.status-dot {
+    width: 7px !important;
+    height: 7px !important;
+
+    border-radius: 50% !important;
+
+    background: #ff4757 !important;
+}
+
+.status-dot.live {
+    background: #00d2c7 !important;
+
+    box-shadow:
+        0 0 8px rgba(0,210,199,.55) !important;
+}
+
+/* -- Premium buttons inside header ----------------------- */
+
+.dh-topbar button {
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease !important;
+}
+
+.dh-topbar button:hover {
+    transform: translateY(-1px) !important;
+}
+
+/* -- Navigation ------------------------------------------ */
+
+body > nav,
+nav {
+    position: sticky !important;
+    top: 68px !important;
+    z-index: 999 !important;
+
+    height: 48px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 0 18px !important;
+
+    gap: 4px !important;
+
+    background: rgba(10,15,23,.94) !important;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.055) !important;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.16) !important;
+
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+}
+
+nav::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* -- Navigation buttons ---------------------------------- */
+
+nav .tab-btn {
+    position: relative !important;
+
+    height: 34px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 13px !important;
+
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+
+    background: transparent !important;
+
+    color: #758294 !important;
+
+    font-size: 11px !important;
+    font-weight: 750 !important;
+
+    white-space: nowrap !important;
+
+    transition:
+        color .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        transform .18s ease !important;
+}
+
+nav .tab-btn:hover {
+    color: #e7edf3 !important;
+
+    background: rgba(255,255,255,.045) !important;
+
+    border-color: rgba(255,255,255,.055) !important;
+
+    transform: translateY(-1px) !important;
+}
+
+nav .tab-btn.active {
+    color: #001b19 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d2c7,
+            #00b8ae
+        ) !important;
+
+    border-color: transparent !important;
+
+    box-shadow:
+        0 4px 16px rgba(0,210,199,.18) !important;
+}
+
+nav .tab-btn.active::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+    bottom: -7px !important;
+
+    width: 18px !important;
+    height: 2px !important;
+
+    transform: translateX(-50%) !important;
+
+    border-radius: 99px !important;
+
+    background: #00d2c7 !important;
+
+    box-shadow:
+        0 0 10px rgba(0,210,199,.55) !important;
+}
+
+/* -- Mobile ---------------------------------------------- */
+
+@media (max-width: 760px) {
+
+    .dh-topbar {
+        height: 60px !important;
+        min-height: 60px !important;
+
+        padding: 0 12px !important;
+
+        gap: 8px !important;
+    }
+
+    .dh-brand-simple {
+        font-size: 14px !important;
+        letter-spacing: .8px !important;
+    }
+
+    .dh-brand-simple img {
+        width: 25px !important;
+        height: 25px !important;
+    }
+
+    .dh-market-live {
+        display: none !important;
+    }
+
+    .balance-badge {
+        height: 32px !important;
+        padding: 0 9px !important;
+
+        font-size: 10px !important;
+    }
+
+    nav {
+        top: 60px !important;
+
+        height: 44px !important;
+
+        padding: 0 9px !important;
+    }
+
+    nav .tab-btn {
+        height: 31px !important;
+
+        padding: 0 10px !important;
+
+        font-size: 10px !important;
+    }
+}
+
+
+/* ============================================================
+   DOLARHUNTER PREMIUM HEADER + THEME SYSTEM
+   ============================================================ */
+
+:root {
+    --dh-header-bg: #080d15;
+    --dh-nav-bg: #0b111b;
+    --dh-surface: #111925;
+    --dh-surface-hover: #172231;
+    --dh-text: #f4f8fb;
+    --dh-muted: #8492a4;
+    --dh-border: rgba(255,255,255,.075);
+    --dh-accent: #00d2c7;
+    --dh-accent-soft: rgba(0,210,199,.10);
+    --dh-shadow: rgba(0,0,0,.35);
+}
+
+html[data-theme="light"] {
+    --dh-header-bg: #ffffff;
+    --dh-nav-bg: #f8fafc;
+    --dh-surface: #ffffff;
+    --dh-surface-hover: #eef4f6;
+    --dh-text: #17202b;
+    --dh-muted: #657486;
+    --dh-border: rgba(20,35,50,.10);
+    --dh-accent: #009f95;
+    --dh-accent-soft: rgba(0,159,149,.09);
+    --dh-shadow: rgba(30,50,70,.12);
+}
+
+/* ============================================================
+   PREMIUM HEADER
+   ============================================================ */
+
+.dh-topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 5000 !important;
+
+    height: 70px !important;
+    min-height: 70px !important;
+
+    padding: 0 24px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--dh-header-bg),
+            var(--dh-nav-bg)
+        ) !important;
+
+    border-bottom:
+        1px solid var(--dh-border) !important;
+
+    box-shadow:
+        0 10px 35px var(--dh-shadow),
+        inset 0 -1px 0 rgba(255,255,255,.025) !important;
+
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease !important;
+}
+
+/* subtle premium glow */
+
+.dh-topbar::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 180px !important;
+    height: 1px !important;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dh-accent),
+        transparent
+    ) !important;
+
+    opacity: .75 !important;
+}
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.dh-brand-simple {
+    position: relative !important;
+
+    width: auto !important;
+    height: 42px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 5px !important;
+
+    overflow: visible !important;
+
+    color: var(--dh-text) !important;
+
+    font-size: 18px !important;
+    font-weight: 950 !important;
+
+    letter-spacing: 1.1px !important;
+
+    cursor: pointer !important;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease !important;
+}
+
+.dh-brand-simple:hover {
+    transform: translateY(-1px) !important;
+}
+
+.dh-brand-simple span {
+    color: var(--dh-text) !important;
+
+    font-size: inherit !important;
+    font-weight: 950 !important;
+
+    letter-spacing: inherit !important;
+}
+
+.dh-brand-simple span:last-child {
+    color: var(--dh-accent) !important;
+
+    text-shadow:
+        0 0 20px rgba(0,210,199,.28) !important;
+}
+
+.dh-brand-simple img {
+    width: 31px !important;
+    height: 31px !important;
+
+    max-width: 31px !important;
+    max-height: 31px !important;
+
+    object-fit: contain !important;
+
+    border-radius: 8px !important;
+
+    filter:
+        drop-shadow(0 0 9px rgba(0,210,199,.30)) !important;
+
+    transition:
+        transform .25s ease,
+        filter .25s ease !important;
+}
+
+.dh-brand-simple:hover img {
+    transform: scale(1.07) rotate(-3deg) !important;
+
+    filter:
+        drop-shadow(0 0 14px rgba(0,210,199,.50)) !important;
+}
+
+/* ============================================================
+   RIGHT HEADER AREA
+   ============================================================ */
+
+.dh-topbar-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 9px !important;
+}
+
+/* ============================================================
+   LIVE MARKET
+   ============================================================ */
+
+.dh-market-live {
+    height: 36px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 8px !important;
+
+    padding: 0 12px !important;
+
+    border-radius: 10px !important;
+
+    background: var(--dh-accent-soft) !important;
+
+    border:
+        1px solid rgba(0,210,199,.16) !important;
+
+    color: var(--dh-muted) !important;
+
+    font-size: 10px !important;
+    font-weight: 850 !important;
+
+    letter-spacing: .7px !important;
+    text-transform: uppercase !important;
+}
+
+.dh-market-live > span {
+    width: 7px !important;
+    height: 7px !important;
+
+    border-radius: 50% !important;
+
+    background: var(--dh-accent) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0,210,199,.08),
+        0 0 12px rgba(0,210,199,.55) !important;
+
+    animation: dh-header-live 2s infinite ease-in-out !important;
+}
+
+@keyframes dh-header-live {
+    0%,100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .55;
+        transform: scale(.82);
+    }
+}
+
+/* ============================================================
+   BALANCE
+   ============================================================ */
+
+.balance-badge {
+    min-width: 90px !important;
+    height: 38px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 7px !important;
+
+    padding: 0 13px !important;
+
+    border-radius: 10px !important;
+
+    background: var(--dh-surface) !important;
+
+    border:
+        1px solid var(--dh-border) !important;
+
+    color: var(--dh-text) !important;
+
+    font-size: 12px !important;
+    font-weight: 850 !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+/* ============================================================
+   THEME BUTTON
+   ============================================================ */
+
+.dh-theme-toggle {
+    height: 38px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 7px !important;
+
+    padding: 0 12px !important;
+
+    border-radius: 10px !important;
+
+    border:
+        1px solid var(--dh-border) !important;
+
+    background: var(--dh-surface) !important;
+
+    color: var(--dh-text) !important;
+
+    font-size: 10px !important;
+    font-weight: 850 !important;
+
+    cursor: pointer !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+    transition:
+        all .2s ease !important;
+}
+
+.dh-theme-toggle:hover {
+    background: var(--dh-accent-soft) !important;
+
+    border-color:
+        rgba(0,210,199,.28) !important;
+
+    color: var(--dh-accent) !important;
+
+    transform: translateY(-1px) !important;
+
+    box-shadow:
+        0 6px 18px rgba(0,210,199,.10) !important;
+}
+
+#theme-icon {
+    font-size: 14px !important;
+}
+
+/* ============================================================
+   EXISTING NAVIGATION — KEEP IT
+   ============================================================ */
+
+nav {
+    position: sticky !important;
+    top: 70px !important;
+
+    z-index: 4999 !important;
+
+    height: 50px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 0 18px !important;
+
+    gap: 4px !important;
+
+    background: var(--dh-nav-bg) !important;
+
+    border-bottom:
+        1px solid var(--dh-border) !important;
+
+    box-shadow:
+        0 5px 22px var(--dh-shadow) !important;
+
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease !important;
+
+    overflow-x: auto !important;
+
+    scrollbar-width: none !important;
+}
+
+nav::-webkit-scrollbar {
+    display: none !important;
+}
+
+nav .tab-btn {
+    position: relative !important;
+
+    height: 34px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    padding: 0 14px !important;
+
+    border: 1px solid transparent !important;
+
+    border-radius: 8px !important;
+
+    background: transparent !important;
+
+    color: var(--dh-muted) !important;
+
+    font-size: 11px !important;
+    font-weight: 750 !important;
+
+    white-space: nowrap !important;
+
+    transition:
+        color .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        transform .18s ease !important;
+}
+
+nav .tab-btn:hover {
+    color: var(--dh-text) !important;
+
+    background: var(--dh-surface-hover) !important;
+
+    border-color: var(--dh-border) !important;
+
+    transform: translateY(-1px) !important;
+}
+
+nav .tab-btn.active {
+    color: #001a18 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d2c7,
+            #00b7ad
+        ) !important;
+
+    border-color: transparent !important;
+
+    box-shadow:
+        0 5px 18px rgba(0,210,199,.20) !important;
+}
+
+nav .tab-btn.active::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+    bottom: -7px !important;
+
+    width: 20px !important;
+    height: 2px !important;
+
+    transform: translateX(-50%) !important;
+
+    border-radius: 99px !important;
+
+    background: var(--dh-accent) !important;
+
+    box-shadow:
+        0 0 12px rgba(0,210,199,.55) !important;
+}
+
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+
+html[data-theme="light"] .dh-topbar {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7fafc
+        ) !important;
+
+    box-shadow:
+        0 10px 30px rgba(20,35,50,.09) !important;
+}
+
+html[data-theme="light"] .dh-market-live {
+    background: rgba(0,159,149,.065) !important;
+    border-color: rgba(0,159,149,.15) !important;
+}
+
+html[data-theme="light"] .dh-theme-toggle {
+    background: #f1f5f7 !important;
+    color: #465666 !important;
+}
+
+html[data-theme="light"] .balance-badge {
+    background: #f5f8fa !important;
+    color: #17202b !important;
+}
+
+html[data-theme="light"] nav {
+    background:
+        rgba(248,250,252,.96) !important;
+
+    box-shadow:
+        0 5px 20px rgba(20,35,50,.07) !important;
+}
+
+/* ============================================================
+   MOBILE HEADER
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+    .dh-topbar {
+        height: 60px !important;
+        min-height: 60px !important;
+
+        padding: 0 12px !important;
+    }
+
+    nav {
+        top: 60px !important;
+        height: 46px !important;
+
+        padding: 0 9px !important;
+    }
+
+    .dh-brand-simple {
+        font-size: 14px !important;
+    }
+
+    .dh-brand-simple img {
+        width: 25px !important;
+        height: 25px !important;
+    }
+
+    .dh-market-live {
+        display: none !important;
+    }
+
+    .dh-theme-toggle {
+        width: 36px !important;
+        padding: 0 !important;
+    }
+
+    .dh-theme-toggle #theme-label {
+        display: none !important;
+    }
+
+    .balance-badge {
+        min-width: 0 !important;
+        padding: 0 9px !important;
+        font-size: 10px !important;
+    }
+}
+
+
+/* ============================================================
+   DOLARHUNTER BRAND THEME COLORS
+   DOLAR = WHITE IN DARK / BLACK IN LIGHT
+   HUNTER = TEAL
+   ============================================================ */
+
+/* DARK MODE */
+html:not([data-theme="light"]) .dh-brand-simple span:first-child {
+    color: #ffffff !important;
+}
+
+/* LIGHT MODE */
+html[data-theme="light"] .dh-brand-simple span:first-child {
+    color: #000000 !important;
+}
+
+/* HUNTER stays premium teal */
+.dh-brand-simple span:last-child {
+    color: var(--dh-accent) !important;
+}
+
+
+/* ============================================================
+   DOLARHUNTER - DEFINITIVE BRAND COLORS
+   ============================================================ */
+
+.dh-brand-simple > span:first-of-type {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.dh-brand-simple > span:last-of-type {
+    color: #00d2c7 !important;
+    -webkit-text-fill-color: #00d2c7 !important;
+}
+
+html[data-theme="light"] .dh-brand-simple > span:first-of-type {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+html[data-theme="light"] .dh-brand-simple > span:last-of-type {
+    color: #009f95 !important;
+    -webkit-text-fill-color: #009f95 !important;
+}
+
+
+/* ============================================================
+   DOLARHUNTER GOLD BRAND
+   ============================================================ */
+
+.dh-brand-simple > span:last-of-type {
+    color: #D4AF37 !important;
+    -webkit-text-fill-color: #D4AF37 !important;
+    text-shadow:
+        0 0 8px rgba(212,175,55,.20),
+        0 0 18px rgba(212,175,55,.10) !important;
+}
+
+html[data-theme="light"] .dh-brand-simple > span:last-of-type {
+    color: #B8860B !important;
+    -webkit-text-fill-color: #B8860B !important;
+    text-shadow:
+        0 0 8px rgba(184,134,11,.16) !important;
+}
+
+
+/* ============================================================
+   DOLARHUNTER PREMIUM DASHBOARD UI
+   Safe visual layer - does not modify JavaScript
+   ============================================================ */
+
+:root {
+    --dh-dashboard-max: 1380px;
+    --dh-radius: 16px;
+    --dh-radius-sm: 12px;
+    --dh-shadow: 0 12px 35px rgba(0,0,0,.18);
+    --dh-shadow-hover: 0 18px 45px rgba(0,0,0,.25);
+}
+
+/* Main dashboard background */
+#dashboard-pane {
+    padding: 24px !important;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(0,210,199,.07), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(212,175,55,.05), transparent 30%),
+        var(--bg);
+    min-height: calc(100vh - 120px);
+}
+
+/* Dashboard content width */
+#dashboard-pane > div {
+    max-width: var(--dh-dashboard-max) !important;
+}
+
+/* Auth / welcome card */
+#auth-card {
+    border-radius: 22px !important;
+    padding: 42px !important;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015)),
+        var(--card) !important;
+    border: 1px solid rgba(255,255,255,.08) !important;
+    box-shadow: var(--dh-shadow) !important;
+}
+
+/* Dashboard cards */
+#dashboard-pane .card,
+#dashboard-pane .card-sm {
+    border-radius: var(--dh-radius) !important;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+/* Hover effect */
+#dashboard-pane .card:hover,
+#dashboard-pane .card-sm:hover {
+    border-color: rgba(0,210,199,.28) !important;
+    box-shadow: var(--dh-shadow-hover) !important;
+}
+
+/* Statistics cards */
+#dash-stats > div:first-child .card-sm {
+    min-height: 92px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Statistic numbers */
+#dash-stats .card-sm div[id] {
+    letter-spacing: -.5px;
+}
+
+/* Dashboard statistics grid */
+#dash-stats > div:first-child {
+    gap: 14px !important;
+}
+
+/* Recent trades */
+#recent-trades {
+    min-height: 90px;
+}
+
+/* Premium section headings */
+#dashboard-pane [style*="text-transform:uppercase"] {
+    letter-spacing: .7px !important;
+}
+
+/* Premium buttons */
+#dashboard-pane .btn {
+    border-radius: 10px !important;
+    font-weight: 800 !important;
+    transition: all .2s ease !important;
+}
+
+#dashboard-pane .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Teal primary buttons */
+#dashboard-pane .btn-teal {
+    box-shadow: 0 7px 22px rgba(0,210,199,.18);
+}
+
+/* Navigation */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 18px !important;
+    background: rgba(10,15,25,.92) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,.07) !important;
+}
+
+/* Navigation buttons */
+nav .tab-btn {
+    border-radius: 10px !important;
+    transition: all .2s ease !important;
+    font-weight: 700 !important;
+}
+
+nav .tab-btn:hover {
+    background: rgba(0,210,199,.08) !important;
+    color: var(--teal) !important;
+}
+
+nav .tab-btn.active {
+    box-shadow: 0 5px 18px rgba(0,210,199,.12);
+}
+
+/* Light mode dashboard */
+html[data-theme="light"] #dashboard-pane {
+    background:
+        radial-gradient(circle at 10% 5%, rgba(0,159,149,.06), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(212,175,55,.05), transparent 30%),
+        var(--bg);
+}
+
+html[data-theme="light"] #dashboard-pane .card,
+html[data-theme="light"] #dashboard-pane .card-sm {
+    box-shadow: 0 8px 25px rgba(0,0,0,.07) !important;
+    border-color: rgba(0,0,0,.08) !important;
+}
+
+html[data-theme="light"] nav {
+    background: rgba(255,255,255,.92) !important;
+    border-bottom-color: rgba(0,0,0,.08) !important;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+
+    #dashboard-pane {
+        padding: 14px !important;
+    }
+
+    #dash-stats > div:first-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    #auth-card {
+        padding: 28px 18px !important;
+    }
+}
+
+@media (max-width: 520px) {
+
+    #dashboard-pane {
+        padding: 10px !important;
+    }
+
+    #dash-stats > div:first-child {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+    }
+
+    #auth-card {
+        padding: 24px 14px !important;
+        border-radius: 16px !important;
+    }
+
+    nav {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 8px !important;
+    }
+
+    nav .tab-btn {
+        flex-shrink: 0;
+        font-size: 11px !important;
+    }
+}
+
+/* Smooth theme transition */
+html,
+body,
+.card,
+.card-sm,
+nav,
+button,
+input,
+select {
+    transition:
+        background-color .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* ============================================================
+   DOLARHUNTER PREMIUM DASHBOARD V2
+   Header-matched • Dark/Light aware • Safe visual overrides
+   ============================================================ */
+
+/* ---------- THEME VARIABLES ---------- */
+
+:root {
+    --dh-gold: #d4af37;
+    --dh-gold-light: #f1d77a;
+    --dh-teal: #00d2c7;
+
+    --dh-dashboard-bg: #080c13;
+    --dh-surface: #101722;
+    --dh-surface-2: #141d2a;
+    --dh-surface-3: #192333;
+
+    --dh-dashboard-border: rgba(255,255,255,.075);
+    --dh-dashboard-border-hover: rgba(0,210,199,.35);
+
+    --dh-dashboard-text: #f5f7fa;
+    --dh-dashboard-muted: #8e9aaa;
+
+    --dh-glass: rgba(16,23,34,.78);
+
+    --dh-card-shadow:
+        0 12px 35px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.025);
+
+    --dh-card-shadow-hover:
+        0 18px 45px rgba(0,0,0,.38),
+        0 0 0 1px rgba(0,210,199,.12);
+}
+
+/* ---------- LIGHT THEME ---------- */
+
+html[data-theme="light"] {
+
+    --dh-dashboard-bg: #f5f7fa;
+    --dh-surface: #ffffff;
+    --dh-surface-2: #f8fafc;
+    --dh-surface-3: #eef2f6;
+
+    --dh-dashboard-border: rgba(15,23,42,.09);
+    --dh-dashboard-border-hover: rgba(0,159,149,.30);
+
+    --dh-dashboard-text: #111827;
+    --dh-dashboard-muted: #667085;
+
+    --dh-glass: rgba(255,255,255,.86);
+
+    --dh-card-shadow:
+        0 8px 28px rgba(15,23,42,.08),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    --dh-card-shadow-hover:
+        0 14px 35px rgba(15,23,42,.13),
+        0 0 0 1px rgba(0,159,149,.10);
+}
+
+
+/* ============================================================
+   DASHBOARD BACKGROUND
+   ============================================================ */
+
+#dashboard-pane {
+
+    position: relative;
+
+    padding: 28px !important;
+
+    background:
+        radial-gradient(
+            circle at 8% 5%,
+            rgba(0,210,199,.075),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(212,175,55,.065),
+            transparent 24%
+        ),
+        linear-gradient(
+            180deg,
+            var(--dh-dashboard-bg),
+            var(--dh-dashboard-bg)
+        ) !important;
+
+    color: var(--dh-dashboard-text);
+
+    min-height: calc(100vh - 115px);
+}
+
+
+/* Dashboard content width */
+
+#dashboard-pane > div {
+
+    max-width: 1380px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    width: 100%;
+}
+
+
+/* ============================================================
+   PREMIUM AUTH / WELCOME AREA
+   ============================================================ */
+
+#auth-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 46px !important;
+
+    border-radius: 22px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,210,199,.055),
+            transparent 42%
+        ),
+        linear-gradient(
+            315deg,
+            rgba(212,175,55,.045),
+            transparent 45%
+        ),
+        var(--dh-surface) !important;
+
+    border: 1px solid var(--dh-dashboard-border) !important;
+
+    box-shadow: var(--dh-card-shadow) !important;
+}
+
+
+/* Top glow */
+
+#auth-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+    right: 12%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--dh-teal),
+            var(--dh-gold),
+            transparent
+        );
+
+    opacity: .75;
+}
+
+
+/* Welcome icon */
+
+#auth-card > div:first-child {
+
+    box-shadow:
+        0 0 30px rgba(0,210,199,.13),
+        inset 0 0 20px rgba(0,210,199,.05);
+
+}
+
+
+/* ============================================================
+   UNIVERSAL DASHBOARD CARDS
+   ============================================================ */
+
+#dashboard-pane .card,
+#dashboard-pane .card-sm {
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.018),
+            transparent 55%
+        ),
+        var(--dh-surface) !important;
+
+    color: var(--dh-dashboard-text);
+
+    border: 1px solid var(--dh-dashboard-border) !important;
+
+    box-shadow: var(--dh-card-shadow) !important;
+
+    border-radius: 16px !important;
+
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+}
+
+
+/* Hover */
+
+#dashboard-pane .card:hover,
+#dashboard-pane .card-sm:hover {
+
+    border-color: var(--dh-dashboard-border-hover) !important;
+
+    box-shadow: var(--dh-card-shadow-hover) !important;
+
+}
+
+
+/* Don't move tiny stat cards too much */
+
+#dashboard-pane .card-sm:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ============================================================
+   STATISTICS
+   ============================================================ */
+
+#dash-stats > div:first-child {
+
+    gap: 14px !important;
+
+}
+
+
+#dash-stats > div:first-child .card-sm {
+
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+}
+
+
+/* Stat top accent */
+
+#dash-stats > div:first-child .card-sm::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 18%;
+    right: 18%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--dh-teal),
+            transparent
+        );
+
+    opacity: .65;
+
+}
+
+
+/* ============================================================
+   RECENT TRADES
+   ============================================================ */
+
+#recent-trades {
+
+    min-height: 90px;
+
+}
+
+
+/* ============================================================
+   PREMIUM TEXT HIERARCHY
+   ============================================================ */
+
+#dashboard-pane h1,
+#dashboard-pane h2,
+#dashboard-pane h3 {
+
+    color: var(--dh-dashboard-text);
+
+    letter-spacing: -.3px;
+
+}
+
+
+#dashboard-pane [style*="color:var(--muted)"] {
+
+    color: var(--dh-dashboard-muted) !important;
+
+}
+
+
+/* ============================================================
+   PREMIUM NAVIGATION
+   ============================================================ */
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 999;
+
+    padding: 10px 20px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,15,24,.96),
+            rgba(10,15,24,.88)
+        ) !important;
+
+    backdrop-filter: blur(22px);
+
+    -webkit-backdrop-filter: blur(22px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.075) !important;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.15);
+}
+
+
+/* Light navigation */
+
+html[data-theme="light"] nav {
+
+    background:
+        rgba(255,255,255,.92) !important;
+
+    border-bottom:
+        1px solid rgba(15,23,42,.08) !important;
+
+    box-shadow:
+        0 8px 25px rgba(15,23,42,.07);
+}
+
+
+/* Navigation buttons */
+
+nav .tab-btn {
+
+    position: relative;
+
+    border-radius: 10px !important;
+
+    font-weight: 750 !important;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+/* Active navigation */
+
+nav .tab-btn.active {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,210,199,.12),
+            rgba(0,210,199,.045)
+        ) !important;
+
+    color: var(--dh-teal) !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(0,210,199,.16),
+        0 5px 18px rgba(0,210,199,.09);
+
+}
+
+
+/* Active bottom line */
+
+nav .tab-btn.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 25%;
+    right: 25%;
+
+    bottom: 2px;
+
+    height: 2px;
+
+    border-radius: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--dh-teal),
+            var(--dh-gold)
+        );
+
+}
+
+
+/* Hover */
+
+nav .tab-btn:hover {
+
+    transform: translateY(-1px);
+
+    color: var(--dh-teal) !important;
+
+}
+
+
+/* ============================================================
+   GOLD + TEAL PREMIUM ACCENTS
+   ============================================================ */
+
+#dashboard-pane .btn-teal {
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d2c7,
+            #00a89f
+        ) !important;
+
+    border: none !important;
+
+    box-shadow:
+        0 8px 24px rgba(0,210,199,.20) !important;
+
+}
+
+
+#dashboard-pane .btn-teal:hover {
+
+    box-shadow:
+        0 12px 30px rgba(0,210,199,.28) !important;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* Gold elements */
+
+#dashboard-pane [style*="var(--amber)"],
+#dashboard-pane [style*="var(--gold)"] {
+
+    color: var(--dh-gold-light) !important;
+
+}
+
+
+/* ============================================================
+   INPUTS / SELECTS
+   ============================================================ */
+
+#dashboard-pane input,
+#dashboard-pane select,
+#dashboard-pane textarea {
+
+    background: var(--dh-surface-2) !important;
+
+    color: var(--dh-dashboard-text) !important;
+
+    border-color: var(--dh-dashboard-border) !important;
+
+    border-radius: 10px !important;
+
+}
+
+
+#dashboard-pane input:focus,
+#dashboard-pane select:focus,
+#dashboard-pane textarea:focus {
+
+    outline: none !important;
+
+    border-color: var(--dh-teal) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0,210,199,.09) !important;
+
+}
+
+
+/* ============================================================
+   LIGHT MODE CARDS
+   ============================================================ */
+
+html[data-theme="light"] #dashboard-pane .card,
+html[data-theme="light"] #dashboard-pane .card-sm {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(248,250,252,.96)
+        ) !important;
+
+}
+
+
+/* Light mode inputs */
+
+html[data-theme="light"] #dashboard-pane input,
+html[data-theme="light"] #dashboard-pane select,
+html[data-theme="light"] #dashboard-pane textarea {
+
+    background: #ffffff !important;
+
+    color: #111827 !important;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    #dashboard-pane {
+
+        padding: 18px !important;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    #dashboard-pane {
+
+        padding: 12px !important;
+
+    }
+
+    #dash-stats > div:first-child {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap: 9px !important;
+
+    }
+
+    #auth-card {
+
+        padding: 30px 18px !important;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    #dashboard-pane {
+
+        padding: 8px !important;
+
+    }
+
+    #dash-stats > div:first-child {
+
+        grid-template-columns:
+            repeat(2, 1fr) !important;
+
+        gap: 7px !important;
+
+    }
+
+    #dash-stats > div:first-child .card-sm {
+
+        min-height: 82px;
+
+    }
+
+}
+
+
+/* ============================================================
+   SMOOTH THEME TRANSITION
+   ============================================================ */
+
+html,
+body,
+nav,
+.card,
+.card-sm,
+button,
+input,
+select,
+textarea {
+
+    transition:
+        background-color .25s ease,
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* ============================================================
+   DOLARHUNTER — FINAL PREMIUM DASHBOARD OVERRIDES
+   Blends with premium header + full dark/light support
+   ============================================================ */
+
+:root {
+    --dh-gold: #d4af37;
+    --dh-gold-light: #f1d77a;
+    --dh-teal: #00d2c7;
+    --dh-dashboard-bg: #080c13;
+    --dh-panel: rgba(18,25,38,.88);
+    --dh-panel-solid: #121926;
+    --dh-dashboard-border: rgba(255,255,255,.075);
+    --dh-card-shadow:
+        0 12px 35px rgba(0,0,0,.28),
+        0 2px 8px rgba(0,0,0,.18);
+    --dh-card-shadow-hover:
+        0 18px 45px rgba(0,0,0,.38),
+        0 4px 14px rgba(0,210,199,.08);
+}
+
+/* ============================================================
+   DASHBOARD BACKGROUND
+   ============================================================ */
+
+#dashboard-pane {
+    position: relative;
+    isolation: isolate;
+    min-height: calc(100vh - 130px);
+    background:
+        radial-gradient(
+            circle at 8% 0%,
+            rgba(0,210,199,.09),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(212,175,55,.08),
+            transparent 26%
+        ),
+        linear-gradient(
+            180deg,
+            #080c13 0%,
+            #0b111c 50%,
+            #080c13 100%
+        ) !important;
+}
+
+/* subtle premium glow */
+#dashboard-pane::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,210,199,.025),
+            transparent
+        );
+}
+
+/* ============================================================
+   DASHBOARD CONTENT WIDTH
+   ============================================================ */
+
+#dashboard-pane > div {
+    max-width: 1180px !important;
+    width: 100%;
+}
+
+/* ============================================================
+   PREMIUM CARDS
+   ============================================================ */
+
+#dashboard-pane .card,
+#dashboard-pane .card-sm {
+    position: relative;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        ),
+        var(--dh-panel-solid) !important;
+
+    border: 1px solid var(--dh-dashboard-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--dh-card-shadow) !important;
+
+    overflow: hidden;
+}
+
+/* top light edge */
+#dashboard-pane .card::before,
+#dashboard-pane .card-sm::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+    pointer-events: none;
+}
+
+/* card hover */
+#dashboard-pane .card:hover,
+#dashboard-pane .card-sm:hover {
+    border-color: rgba(0,210,199,.18) !important;
+    box-shadow: var(--dh-card-shadow-hover) !important;
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   WELCOME / AUTH CARD
+   ============================================================ */
+
+#auth-card {
+    border-radius: 22px !important;
+    padding: 42px !important;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,210,199,.08),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        ),
+        var(--dh-panel-solid) !important;
+
+    border-color: rgba(0,210,199,.14) !important;
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.35),
+        0 0 0 1px rgba(0,210,199,.025),
+        0 0 45px rgba(0,210,199,.035) !important;
+}
+
+#auth-card h2 {
+    letter-spacing: -.4px;
+}
+
+/* ============================================================
+   DASHBOARD STAT CARDS
+   ============================================================ */
+
+#dash-stats > div:first-child > .card-sm {
+    min-height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 14px !important;
+}
+
+#dash-stats > div:first-child > .card-sm:hover {
+    transform: translateY(-3px);
+}
+
+/* ============================================================
+   PREMIUM STAT NUMBERS
+   ============================================================ */
+
+#ds-runs,
+#ds-wr,
+#ds-pl,
+#ds-bot {
+    letter-spacing: -.5px;
+}
+
+#ds-wr {
+    text-shadow: 0 0 18px rgba(0,210,199,.18);
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+
+#dashboard-pane .card > div:first-child {
+    letter-spacing: .35px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+#dashboard-pane .btn {
+    border-radius: 11px !important;
+    font-weight: 800 !important;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background-color .2s ease !important;
+}
+
+#dashboard-pane .btn:hover {
+    transform: translateY(-2px);
+}
+
+#dashboard-pane .btn-teal {
+    background:
+        linear-gradient(
+            135deg,
+            #00d2c7,
+            #00a99f
+        ) !important;
+
+    color: #061012 !important;
+
+    box-shadow:
+        0 8px 24px rgba(0,210,199,.20) !important;
+}
+
+#dashboard-pane .btn-teal:hover {
+    box-shadow:
+        0 12px 30px rgba(0,210,199,.30) !important;
+}
+
+/* ============================================================
+   NAV BLENDING
+   ============================================================ */
+
+nav {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(9,14,23,.97),
+            rgba(9,14,23,.88)
+        ) !important;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07) !important;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.18) !important;
+}
+
+/* active navigation */
+nav .tab-btn.active {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,210,199,.14),
+            rgba(0,210,199,.05)
+        ) !important;
+
+    color: var(--dh-teal) !important;
+
+    border-color:
+        rgba(0,210,199,.18) !important;
+}
+
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+
+html[data-theme="light"] {
+    --dh-dashboard-bg: #f4f6f8;
+    --dh-panel: rgba(255,255,255,.92);
+    --dh-panel-solid: #ffffff;
+    --dh-dashboard-border: rgba(15,23,42,.09);
+
+    --dh-card-shadow:
+        0 10px 30px rgba(15,23,42,.07),
+        0 2px 7px rgba(15,23,42,.04);
+
+    --dh-card-shadow-hover:
+        0 16px 38px rgba(15,23,42,.11),
+        0 4px 14px rgba(0,159,149,.08);
+}
+
+html[data-theme="light"] #dashboard-pane {
+    background:
+        radial-gradient(
+            circle at 8% 0%,
+            rgba(0,159,149,.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 5%,
+            rgba(212,175,55,.10),
+            transparent 26%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fafb 0%,
+            #f1f4f6 55%,
+            #f8fafb 100%
+        ) !important;
+}
+
+html[data-theme="light"] #dashboard-pane .card,
+html[data-theme="light"] #dashboard-pane .card-sm {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(248,250,252,.96)
+        ) !important;
+
+    border-color:
+        rgba(15,23,42,.085) !important;
+
+    box-shadow:
+        var(--dh-card-shadow) !important;
+}
+
+html[data-theme="light"] #dashboard-pane .card:hover,
+html[data-theme="light"] #dashboard-pane .card-sm:hover {
+    border-color:
+        rgba(0,159,149,.20) !important;
+
+    box-shadow:
+        var(--dh-card-shadow-hover) !important;
+}
+
+html[data-theme="light"] #auth-card {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,159,149,.07),
+            transparent 38%
+        ),
+        #ffffff !important;
+
+    border-color:
+        rgba(0,159,149,.14) !important;
+
+    box-shadow:
+        0 18px 45px rgba(15,23,42,.09),
+        0 0 35px rgba(0,159,149,.035) !important;
+}
+
+html[data-theme="light"] nav {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.98),
+            rgba(248,250,252,.94)
+        ) !important;
+
+    border-bottom-color:
+        rgba(15,23,42,.08) !important;
+
+    box-shadow:
+        0 8px 25px rgba(15,23,42,.06) !important;
+}
+
+html[data-theme="light"] nav .tab-btn.active {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,159,149,.11),
+            rgba(0,159,149,.04)
+        ) !important;
+
+    color: #008f87 !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+    #dashboard-pane > div {
+        max-width: 100% !important;
+    }
+
+    #auth-card {
+        padding: 30px 22px !important;
+    }
+}
+
+@media (max-width: 520px) {
+    #dashboard-pane {
+        padding: 10px !important;
+    }
+
+    #auth-card {
+        padding: 26px 16px !important;
+        border-radius: 18px !important;
+    }
+
+    #dashboard-pane .card,
+    #dashboard-pane .card-sm {
+        border-radius: 13px !important;
+    }
+}
+
+/* ============================================================
+   REDUCE MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    #dashboard-pane .card,
+    #dashboard-pane .card-sm,
+    #dashboard-pane .btn {
+        transition: none !important;
+    }
+}
+
+
+/* ============================================================
+   DOLARHUNTER — WELCOME BRAND MATCHES HEADER
+   ============================================================ */
+
+#auth-card h2 {
+    font-size: 26px !important;
+    font-weight: 950 !important;
+    letter-spacing: -0.8px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
+
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+
+    text-shadow:
+        0 0 18px rgba(255,255,255,.08),
+        0 0 28px rgba(0,210,199,.06) !important;
+}
+
+/* Make DOLARHUNTER inside the welcome title premium */
+#auth-card h2 .dh-welcome-dolar {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+#auth-card h2 .dh-welcome-hunter {
+    color: #d4af37 !important;
+    -webkit-text-fill-color: #d4af37 !important;
+
+    text-shadow:
+        0 0 12px rgba(212,175,55,.20) !important;
+}
+
+/* LIGHT MODE */
+html[data-theme="light"] #auth-card h2 {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+html[data-theme="light"] #auth-card h2 .dh-welcome-dolar {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+html[data-theme="light"] #auth-card h2 .dh-welcome-hunter {
+    color: #b8941f !important;
+    -webkit-text-fill-color: #b8941f !important;
+
+    text-shadow:
+        0 0 10px rgba(184,148,31,.12) !important;
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+    #auth-card h2 {
+        font-size: 22px !important;
+    }
+}
+
+
+/* ============================================================
+   DOLARHUNTER PREMIUM WELCOME CARD
+   ============================================================ */
+
+#auth-card {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 22px !important;
+    padding: 42px 36px !important;
+
+    background:
+        radial-gradient(circle at 50% -20%, rgba(0,210,199,.12), transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(212,175,55,.08), transparent 40%),
+        var(--card) !important;
+
+    border: 1px solid rgba(255,255,255,.08) !important;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.28),
+        0 0 0 1px rgba(0,210,199,.025) inset !important;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease !important;
+}
+
+/* Premium top accent line */
+#auth-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--teal),
+        #d4af37,
+        var(--teal),
+        transparent
+    );
+
+    opacity: .9;
+}
+
+/* Soft background glow */
+#auth-card::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -150px;
+    right: -100px;
+
+    background: rgba(0,210,199,.08);
+    filter: blur(70px);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+/* Welcome heading */
+#auth-card h2 {
+    position: relative;
+    z-index: 2;
+
+    font-size: 25px !important;
+    font-weight: 900 !important;
+    letter-spacing: -.4px !important;
+    margin-bottom: 10px !important;
+}
+
+/* DOLAR */
+#auth-card h2 .dh-welcome-dolar {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 950 !important;
+}
+
+/* HUNTER GOLD */
+#auth-card h2 .dh-welcome-hunter {
+    color: #d4af37 !important;
+    -webkit-text-fill-color: #d4af37 !important;
+    font-weight: 950 !important;
+
+    text-shadow:
+        0 0 18px rgba(212,175,55,.18);
+}
+
+/* Description under welcome */
+#auth-card p {
+    position: relative;
+    z-index: 2;
+
+    color: var(--muted) !important;
+    line-height: 1.65 !important;
+}
+
+/* Light mode */
+html[data-theme="light"] #auth-card {
+    background:
+        radial-gradient(circle at 50% -20%, rgba(0,159,149,.08), transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(212,175,55,.07), transparent 40%),
+        #ffffff !important;
+
+    border-color: rgba(0,0,0,.08) !important;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.09),
+        0 0 0 1px rgba(0,0,0,.025) inset !important;
+}
+
+html[data-theme="light"] #auth-card h2 .dh-welcome-dolar {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+html[data-theme="light"] #auth-card h2 .dh-welcome-hunter {
+    color: #b8941f !important;
+    -webkit-text-fill-color: #b8941f !important;
+}
+
+/* Hover */
+@media (min-width: 901px) {
+    #auth-card:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 25px 70px rgba(0,0,0,.32),
+            0 0 35px rgba(0,210,199,.05);
+    }
+
+    html[data-theme="light"] #auth-card:hover {
+        box-shadow:
+            0 25px 55px rgba(0,0,0,.12),
+            0 0 30px rgba(0,159,149,.04);
+    }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+    #auth-card {
+        padding: 34px 20px !important;
+        border-radius: 18px !important;
+    }
+
+    #auth-card h2 {
+        font-size: 21px !important;
+    }
+}
+
+
+/* ============================================================
+   DOLARHUNTER SOCIAL COMMUNITY LINKS
+   ============================================================ */
+
+.dh-social-links {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-right: 8px;
+}
+
+.dh-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 34px;
+    padding: 0 12px;
+
+    border-radius: 9px;
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.035);
+
+    color: var(--text) !important;
+    text-decoration: none !important;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .2px;
+
+    transition: all .2s ease;
+}
+
+.dh-social-btn:hover {
+    transform: translateY(-1px);
+    text-decoration: none !important;
+}
+
+.dh-whatsapp:hover {
+    border-color: rgba(37,211,102,.55);
+    background: rgba(37,211,102,.10);
+    color: #25d366 !important;
+    box-shadow: 0 5px 18px rgba(37,211,102,.12);
+}
+
+.dh-telegram:hover {
+    border-color: rgba(36,161,222,.55);
+    background: rgba(36,161,222,.10);
+    color: #24a1de !important;
+    box-shadow: 0 5px 18px rgba(36,161,222,.12);
+}
+
+/* Light mode */
+html[data-theme="light"] .dh-social-btn {
+    background: rgba(0,0,0,.025);
+    border-color: rgba(0,0,0,.09);
+}
+
+html[data-theme="light"] .dh-social-btn:hover {
+    background: rgba(0,0,0,.045);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .dh-social-links {
+        gap: 5px;
+        margin-right: 4px;
+    }
+
+    .dh-social-btn {
+        padding: 0 8px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 520px) {
+    .dh-social-links {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   DOLARHUNTER PREMIUM ACCUMULATOR TERMINAL
+   Presentation layer only - trading logic untouched
+   ============================================================ */
+
+#accu-pane {
+    padding: 20px !important;
+
+    background:
+        radial-gradient(
+            circle at 5% 0%,
+            rgba(0,210,199,.055),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 95% 10%,
+            rgba(212,175,55,.045),
+            transparent 30%
+        ),
+        var(--bg) !important;
+}
+
+/* Main accumulator container */
+#accu-pane .accu-wrap {
+    width: min(1180px, 100%) !important;
+    max-width: 1180px !important;
+    margin: 0 auto !important;
+    gap: 16px !important;
+}
+
+/* ============================================================
+   ACCUMULATOR HEADER
+   ============================================================ */
+
+#accu-pane .accu-wrap > div:first-child {
+    position: relative;
+
+    padding: 18px 20px !important;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,210,199,.055),
+            rgba(212,175,55,.025)
+        ),
+        var(--card);
+
+    border: 1px solid rgba(255,255,255,.075);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.025);
+
+    overflow: hidden;
+}
+
+#accu-pane .accu-wrap > div:first-child::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 7%;
+    right: 7%;
+
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--teal),
+        #d4af37,
+        var(--teal),
+        transparent
+    );
+}
+
+#accu-pane .accu-wrap h2 {
+    font-size: 21px !important;
+    font-weight: 950 !important;
+    letter-spacing: -.4px;
+}
+
+#accu-pane .accu-wrap h2::first-letter {
+    color: var(--teal);
+}
+
+/* ============================================================
+   LIVE API BADGE
+   ============================================================ */
+
+#accu-pane .badge-teal {
+    border: 1px solid rgba(0,210,199,.30) !important;
+
+    background: rgba(0,210,199,.08) !important;
+
+    color: var(--teal) !important;
+
+    box-shadow:
+        0 0 18px rgba(0,210,199,.08);
+
+    font-weight: 800 !important;
+}
+
+/* ============================================================
+   PREMIUM CARDS
+   ============================================================ */
+
+#accu-pane .card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.018),
+            transparent 50%
+        ),
+        var(--card) !important;
+
+    border: 1px solid rgba(255,255,255,.075) !important;
+
+    border-radius: 16px !important;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.018) !important;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease !important;
+}
+
+#accu-pane .card:hover {
+    border-color: rgba(0,210,199,.18) !important;
+
+    box-shadow:
+        0 16px 42px rgba(0,0,0,.25),
+        0 0 25px rgba(0,210,199,.035) !important;
+}
+
+#accu-pane .card-sm {
+    background:
+        rgba(255,255,255,.018) !important;
+
+    border: 1px solid rgba(255,255,255,.065) !important;
+
+    border-radius: 11px !important;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease !important;
+}
+
+#accu-pane .card-sm:hover {
+    background: rgba(0,210,199,.035) !important;
+    border-color: rgba(0,210,199,.15) !important;
+}
+
+/* ============================================================
+   SECTION TITLES
+   ============================================================ */
+
+#accu-pane .accu-card > div:first-child {
+    letter-spacing: .5px !important;
+}
+
+/* ============================================================
+   MARKET SELECTOR
+   ============================================================ */
+
+#accu-pane select {
+    min-height: 42px !important;
+
+    border-radius: 10px !important;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+
+    background:
+        rgba(255,255,255,.035) !important;
+
+    font-weight: 700 !important;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease !important;
+}
+
+#accu-pane select:focus {
+    border-color: var(--teal) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0,210,199,.10) !important;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+#accu-pane input {
+    min-height: 40px !important;
+
+    border-radius: 9px !important;
+
+    border: 1px solid rgba(255,255,255,.09) !important;
+
+    background:
+        rgba(255,255,255,.035) !important;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease !important;
+}
+
+#accu-pane input:focus {
+    border-color: var(--teal) !important;
+
+    background:
+        rgba(0,210,199,.035) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0,210,199,.09) !important;
+
+    outline: none !important;
+}
+
+/* ============================================================
+   METRIC CARDS
+   ============================================================ */
+
+#accu-pane .accu-row-3 .card-sm {
+    min-height: 62px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#accu-pane .accu-row-3 .card-sm > div:first-child {
+    letter-spacing: .6px;
+}
+
+/* ============================================================
+   VOLATILITY BAR
+   ============================================================ */
+
+#accu-vol-bar {
+    box-shadow:
+        0 0 12px rgba(0,210,199,.18);
+
+    transition:
+        width .5s ease,
+        background .3s ease !important;
+}
+
+/* ============================================================
+   SIGNAL BOX
+   ============================================================ */
+
+#accu-signal-box {
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,210,199,.055),
+            transparent 65%
+        ),
+        var(--bg) !important;
+
+    border-color: rgba(0,210,199,.18) !important;
+
+    box-shadow:
+        inset 0 0 25px rgba(0,210,199,.025);
+}
+
+/* ============================================================
+   AUTO MODE
+   ============================================================ */
+
+#accu-auto-track {
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.04);
+
+    transition:
+        background .25s ease,
+        box-shadow .25s ease !important;
+}
+
+#accu-auto-track:hover {
+    box-shadow:
+        0 0 0 3px rgba(0,210,199,.08);
+}
+
+/* ============================================================
+   GROWTH BUTTONS
+   ============================================================ */
+
+#accu-pane .btn {
+    border-radius: 9px !important;
+
+    font-weight: 800 !important;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease !important;
+}
+
+#accu-pane .btn:hover {
+    transform: translateY(-1px);
+}
+
+#accu-pane .btn-teal {
+    box-shadow:
+        0 7px 22px rgba(0,210,199,.15) !important;
+}
+
+#accu-pane .btn-teal:hover {
+    box-shadow:
+        0 9px 28px rgba(0,210,199,.24) !important;
+}
+
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+
+html[data-theme="light"] #accu-pane {
+    background:
+        radial-gradient(
+            circle at 5% 0%,
+            rgba(0,159,149,.055),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 95% 10%,
+            rgba(212,175,55,.06),
+            transparent 30%
+        ),
+        var(--bg) !important;
+}
+
+html[data-theme="light"] #accu-pane .card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(248,250,252,.96)
+        ) !important;
+
+    border-color: rgba(0,0,0,.075) !important;
+
+    box-shadow:
+        0 12px 32px rgba(0,0,0,.075),
+        inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+html[data-theme="light"] #accu-pane .card:hover {
+    border-color: rgba(0,159,149,.20) !important;
+
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.10),
+        0 0 25px rgba(0,159,149,.035) !important;
+}
+
+html[data-theme="light"] #accu-pane .card-sm {
+    background: rgba(248,250,252,.90) !important;
+
+    border-color: rgba(0,0,0,.065) !important;
+}
+
+html[data-theme="light"] #accu-pane .card-sm:hover {
+    background: rgba(0,159,149,.035) !important;
+
+    border-color: rgba(0,159,149,.16) !important;
+}
+
+html[data-theme="light"] #accu-pane select,
+html[data-theme="light"] #accu-pane input {
+    background: #ffffff !important;
+
+    border-color: rgba(0,0,0,.10) !important;
+}
+
+html[data-theme="light"] #accu-pane input:focus,
+html[data-theme="light"] #accu-pane select:focus {
+    border-color: #009f95 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0,159,149,.09) !important;
+}
+
+html[data-theme="light"] #accu-signal-box {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,159,149,.055),
+            transparent 65%
+        ),
+        #f8fafc !important;
+
+    border-color: rgba(0,159,149,.18) !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    #accu-pane {
+        padding: 14px !important;
+    }
+
+    #accu-pane .accu-wrap {
+        gap: 12px !important;
+    }
+}
+
+@media (max-width: 650px) {
+
+    #accu-pane {
+        padding: 10px !important;
+    }
+
+    #accu-pane .accu-wrap > div:first-child {
+        padding: 16px !important;
+    }
+
+    #accu-pane .accu-wrap h2 {
+        font-size: 18px !important;
+    }
+
+    #accu-pane .accu-row-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    #accu-pane .accu-row-3 {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+}
+
+@media (max-width: 430px) {
+
+    #accu-pane .accu-row-3 {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    #accu-pane .card {
+        border-radius: 13px !important;
+    }
+
+    #accu-pane .btn {
+        font-size: 10px !important;
+    }
+}
+
+
+/* =========================================================
+   DOLARHUNTER â€” PREMIUM BULK TRADER
+   Visual layer only â€” does not modify trading logic
+   ========================================================= */
+
+#bulk-pane {
+    padding: 18px !important;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(212,175,55,.08), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(0,210,199,.07), transparent 32%),
+        var(--bg) !important;
+    min-height: 100%;
+}
+
+#bulk-pane > div {
+    max-width: 980px !important;
+}
+
+/* Bulk header */
+#bulk-pane h2 {
+    font-size: 21px !important;
+    font-weight: 950 !important;
+    letter-spacing: -.4px;
+    background: linear-gradient(
+        90deg,
+        var(--text),
+        var(--dh-gold),
+        var(--dh-gold-light)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#bulk-pane h2 + p {
+    max-width: 650px;
+    line-height: 1.6 !important;
+}
+
+/* Header status area */
+#bulk-pane .status-dot {
+    box-shadow: 0 0 10px rgba(0,210,199,.35);
+}
+
+#bulk-account-badge,
+#bulk-balance-badge {
+    border-radius: 999px !important;
+    padding: 5px 11px !important;
+    font-weight: 800 !important;
+}
+
+/* Main Bulk cards */
+#bulk-pane .accu-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px !important;
+    border: 1px solid var(--border) !important;
+    background:
+        linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--card) 96%, var(--dh-gold) 4%),
+            var(--card)
+        ) !important;
+    box-shadow:
+        var(--dh-card-shadow),
+        inset 0 1px 0 rgba(255,255,255,.035) !important;
+    transition:
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease !important;
+}
+
+#bulk-pane .accu-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dh-gold),
+        var(--teal),
+        transparent
+    );
+    opacity: .65;
+}
+
+#bulk-pane .accu-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212,175,55,.35) !important;
+    box-shadow: var(--dh-card-shadow-hover) !important;
+}
+
+/* Section titles */
+#bulk-pane .accu-card > div:first-child {
+    letter-spacing: .7px;
+}
+
+/* Inputs */
+#bulk-pane input,
+#bulk-pane select {
+    border-radius: 10px !important;
+    min-height: 42px;
+    background: var(--bg2) !important;
+    border: 1px solid var(--border) !important;
+    transition: all .2s ease !important;
+}
+
+#bulk-pane input:focus,
+#bulk-pane select:focus {
+    border-color: var(--dh-gold) !important;
+    box-shadow:
+        0 0 0 3px rgba(212,175,55,.10),
+        0 0 18px rgba(212,175,55,.08) !important;
+    outline: none !important;
+}
+
+/* Direction buttons / controls */
+#bulk-dir-controls .btn,
+#bulk-pane .btn {
+    border-radius: 10px !important;
+    font-weight: 800 !important;
+    transition: all .18s ease !important;
+}
+
+#bulk-pane .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Gold treatment for selected/premium actions */
+#bulk-mode-per.btn-teal,
+#bulk-mode-total.btn-teal {
+    background:
+        linear-gradient(135deg, var(--teal), #008f88) !important;
+    box-shadow: 0 5px 18px rgba(0,210,199,.16) !important;
+}
+
+/* Preview card */
+#bulk-pane #bulk-preview-body {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.045),
+            rgba(0,210,199,.035)
+        );
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 50px;
+}
+
+/* Execute button */
+#bulk-execute-btn {
+    position: relative;
+    overflow: hidden;
+    min-height: 50px;
+    letter-spacing: .4px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--teal),
+            #008f88
+        ) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    box-shadow:
+        0 8px 25px rgba(0,210,199,.18),
+        inset 0 1px 0 rgba(255,255,255,.15) !important;
+}
+
+#bulk-execute-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow:
+        0 12px 30px rgba(0,210,199,.25),
+        0 0 20px rgba(212,175,55,.08) !important;
+}
+
+/* Progress card */
+#bulk-progress-card {
+    border-color: rgba(0,210,199,.35) !important;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,210,199,.045),
+            var(--card)
+        ) !important;
+}
+
+#bulk-progress-bar {
+    background:
+        linear-gradient(
+            90deg,
+            var(--teal),
+            var(--dh-gold),
+            var(--teal)
+        ) !important;
+    box-shadow: 0 0 12px rgba(0,210,199,.25);
+}
+
+/* Progress statistic cards */
+#bulk-progress-card .card-sm {
+    border-radius: 12px !important;
+    background: var(--bg2) !important;
+    border: 1px solid var(--border) !important;
+}
+
+/* Result table */
+#bulk-results-body {
+    scrollbar-width: thin;
+}
+
+#bulk-results-body > div {
+    transition: background .18s ease;
+}
+
+#bulk-results-body > div:hover {
+    background: rgba(212,175,55,.045);
+}
+
+/* History */
+#bulk-history-body {
+    background: rgba(0,0,0,.025);
+    border-radius: 10px;
+}
+
+#bulk-history-body > div {
+    border-radius: 10px;
+}
+
+/* Risk warning */
+#bulk-pane [style*="ff444f14"] {
+    border-radius: 12px !important;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,68,79,.055),
+            rgba(255,68,79,.025)
+        ) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+/* Gold divider accents */
+#bulk-pane .accu-card:nth-of-type(2)::before {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dh-gold),
+        transparent
+    );
+}
+
+/* Light mode */
+html[data-theme="light"] #bulk-pane {
+    background:
+        radial-gradient(circle at 10% 0%, rgba(212,175,55,.09), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(0,159,149,.07), transparent 32%),
+        var(--bg) !important;
+}
+
+html[data-theme="light"] #bulk-pane .accu-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
+    border-color: rgba(0,0,0,.08) !important;
+    box-shadow:
+        0 10px 30px rgba(15,23,42,.07),
+        inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+html[data-theme="light"] #bulk-pane .accu-card:hover {
+    border-color: rgba(184,148,31,.30) !important;
+    box-shadow:
+        0 16px 35px rgba(15,23,42,.10),
+        0 0 0 1px rgba(212,175,55,.05) !important;
+}
+
+html[data-theme="light"] #bulk-pane input,
+html[data-theme="light"] #bulk-pane select {
+    background: #ffffff !important;
+    border-color: rgba(15,23,42,.12) !important;
+}
+
+html[data-theme="light"] #bulk-pane #bulk-preview-body {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.06),
+            rgba(0,159,149,.04)
+        );
+}
+
+html[data-theme="light"] #bulk-history-body {
+    background: rgba(15,23,42,.015);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    #bulk-pane {
+        padding: 12px !important;
+    }
+
+    #bulk-pane h2 {
+        font-size: 18px !important;
+    }
+
+    #bulk-pane .accu-card {
+        border-radius: 14px !important;
+    }
+
+    #bulk-pane .accu-row-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    #bulk-pane .accu-row-3 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    #bulk-execute-btn {
+        min-height: 52px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    #bulk-pane {
+        padding: 9px !important;
+    }
+
+    #bulk-pane .accu-row-3 {
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 6px !important;
+    }
+
+    #bulk-pane .card-sm {
+        padding: 9px !important;
+    }
+}
+

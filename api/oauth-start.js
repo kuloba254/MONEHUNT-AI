@@ -1,7 +1,8 @@
-// /api/oauth-start — PKCE encoded in state (no shared storage needed)
+﻿// /api/oauth-start â€” PKCE encoded in state (no shared storage needed)
 import { createCipheriv, randomBytes } from 'crypto';
 
-const SECRET = process.env.PKCE_SECRET;`r`nif (!SECRET) throw new Error("PKCE_SECRET is not configured");
+const SECRET = process.env.PKCE_SECRET;
+if (!SECRET) throw new Error("PKCE_SECRET is not configured");
 const KEY    = Buffer.from(SECRET.padEnd(32).slice(0,32));
 
 export default async function handler(req, res) {
