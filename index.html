@@ -15,17 +15,17 @@
     </script>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="DOLARHUNTER Ã¢â‚¬â€ AI-powered automated trading platform built on Deriv. Real-time digit stats, AI scanner, automated bots, 68% avg win rate. Connect your Deriv account and start trading smarter.">
+    <meta name="description" content="DOLARHUNTER — AI-powered automated trading platform built on Deriv. Real-time digit stats, AI scanner, automated bots, 68% avg win rate. Connect your Deriv account and start trading smarter.">
     <meta name="keywords" content="Deriv trading bot, automated trading, AI trading, digit stats, Deriv third party, trading platform, volatility indices bot">
     <meta name="author" content="DOLARHUNTER">
     <meta name="robots" content="index, follow">
 
-    <!-- Favicon Ã¢â‚¬â€ shows logo in browser tab and Google results -->
+    <!-- Favicon — shows logo in browser tab and Google results -->
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link rel="apple-touch-icon" href="logo.jpg">
     <link rel="shortcut icon" href="logo.jpg">
 
-    <!-- Open Graph Ã¢â‚¬â€ for WhatsApp, Facebook, Twitter previews -->
+    <!-- Open Graph — for WhatsApp, Facebook, Twitter previews -->
     <meta property="og:title" content="DOLARHUNTER | Smart AI Trading Platform">
     <meta property="og:description" content="AI-powered automated trading on Deriv. Real-time signals, digit stats, automated bots. Start trading smarter today.">
     <meta property="og:image" content="https://DOLARHUNTER.com/logo.jpg">
@@ -44,7 +44,7 @@
 
     <style>
 /* ============================================================
-   DOLARHUNTER Ã¢â‚¬â€ Clean Dark Theme (Deriv-inspired)
+   DOLARHUNTER — Clean Dark Theme (Deriv-inspired)
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 ::-webkit-scrollbar{width:4px;height:4px;}
@@ -71,7 +71,7 @@
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;user-select:none;padding-bottom:0;}
 ::selection{background:#ff444f33;color:#fff;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Header Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Header ── */
 header{height:56px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 16px;flex-shrink:0;}
 .logo{font-size:18px;font-weight:900;letter-spacing:-.5px;}
 .logo span{color:var(--teal);}
@@ -80,16 +80,16 @@ header{height:56px;background:var(--bg2);border-bottom:1px solid var(--border);d
 .status-dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;}
 .status-dot.live{background:var(--green);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Nav Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Nav ── */
 nav{height:44px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;gap:2px;flex-shrink:0;overflow-x:auto;}
 .tab-btn{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap;color:var(--muted);cursor:pointer;border:none;background:transparent;transition:all .15s;}
 .tab-btn:hover{background:var(--bg3);color:var(--text);}
 .tab-btn.active{background:var(--teal);color:#000;font-weight:700;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Main Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Main ── */
 /* The whole page scrolls as one normal document now (sticky-footer
    pattern below) instead of each pane scrolling in an isolated,
-   height-clipped box Ã¢â‚¬â€ that isolation was what squeezed the footer up
+   height-clipped box — that isolation was what squeezed the footer up
    against page content. `main` still fills any leftover viewport space
    when content is short, so the footer naturally sits at the bottom
    instead of floating mid-page. */
@@ -98,19 +98,19 @@ main{flex:1;position:relative;}
 .tab-pane.active{display:flex;}
 .tab-pane.scroll{display:none;}
 .tab-pane.scroll.active{display:block;}
-/* DBot and Chart are full-height "app" views (sidebars, live chart) Ã¢â‚¬â€
+/* DBot and Chart are full-height "app" views (sidebars, live chart) —
    give them a real minimum height so they still fill the screen the way
    they always did, without clipping the page if their own internal
    panels ever need more room than the viewport. */
 #bot-pane.active,#chart-pane.active{min-height:calc(100vh - 156px);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Inputs/Select Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Inputs/Select ── */
 input,select{background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:7px 10px;font-size:12px;outline:none;font-family:inherit;width:100%;transition:border-color .15s;}
 input:focus,select:focus{border-color:var(--teal);}
 select option{background:var(--bg2);}
 input::placeholder{color:var(--dim);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Buttons Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Buttons ── */
 .btn{border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;}
 .btn-teal{background:var(--teal);color:#000;}
 .btn-teal:hover{opacity:.9;transform:translateY(-1px);}
@@ -125,11 +125,11 @@ input::placeholder{color:var(--dim);}
 .btn-run:hover{opacity:.9;transform:translateY(-1px);}
 .btn-stop{background:var(--red);color:#fff;font-size:14px;font-weight:900;padding:14px 32px;border-radius:8px;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Cards Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Cards ── */
 .card{background:var(--card);border:1px solid var(--border);border-radius:10px;}
 .card-sm{background:var(--bg2);border:1px solid var(--border);border-radius:8px;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Badge Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Badge ── */
 .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
 .badge-green{background:#00d79e18;color:var(--green);border:1px solid #00d79e33;}
 .badge-red{background:#ff444f18;color:var(--red);border:1px solid #ff444f33;}
@@ -138,21 +138,21 @@ input::placeholder{color:var(--dim);}
 .badge-purple{background:#9f7aea18;color:var(--purple);border:1px solid #9f7aea33;}
 .badge-blue{background:#4299e118;color:var(--blue);border:1px solid #4299e133;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Separator Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Separator ── */
 .sep{border:none;border-top:1px solid var(--border);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Sidebar Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Sidebar ── */
 .sidebar{width:240px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
 .sidebar-right{width:280px;flex-shrink:0;background:var(--bg2);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Section header Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Section header ── */
 .sec-head{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:10px 14px 6px;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Bot bar Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Bot bar ── */
 #bot-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--bg2);border-top:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:12px;}
 body{padding-bottom:60px;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ D-Circles Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── D-Circles ── */
 .d-circle{width:66px;height:66px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--border);background:var(--bg3);transition:all .2s;user-select:none;}
 .d-circle:hover{transform:scale(1.08);}
 .d-circle.r0{background:linear-gradient(135deg,#00d79e,#00a07a);border-color:#00d79e;color:#000;}
@@ -161,7 +161,7 @@ body{padding-bottom:60px;}
 .d-circle.r9{background:linear-gradient(135deg,#ff444f,#c0001a);border-color:#ff444f;color:#fff;}
 .d-circle.pred{box-shadow:0 0 0 3px var(--teal),0 0 16px #00d2c844;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Transaction rows (like screenshot) Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Transaction rows (like screenshot) ── */
 .tx-row{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);gap:12px;font-size:12px;transition:background .15s;}
 .tx-row:hover{background:var(--bg3);}
 .tx-type-icon{width:44px;height:44px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
@@ -177,39 +177,39 @@ body{padding-bottom:60px;}
 .tx-profit{color:var(--green);font-weight:700;font-size:13px;}
 .tx-profit.loss{color:var(--red);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Summary bottom bar (like screenshot) Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Summary bottom bar (like screenshot) ── */
 .summary-bar{background:var(--bg2);border-top:1px solid var(--border);padding:14px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;flex-shrink:0;}
 .summary-item{text-align:center;}
 .summary-label{font-size:10px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;}
 .summary-value{font-size:15px;font-weight:900;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Panel tabs (Summary/Transactions/Journal) Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Panel tabs (Summary/Transactions/Journal) ── */
 .panel-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;}
 .panel-tab{flex:1;padding:10px;text-align:center;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:all .15s;}
 .panel-tab.active{color:var(--teal);border-bottom-color:var(--teal);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ AI Scanner Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── AI Scanner ── */
 .scanner-signal{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;transition:all .15s;}
 .scanner-signal.strong{border-color:var(--green);}
 .scanner-signal.medium{border-color:var(--amber);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Market selector Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Market selector ── */
 .market-item{padding:8px 12px;cursor:pointer;border-radius:6px;font-size:12px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:8px;transition:all .15s;border-left:3px solid transparent;}
 .market-item:hover{background:var(--bg3);color:var(--text);}
 .market-item.active{background:#00d2c810;color:var(--teal);border-left-color:var(--teal);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Progress bar Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Progress bar ── */
 .pbar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
 .pbar-fill{height:100%;border-radius:2px;transition:width .6s;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Notification Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Notification ── */
 #notif-wrap{position:fixed;top:70px;right:14px;z-index:9999;display:flex;flex-direction:column;gap:8px;max-width:290px;pointer-events:none;}
 .notif{background:var(--bg3);border:1px solid var(--teal);border-radius:10px;padding:12px 14px;box-shadow:0 8px 24px #00000055;animation:nIn .3s ease;pointer-events:all;}
 .notif.err{border-color:var(--red);}
 .notif.warn{border-color:var(--amber);}
 @keyframes nIn{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Journal line Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Journal line ── */
 .jline{font-size:10px;padding:2px 0;font-family:monospace;}
 .jline.w{color:var(--green);}
 .jline.l{color:var(--red);}
@@ -217,25 +217,25 @@ body{padding-bottom:60px;}
 .jline.x{color:var(--amber);}
 .jline.d{color:var(--muted);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Dir button Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Dir button ── */
 .dir-btn{padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;transition:all .15s;}
 .dir-btn.pos{border-color:var(--teal);background:#00d2c814;color:var(--teal);}
 .dir-btn.neg{border-color:var(--red);background:#ff444f14;color:var(--red);}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Chart iframe Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Chart iframe ── */
 .chart-frame{flex:1;border:none;width:100%;min-height:0;display:block;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Iframe container Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Iframe container ── */
 .iframe-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Accumulators Ã¢â‚¬â€ compact responsive layout Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Accumulators — compact responsive layout ── */
 #accu-pane{padding:12px;}
 #accu-pane .accu-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
 .accu-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .accu-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
 .accu-card{padding:12px;}
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ APA style selector Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── APA style selector ── */
 .apa-style-btn.apa-style-active{border-color:var(--teal);background:#00d2c814;color:var(--teal);}
 .apa-style-btn.apa-style-active span{color:inherit;}
 
@@ -243,7 +243,7 @@ body{padding-bottom:60px;}
     /* Hide sidebars by default on mobile */
     .sidebar,.sidebar-right{ display:none; }
 
-    /* DBot mobile layout Ã¢â‚¬â€ show settings as bottom sheet */
+    /* DBot mobile layout — show settings as bottom sheet */
     #bot-pane.active { flex-direction: column !important; }
     #bot-pane .sidebar {
         display: flex !important;
@@ -272,20 +272,119 @@ body{padding-bottom:60px;}
         display: flex !important;
     }
 
-    /* Accumulators Ã¢â‚¬â€ stack to single column on mobile */
+    /* Accumulators — stack to single column on mobile */
     .accu-row-2,.accu-row-3{grid-template-columns:1fr;}
     #accu-pane{padding:10px;}
 }
 @media(min-width:769px){
     #mobile-bot-settings-btn { display: none !important; }
 }
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Testimonials marquee Ã¢â‚¬â€ auto-scrolls right to left Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Testimonials marquee — auto-scrolls right to left ── */
 .testimonial-viewport{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
 .testimonial-track{display:flex;flex-direction:row;gap:10px;width:max-content;animation:testimonialMarquee 42s linear infinite;}
 .testimonial-viewport:hover .testimonial-track{animation-play-state:paused;}
 @keyframes testimonialMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @media(max-width:768px){.testimonial-track{animation-duration:30s;}}
-    </style>
+    
+/* ============================================================
+   DOLARHUNTER — PROFESSIONAL NAVIGATION
+   ============================================================ */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(10, 14, 22, .96);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+    display: none;
+}
+
+nav .tab-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 9px;
+    background: rgba(255,255,255,.025);
+    color: #aeb7c7;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .15px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+nav .tab-btn:hover {
+    background: rgba(255,255,255,.07);
+    color: #ffffff;
+    border-color: rgba(255,255,255,.15);
+    transform: translateY(-1px);
+}
+
+nav .tab-btn.active {
+    color: #ffffff;
+    background: rgba(0,210,200,.10);
+    border-color: rgba(0,210,200,.40);
+    box-shadow: 0 0 18px rgba(0,210,200,.08);
+}
+
+nav .nav-icon {
+    width: 23px;
+    height: 23px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 23px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 6px;
+    background: rgba(255,255,255,.045);
+    color: #8f9bad;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: -.4px;
+    line-height: 1;
+}
+
+nav .tab-btn.active .nav-icon {
+    color: #00d2c8;
+    border-color: rgba(0,210,200,.45);
+    background: rgba(0,210,200,.10);
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        gap: 5px;
+        padding: 8px;
+    }
+
+    nav .tab-btn {
+        min-height: 38px;
+        padding: 0 10px;
+        gap: 6px;
+        font-size: 10px;
+    }
+
+    nav .nav-icon {
+        width: 21px;
+        height: 21px;
+        flex-basis: 21px;
+        font-size: 7px;
+    }
+}
+</style>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body style="margin:0;">
@@ -296,7 +395,7 @@ body{padding-bottom:60px;}
 <!-- Notifications -->
 <div id="notif-wrap"></div>
 
-<!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â HEADER Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+<!-- ═══ HEADER ═══ -->
 <header class="dh-topbar">
 
     <div class="dh-brand-simple"><span>DOLAR</span><img src="logo-icon.png" alt=""><span>HUNTER</span></div>
@@ -330,7 +429,19 @@ body{padding-bottom:60px;}
         onclick="toggleTheme()"
         aria-label="Toggle light and dark mode"
         title="Toggle theme">
-        <span id="theme-icon">â˜€</span>
+        <span id="theme-icon" class="dh-svg-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2V5"></path>
+        <path d="M12 19V22"></path>
+        <path d="M2 12H5"></path>
+        <path d="M19 12H22"></path>
+        <path d="M4.9 4.9L7 7"></path>
+        <path d="M17 17L19.1 19.1"></path>
+        <path d="M19.1 4.9L17 7"></path>
+        <path d="M7 17L4.9 19.1"></path>
+    </svg>
+</span>
         <span id="theme-label">Light</span>
     </button>
 
@@ -343,7 +454,11 @@ body{padding-bottom:60px;}
         title="Switch between Demo and Live account">
         <span id="dh-account-mode-dot"></span>
         <span id="dh-account-mode">DEMO</span>
-        <span class="dh-account-switch-arrow">⇄</span>
+        <span class="dh-account-switch-arrow" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+        <path d="M6 9L12 15L18 9"></path>
+    </svg>
+</span>
     </button>
     <strong id="dh-header-balance">$0.00 USD</strong>
 </div>
@@ -368,36 +483,120 @@ body{padding-bottom:60px;}
 
 </header>
 
-<!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â NAV Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
-<nav>
-    <button id="tab-btn-dashboard" onclick="switchTab('dashboard')" class="tab-btn active">Ã°Å¸â€œÅ  Dashboard</button>
-    <button id="tab-btn-accu"      onclick="switchTab('accu')"      class="tab-btn">Ã°Å¸â€œË† Accumulators</button>
-    <button id="tab-btn-bulk"      onclick="switchTab('bulk')"      class="tab-btn">Ã°Å¸â€œÂ¦ Bulk Trading</button>
-    <button id="tab-btn-scanner"   onclick="switchTab('scanner')"   class="tab-btn">Ã°Å¸Â§Â  AI Scanner</button>
-    <button id="tab-btn-bot"       onclick="switchTab('bot')"       class="tab-btn">Ã°Å¸Â¤â€“ DBot</button>
-    <button id="tab-btn-chart"     onclick="switchTab('chart')"     class="tab-btn">Ã°Å¸â€œË† Chart</button>
-    <button id="tab-btn-digits"    onclick="switchTab('digits')"    class="tab-btn">0Ã¯Â¸ÂÃ¢Æ’Â£ D-Stats</button>
-    <button id="tab-btn-mt5"       onclick="switchTab('mt5')"       class="tab-btn">Ã°Å¸â€œÅ  MT5 Signals</button>
+<!-- ═══ NAV ═══ -->
+<nav class="dh-professional-nav">
+
+    <button id="tab-btn-dashboard"
+            onclick="switchTab('dashboard')"
+            class="tab-btn active">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+        </svg>
+        <span>Dashboard</span>
+    </button>
+
+    <button id="tab-btn-accu"
+            onclick="switchTab('accu')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 18L9 13L13 16L20 7"></path>
+            <path d="M15 7H20V12"></path>
+        </svg>
+        <span>Accumulators</span>
+    </button>
+
+    <button id="tab-btn-bulk"
+            onclick="switchTab('bulk')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="4" width="7" height="7" rx="1"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+        </svg>
+        <span>Bulk Trading</span>
+    </button>
+
+    <button id="tab-btn-scanner"
+            onclick="switchTab('scanner')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3L14 8L19 10L14 12L12 17L10 12L5 10L10 8L12 3Z"></path>
+            <path d="M19 4V7"></path>
+            <path d="M20.5 5.5H17.5"></path>
+        </svg>
+        <span>AI Scanner</span>
+    </button>
+
+    <button id="tab-btn-bot"
+            onclick="switchTab('bot')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="7" width="16" height="13" rx="3"></rect>
+            <path d="M12 3V7"></path>
+            <circle cx="9" cy="13" r="1"></circle>
+            <circle cx="15" cy="13" r="1"></circle>
+            <path d="M8 17H16"></path>
+        </svg>
+        <span>DBot</span>
+    </button>
+
+    <button id="tab-btn-chart"
+            onclick="switchTab('chart')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 19V5"></path>
+            <path d="M4 19H21"></path>
+            <path d="M7 15L11 11L14 13L20 7"></path>
+        </svg>
+        <span>Chart</span>
+    </button>
+
+    <button id="tab-btn-digits"
+            onclick="switchTab('digits')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"></circle>
+            <path d="M8 9H16"></path>
+            <path d="M8 12H16"></path>
+            <path d="M8 15H16"></path>
+        </svg>
+        <span>D-Stats</span>
+    </button>
+
+    <button id="tab-btn-mt5"
+            onclick="switchTab('mt5')"
+            class="tab-btn">
+        <svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 18L8 14L11 16L16 10L20 6"></path>
+            <path d="M16 6H20V10"></path>
+        </svg>
+        <span>MT5 Signals</span>
+    </button>
+
 </nav>
 
-<!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â MAIN Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+<!-- ═══ MAIN ═══ -->
 <main>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ DASHBOARD Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── DASHBOARD ── -->
 <div id="dashboard-pane" class="tab-pane scroll active" style="padding:16px;">
     <div style="max-width:680px;margin:0 auto;">
 
         <!-- Auth card -->
         <div id="auth-card" class="card" style="padding:40px;text-align:center;margin-bottom:16px;">
-            <div style="width:64px;height:64px;border-radius:50%;background:#00d2c818;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;">Ã°Å¸â€™Å½</div>
+            <div style="width:64px;height:64px;border-radius:50%;background:#00d2c818;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;">💎</div>
             <h2 style="font-size:22px;font-weight:900;margin-bottom:8px;">Welcome to <span class="dh-welcome-dolar">DOLAR</span><span class="dh-welcome-hunter">HUNTER</span></h2>
             <p style="color:var(--muted);font-size:13px;margin-bottom:24px;">Connect your Deriv account to start AI-powered automated trading.</p>
-            <button onclick="loginWithDeriv()" class="btn btn-teal" style="width:100%;padding:14px;font-size:14px;border-radius:8px;margin-bottom:10px;">Ã¢Å“Â¨ Connect My Deriv Account</button>
-            <button onclick="signUpWithDeriv()" class="btn btn-ghost" style="width:100%;padding:12px;font-size:13px;border-radius:8px;">New to Deriv? Create Free Account Ã¢â€ â€™</button>
+            <button onclick="loginWithDeriv()" class="btn btn-teal" style="width:100%;padding:14px;font-size:14px;border-radius:8px;margin-bottom:10px;">✨ Connect My Deriv Account</button>
+            <button onclick="signUpWithDeriv()" class="btn btn-ghost" style="width:100%;padding:12px;font-size:13px;border-radius:8px;">New to Deriv? Create Free Account →</button>
             <div id="conn-status" style="display:none;margin-top:12px;font-size:11px;padding:10px;border-radius:8px;border:1px solid var(--border);color:var(--muted);"></div>
         </div>
 
-        <!-- Testimonials & Stats Ã¢â‚¬â€ always visible -->
+        <!-- Testimonials & Stats — always visible -->
         <div style="margin-bottom:16px;">
 
             <!-- Platform stats bar -->
@@ -415,14 +614,14 @@ body{padding-bottom:60px;}
                     <div style="font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;font-weight:700;">Active Users</div>
                 </div>
                 <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
-                    <div style="font-size:22px;font-weight:900;color:#ff444f;">4.8 Ã¢Â­Â</div>
+                    <div style="font-size:22px;font-weight:900;color:#ff444f;">4.8 ⭐</div>
                     <div style="font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;font-weight:700;">User Rating</div>
                 </div>
             </div>
 
             <!-- Testimonials -->
             <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
-                <div style="font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Ã°Å¸â€™Â¬ What Our Traders Say</div>
+                <div style="font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">💬 What Our Traders Say</div>
                 <div class="testimonial-viewport">
                 <div class="testimonial-track">
 
@@ -434,10 +633,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">James M.</div>
                                 <div style="font-size:10px;color:var(--muted);">Nairobi, Kenya</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"The AI scanner is incredible. It told me to trade Even Only on V50 at 89% confidence and I won 8 trades in a row. Best trading platform I've used!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 3 days ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 3 days ago</div>
                     </div>
 
                     <!-- Testimonial 2 -->
@@ -448,10 +647,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Sarah K.</div>
                                 <div style="font-size:10px;color:var(--muted);">Lagos, Nigeria</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"I was skeptical at first but the bot actually works! Made $120 profit in my first week. The stop loss feature saved me when the market reversed. 10/10!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 1 week ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 1 week ago</div>
                     </div>
 
                     <!-- Testimonial 3 -->
@@ -462,10 +661,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">David O.</div>
                                 <div style="font-size:10px;color:var(--muted);">Accra, Ghana</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€ </div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★☆</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"The digit stats are exactly like Deriv's own platform. I use the AI scanner every morning to find the best market before I start trading. Very professional!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 2 weeks ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 2 weeks ago</div>
                     </div>
 
                     <!-- Testimonial 4 -->
@@ -476,10 +675,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Amina B.</div>
                                 <div style="font-size:10px;color:var(--muted);">Dar es Salaam, Tanzania</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
-                        <p style="font-size:11px;color:var(--muted);line-height:1.5;">"Finally a platform that works on my phone! The AI auto-update feature is amazing Ã¢â‚¬â€ it changes direction based on market conditions automatically. Love it!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 5 days ago</div>
+                        <p style="font-size:11px;color:var(--muted);line-height:1.5;">"Finally a platform that works on my phone! The AI auto-update feature is amazing — it changes direction based on market conditions automatically. Love it!"</p>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 5 days ago</div>
                     </div>
 
                     <!-- Testimonial 5 -->
@@ -490,10 +689,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Peter N.</div>
                                 <div style="font-size:10px;color:var(--muted);">Kampala, Uganda</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"The martingale with stop loss is perfectly balanced. I set $5 stop loss and $20 take profit and the bot handles everything. Withdrew $200 this month!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 1 week ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 1 week ago</div>
                     </div>
 
                     <!-- Testimonial 6 -->
@@ -504,13 +703,13 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Ruth W.</div>
                                 <div style="font-size:10px;color:var(--muted);">Mombasa, Kenya</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"I connected my Deriv account in less than a minute. The interface is clean and easy to understand even for beginners. The AI signals are spot on!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 3 days ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 3 days ago</div>
                     </div>
 
-                    <!-- Duplicate set Ã¢â‚¬â€ makes the right-to-left marquee loop seamlessly -->
+                    <!-- Duplicate set — makes the right-to-left marquee loop seamlessly -->
                     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:260px;max-width:260px;flex-shrink:0;" aria-hidden="true">
                         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
                             <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#00d2c8,#00a09a);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#000;flex-shrink:0;">J</div>
@@ -518,10 +717,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">James M.</div>
                                 <div style="font-size:10px;color:var(--muted);">Nairobi, Kenya</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"The AI scanner is incredible. It told me to trade Even Only on V50 at 89% confidence and I won 8 trades in a row. Best trading platform I've used!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 3 days ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 3 days ago</div>
                     </div>
 
                     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:260px;max-width:260px;flex-shrink:0;" aria-hidden="true">
@@ -531,10 +730,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Sarah K.</div>
                                 <div style="font-size:10px;color:var(--muted);">Lagos, Nigeria</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"I was skeptical at first but the bot actually works! Made $120 profit in my first week. The stop loss feature saved me when the market reversed. 10/10!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 1 week ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 1 week ago</div>
                     </div>
 
                     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:260px;max-width:260px;flex-shrink:0;" aria-hidden="true">
@@ -544,10 +743,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">David O.</div>
                                 <div style="font-size:10px;color:var(--muted);">Accra, Ghana</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€ </div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★☆</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"The digit stats are exactly like Deriv's own platform. I use the AI scanner every morning to find the best market before I start trading. Very professional!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 2 weeks ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 2 weeks ago</div>
                     </div>
 
                     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:260px;max-width:260px;flex-shrink:0;" aria-hidden="true">
@@ -557,10 +756,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Amina B.</div>
                                 <div style="font-size:10px;color:var(--muted);">Dar es Salaam, Tanzania</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
-                        <p style="font-size:11px;color:var(--muted);line-height:1.5;">"Finally a platform that works on my phone! The AI auto-update feature is amazing Ã¢â‚¬â€ it changes direction based on market conditions automatically. Love it!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 5 days ago</div>
+                        <p style="font-size:11px;color:var(--muted);line-height:1.5;">"Finally a platform that works on my phone! The AI auto-update feature is amazing — it changes direction based on market conditions automatically. Love it!"</p>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 5 days ago</div>
                     </div>
 
                     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:260px;max-width:260px;flex-shrink:0;" aria-hidden="true">
@@ -570,10 +769,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Peter N.</div>
                                 <div style="font-size:10px;color:var(--muted);">Kampala, Uganda</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"The martingale with stop loss is perfectly balanced. I set $5 stop loss and $20 take profit and the bot handles everything. Withdrew $200 this month!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 1 week ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 1 week ago</div>
                     </div>
 
                     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:260px;max-width:260px;flex-shrink:0;" aria-hidden="true">
@@ -583,10 +782,10 @@ body{padding-bottom:60px;}
                                 <div style="font-size:12px;font-weight:900;color:var(--text);">Ruth W.</div>
                                 <div style="font-size:10px;color:var(--muted);">Mombasa, Kenya</div>
                             </div>
-                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</div>
+                            <div style="margin-left:auto;color:#fbbf24;font-size:12px;">★★★★★</div>
                         </div>
                         <p style="font-size:11px;color:var(--muted);line-height:1.5;">"I connected my Deriv account in less than a minute. The interface is clean and easy to understand even for beginners. The AI signals are spot on!"</p>
-                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader Ã‚Â· 3 days ago</div>
+                        <div style="font-size:9px;color:var(--dim);margin-top:8px;">Verified Trader · 3 days ago</div>
                     </div>
 
                 </div>
@@ -595,25 +794,25 @@ body{padding-bottom:60px;}
 
             <!-- CTA Banner -->
             <div style="background:linear-gradient(135deg,#00d2c818,#00d2c808);border:1px solid #00d2c844;border-radius:12px;padding:20px;text-align:center;margin-bottom:16px;">
-                <div style="font-size:16px;font-weight:900;color:var(--text);margin-bottom:6px;">Ã°Å¸Å¡â‚¬ Ready to Start Trading?</div>
+                <div style="font-size:16px;font-weight:900;color:var(--text);margin-bottom:6px;">🚀 Ready to Start Trading?</div>
                 <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Join 500+ traders already using DOLARHUNTER to automate their Deriv trading</div>
                 <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                    <button onclick="loginWithDeriv()" class="btn btn-teal" style="padding:10px 24px;font-size:13px;">Ã¢Å“Â¨ Connect My Deriv Account</button>
+                    <button onclick="loginWithDeriv()" class="btn btn-teal" style="padding:10px 24px;font-size:13px;">✨ Connect My Deriv Account</button>
                     <button onclick="signUpWithDeriv()" class="btn" style="background:transparent;border:1px solid var(--teal);color:var(--teal);padding:10px 24px;font-size:13px;">New to Deriv? Sign Up Free</button>
                 </div>
             </div>
 
             <!-- Contact / Community -->
             <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
-                <div style="font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Ã°Å¸â€œÅ¾ Contact Us / Join Our Community</div>
+                <div style="font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">📞 Contact Us / Join Our Community</div>
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                     <a href="https://whatsapp.com/channel/0029Vb8RepJDeON2hcLhah2c" target="_blank" rel="noopener"
                        class="btn" style="flex:1;min-width:200px;background:#25D36618;border:1px solid #25D36644;color:#25D366;padding:12px;font-size:13px;font-weight:700;text-decoration:none;">
-                        Ã°Å¸â€œÂ± WhatsApp Channel
+                        📱 WhatsApp Channel
                     </a>
                     <a href="https://t.me/DOLARHUNTER" target="_blank" rel="noopener"
                        class="btn" style="flex:1;min-width:200px;background:#29b6f618;border:1px solid #29b6f644;color:#29b6f6;padding:12px;font-size:13px;font-weight:700;text-decoration:none;">
-                        Ã¢Å“Ë†Ã¯Â¸Â Telegram
+                        ✈️ Telegram
                     </a>
                 </div>
             </div>
@@ -647,12 +846,12 @@ body{padding-bottom:60px;}
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ DBOT Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── DBOT ── -->
 <div id="bot-pane" class="tab-pane" style="flex-direction:row;">
 
     <!-- LEFT: Bot settings -->
     <div class="sidebar">
-        <div class="sec-head">Ã¢Å¡â„¢Ã¯Â¸Â Bot Settings</div>
+        <div class="sec-head">⚙️ Bot Settings</div>
         <div style="padding:12px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1;">
 
             <!-- Active bot indicator -->
@@ -704,7 +903,7 @@ body{padding-bottom:60px;}
             </div>
 
             <div id="pred-wrap">
-                <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Prediction (0Ã¢â‚¬â€œ9)</div>
+                <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Prediction (0–9)</div>
                 <input type="number" id="bot-pred" value="5" min="0" max="9">
             </div>
 
@@ -714,7 +913,7 @@ body{padding-bottom:60px;}
             </div>
 
             <hr class="sep">
-            <div style="font-size:9px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Ã°Å¸â€™Â° Money Management</div>
+            <div style="font-size:9px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">💰 Money Management</div>
 
             <div>
                 <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Initial Stake (USD)</div>
@@ -722,7 +921,7 @@ body{padding-bottom:60px;}
             </div>
 
             <div>
-                <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Martingale Ãƒâ€”</div>
+                <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Martingale ×</div>
                 <input type="number" id="bot-mg" value="1.5" step="0.1" min="1">
             </div>
 
@@ -740,7 +939,7 @@ body{padding-bottom:60px;}
             <!-- AI auto-update toggle -->
             <div class="card-sm" style="padding:10px;border-color:var(--teal);">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-                    <span style="font-size:11px;font-weight:700;color:var(--teal);">Ã°Å¸Â§Â  AI Auto-Update</span>
+                    <span style="font-size:11px;font-weight:700;color:var(--teal);">🧠 AI Auto-Update</span>
                     <label style="position:relative;width:36px;height:20px;cursor:pointer;">
                         <input type="checkbox" id="ai-auto" checked style="opacity:0;width:0;height:0;">
                         <span id="ai-toggle-track" onclick="toggleAIAuto()" style="position:absolute;inset:0;background:var(--teal);border-radius:20px;transition:.3s;cursor:pointer;"></span>
@@ -750,7 +949,7 @@ body{padding-bottom:60px;}
                 <div style="font-size:10px;color:var(--muted);">AI scans market and updates bot direction automatically for highest win probability.</div>
             </div>
 
-            <button onclick="runAIScan()" class="btn btn-amber" style="width:100%;padding:8px;font-size:11px;border-radius:7px;">Ã°Å¸â€Â Run AI Scan Now</button>
+            <button onclick="runAIScan()" class="btn btn-amber" style="width:100%;padding:8px;font-size:11px;border-radius:7px;">🔍 Run AI Scan Now</button>
         </div>
     </div>
 
@@ -759,20 +958,20 @@ body{padding-bottom:60px;}
 
         <!-- Trade info bar -->
         <div style="padding:10px 14px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;flex-shrink:0;flex-wrap:wrap;">
-            <div style="font-size:11px;color:var(--muted);">Market: <b id="info-market" style="color:var(--text);">Ã¢â‚¬â€</b></div>
-            <div style="font-size:11px;color:var(--muted);">Type: <b id="info-type" style="color:var(--text);">Ã¢â‚¬â€</b></div>
-            <div style="font-size:11px;color:var(--muted);">Direction: <b id="info-dir" style="color:var(--teal);">Ã¢â‚¬â€</b></div>
+            <div style="font-size:11px;color:var(--muted);">Market: <b id="info-market" style="color:var(--text);">—</b></div>
+            <div style="font-size:11px;color:var(--muted);">Type: <b id="info-type" style="color:var(--text);">—</b></div>
+            <div style="font-size:11px;color:var(--muted);">Direction: <b id="info-dir" style="color:var(--teal);">—</b></div>
             <div style="font-size:11px;color:var(--muted);">Stake: <b id="info-stake" style="color:var(--text);">$1.00</b></div>
-            <div id="ai-status-badge" class="badge badge-teal">Ã°Å¸Â§Â  AI Active</div>
+            <div id="ai-status-badge" class="badge badge-teal">🧠 AI Active</div>
             <!-- Mobile only: settings toggle button -->
             <button id="mobile-bot-settings-btn" onclick="toggleMobileBotSettings()"
                 class="btn btn-teal"
                 style="display:none;font-size:11px;padding:5px 12px;margin-left:auto;">
-                Ã¢Å¡â„¢Ã¯Â¸Â Bot Settings
+                ⚙️ Bot Settings
             </button>
         </div>
 
-        <!-- Panel tabs (Summary / Transactions / Journal) Ã¢â‚¬â€ like screenshot -->
+        <!-- Panel tabs (Summary / Transactions / Journal) — like screenshot -->
         <div class="panel-tabs">
             <button class="panel-tab active" onclick="switchPanel('summary',this)">Summary</button>
             <button class="panel-tab" onclick="switchPanel('transactions',this)">Transactions</button>
@@ -782,7 +981,7 @@ body{padding-bottom:60px;}
         <!-- SUMMARY panel -->
         <div id="panel-summary" style="flex:1;overflow-y:auto;padding:16px;">
             <div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
-                <button onclick="resetBotStats()" class="btn btn-ghost" style="font-size:11px;padding:5px 14px;">Ã°Å¸â€â€ž Reset Stats</button>
+                <button onclick="resetBotStats()" class="btn btn-ghost" style="font-size:11px;padding:5px 14px;">🔄 Reset Stats</button>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
                 <div class="card-sm" style="padding:12px;">
@@ -841,8 +1040,8 @@ body{padding-bottom:60px;}
         <!-- TRANSACTIONS panel (like screenshot) -->
         <div id="panel-transactions" style="display:none;flex-direction:column;height:100%;overflow:hidden;">
             <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-shrink:0;">
-                <button onclick="downloadTransactions()" class="btn btn-ghost" style="font-size:11px;padding:5px 12px;">Ã¢Â¬â€¡ Download</button>
-                <button onclick="clearTransactions()" class="btn btn-ghost" style="font-size:11px;padding:5px 12px;">Ã°Å¸â€”â€˜ Reset</button>
+                <button onclick="downloadTransactions()" class="btn btn-ghost" style="font-size:11px;padding:5px 12px;">⬇ Download</button>
+                <button onclick="clearTransactions()" class="btn btn-ghost" style="font-size:11px;padding:5px 12px;">🗑 Reset</button>
             </div>
             <!-- Column headers -->
             <div style="display:flex;padding:8px 16px;border-bottom:1px solid var(--border);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;flex-shrink:0;">
@@ -858,7 +1057,7 @@ body{padding-bottom:60px;}
         <!-- JOURNAL panel -->
         <div id="panel-journal" style="display:none;flex-direction:column;height:100%;overflow:hidden;">
             <div style="padding:8px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-shrink:0;">
-                <button onclick="clearJournal()" class="btn btn-ghost" style="font-size:11px;padding:5px 12px;">Ã°Å¸â€”â€˜ Clear</button>
+                <button onclick="clearJournal()" class="btn btn-ghost" style="font-size:11px;padding:5px 12px;">🗑 Clear</button>
             </div>
             <div id="journal-log" style="flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:2px;background:var(--bg);font-family:monospace;font-size:11px;">
                 <div class="jline d">[System] DOLARHUNTER ready.</div>
@@ -868,13 +1067,13 @@ body{padding-bottom:60px;}
 
     <!-- RIGHT: AI analysis sidebar -->
     <div class="sidebar-right">
-        <div class="sec-head">Ã°Å¸Â§Â  AI Market Analysis</div>
+        <div class="sec-head">🧠 AI Market Analysis</div>
         <div style="padding:10px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;">
 
             <!-- AI confidence meter -->
             <div class="card-sm" style="padding:12px;">
                 <div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:8px;">AI Win Probability</div>
-                <div id="ai-confidence-val" style="font-size:32px;font-weight:900;color:var(--teal);text-align:center;margin-bottom:8px;">Ã¢â‚¬â€%</div>
+                <div id="ai-confidence-val" style="font-size:32px;font-weight:900;color:var(--teal);text-align:center;margin-bottom:8px;">—%</div>
                 <div class="pbar"><div id="ai-conf-bar" class="pbar-fill" style="width:0%;background:var(--teal);"></div></div>
                 <div id="ai-conf-label" style="font-size:10px;color:var(--muted);text-align:center;margin-top:6px;">Connect to analyze</div>
             </div>
@@ -908,10 +1107,10 @@ body{padding-bottom:60px;}
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ CHART Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── CHART ── -->
 <div id="chart-pane" class="tab-pane" style="flex-direction:column;">
     <div style="height:42px;display:flex;align-items:center;gap:10px;padding:0 14px;background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0;">
-        <span style="font-size:11px;font-weight:700;color:var(--teal);">Ã°Å¸â€œË† Live Chart</span>
+        <span style="font-size:11px;font-weight:700;color:var(--teal);">📈 Live Chart</span>
         <select id="chart-market-sel" onchange="loadChart(this.value)" style="width:200px;font-size:11px;">
             <optgroup label="Continuous"><option value="R_10">Volatility 10</option><option value="R_25">Volatility 25</option><option value="R_50">Volatility 50</option><option value="R_75">Volatility 75</option><option value="R_100">Volatility 100</option></optgroup>
             <optgroup label="1s Indices"><option value="1HZ10V">V10 (1s)</option><option value="1HZ25V">V25 (1s)</option><option value="1HZ50V">V50 (1s)</option><option value="1HZ75V">V75 (1s)</option><option value="1HZ100V">V100 (1s)</option></optgroup>
@@ -927,27 +1126,27 @@ body{padding-bottom:60px;}
         <!-- RSI -->
         <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:10px;color:var(--muted);">RSI(14):</span>
-            <span id="chart-rsi" style="font-size:13px;font-weight:900;color:#60a5fa;">Ã¢â‚¬â€</span>
-            <span id="chart-rsi-label" style="font-size:9px;padding:2px 6px;border-radius:4px;background:#4299e122;color:#60a5fa;">Ã¢â‚¬â€</span>
+            <span id="chart-rsi" style="font-size:13px;font-weight:900;color:#60a5fa;">—</span>
+            <span id="chart-rsi-label" style="font-size:9px;padding:2px 6px;border-radius:4px;background:#4299e122;color:#60a5fa;">—</span>
         </div>
 
         <!-- BB -->
         <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:10px;color:var(--muted);">BB Upper:</span>
-            <span id="chart-bb-upper" style="font-size:12px;font-weight:700;color:#f87171;font-family:monospace;">Ã¢â‚¬â€</span>
+            <span id="chart-bb-upper" style="font-size:12px;font-weight:700;color:#f87171;font-family:monospace;">—</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:10px;color:var(--muted);">BB Mid:</span>
-            <span id="chart-bb-mid" style="font-size:12px;font-weight:700;color:#fbbf24;font-family:monospace;">Ã¢â‚¬â€</span>
+            <span id="chart-bb-mid" style="font-size:12px;font-weight:700;color:#fbbf24;font-family:monospace;">—</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:10px;color:var(--muted);">BB Lower:</span>
-            <span id="chart-bb-lower" style="font-size:12px;font-weight:700;color:#34d399;font-family:monospace;">Ã¢â‚¬â€</span>
+            <span id="chart-bb-lower" style="font-size:12px;font-weight:700;color:#34d399;font-family:monospace;">—</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
             <span style="font-size:10px;color:var(--muted);">BB Width:</span>
-            <span id="chart-bb-width" style="font-size:12px;font-weight:700;color:#c4b5fd;font-family:monospace;">Ã¢â‚¬â€</span>
-            <span id="chart-bb-label" style="font-size:9px;padding:2px 6px;border-radius:4px;background:#9f7aea22;color:#c4b5fd;">Ã¢â‚¬â€</span>
+            <span id="chart-bb-width" style="font-size:12px;font-weight:700;color:#c4b5fd;font-family:monospace;">—</span>
+            <span id="chart-bb-label" style="font-size:9px;padding:2px 6px;border-radius:4px;background:#9f7aea22;color:#c4b5fd;">—</span>
         </div>
 
         <!-- Signal -->
@@ -964,12 +1163,12 @@ body{padding-bottom:60px;}
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ D-STATS Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── D-STATS ── -->
 <div id="digits-pane" class="tab-pane scroll" style="padding:16px;">
     <div style="max-width:700px;margin:0 auto;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
             <div>
-                <h2 style="font-size:16px;font-weight:900;">0Ã¯Â¸ÂÃ¢Æ’Â£ Digit Statistics</h2>
+                <h2 style="font-size:16px;font-weight:900;">0️⃣ Digit Statistics</h2>
                 <p style="font-size:11px;color:var(--muted);margin-top:2px;">Live last-digit distribution from real Deriv tick data. Click a digit to set as prediction.</p>
             </div>
             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
@@ -979,27 +1178,27 @@ body{padding-bottom:60px;}
                     <optgroup label="Jump"><option value="jump_10">Jump 10</option><option value="jump_25">Jump 25</option><option value="jump_50">Jump 50</option><option value="jump_75">Jump 75</option><option value="jump_100">Jump 100</option></optgroup>
                 </select>
                 <span class="badge badge-teal">Ticks: <span id="d-ticks">0</span></span>
-                <span class="badge badge-blue">Last: <span id="d-last" style="font-family:monospace;font-weight:900;">Ã¢â‚¬â€</span></span>
+                <span class="badge badge-blue">Last: <span id="d-last" style="font-family:monospace;font-weight:900;">—</span></span>
             </div>
         </div>
 
         <!-- Stats pills -->
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px;">
             <div class="card-sm" style="padding:10px;text-align:center;">
-                <div style="font-size:9px;color:var(--muted);margin-bottom:4px;">Ã°Å¸â€Â¥ Hot Digit</div>
-                <div id="d-hot" style="font-size:22px;font-weight:900;color:var(--green);">Ã¢â‚¬â€</div>
+                <div style="font-size:9px;color:var(--muted);margin-bottom:4px;">🔥 Hot Digit</div>
+                <div id="d-hot" style="font-size:22px;font-weight:900;color:var(--green);">—</div>
             </div>
             <div class="card-sm" style="padding:10px;text-align:center;">
-                <div style="font-size:9px;color:var(--muted);margin-bottom:4px;">Ã¢Ââ€žÃ¯Â¸Â Cold Digit</div>
-                <div id="d-cold" style="font-size:22px;font-weight:900;color:var(--red);">Ã¢â‚¬â€</div>
+                <div style="font-size:9px;color:var(--muted);margin-bottom:4px;">❄️ Cold Digit</div>
+                <div id="d-cold" style="font-size:22px;font-weight:900;color:var(--red);">—</div>
             </div>
         </div>
 
         <!-- Even/Odd bar -->
         <div class="card-sm" style="padding:12px;margin-bottom:10px;">
             <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                <span style="font-size:11px;font-weight:900;color:var(--green);">Even <span id="d-even">Ã¢â‚¬â€</span></span>
-                <span style="font-size:11px;font-weight:900;color:var(--red);">Odd <span id="d-odd">Ã¢â‚¬â€</span></span>
+                <span style="font-size:11px;font-weight:900;color:var(--green);">Even <span id="d-even">—</span></span>
+                <span style="font-size:11px;font-weight:900;color:var(--red);">Odd <span id="d-odd">—</span></span>
             </div>
             <div style="height:10px;border-radius:5px;overflow:hidden;display:flex;">
                 <div id="d-even-bar" style="height:100%;background:var(--green);transition:width .5s;width:50%;border-radius:5px 0 0 5px;"></div>
@@ -1014,8 +1213,8 @@ body{padding-bottom:60px;}
         <!-- Over/Under bar -->
         <div class="card-sm" style="padding:12px;margin-bottom:16px;">
             <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                <span style="font-size:11px;font-weight:900;color:var(--teal);">Over 4 <span id="d-over">Ã¢â‚¬â€</span></span>
-                <span style="font-size:11px;font-weight:900;color:var(--purple-light);">Under 5 <span id="d-under">Ã¢â‚¬â€</span></span>
+                <span style="font-size:11px;font-weight:900;color:var(--teal);">Over 4 <span id="d-over">—</span></span>
+                <span style="font-size:11px;font-weight:900;color:var(--purple-light);">Under 5 <span id="d-under">—</span></span>
             </div>
             <div style="height:10px;border-radius:5px;overflow:hidden;display:flex;">
                 <div id="d-over-bar"  style="height:100%;background:var(--teal);transition:width .5s;width:50%;border-radius:5px 0 0 5px;"></div>
@@ -1035,29 +1234,29 @@ body{padding-bottom:60px;}
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ AI SCANNER Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── AI SCANNER ── -->
 <div id="scanner-pane" class="tab-pane scroll" style="padding:16px;">
     <div style="max-width:780px;margin:0 auto;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
             <div>
-                <h2 style="font-size:16px;font-weight:900;">Ã°Å¸Â§Â  AI Market Scanner</h2>
-                <p style="font-size:11px;color:var(--muted);margin-top:2px;">Real-time market analysis. Signals based on actual Deriv tick data Ã¢â‚¬â€ no guessing.</p>
+                <h2 style="font-size:16px;font-weight:900;">🧠 AI Market Scanner</h2>
+                <p style="font-size:11px;color:var(--muted);margin-top:2px;">Real-time market analysis. Signals based on actual Deriv tick data — no guessing.</p>
             </div>
             <div style="display:flex;gap:8px;">
-                <button onclick="showStrategyGuide()" class="btn btn-ghost" style="font-size:12px;padding:8px 16px;">Ã°Å¸â€œâ€“ Strategy Guide</button>
-                <button onclick="runFullScan()" class="btn btn-amber" style="font-size:12px;padding:8px 20px;">Ã°Å¸â€Â Scan All Markets</button>
+                <button onclick="showStrategyGuide()" class="btn btn-ghost" style="font-size:12px;padding:8px 16px;">📖 Strategy Guide</button>
+                <button onclick="runFullScan()" class="btn btn-amber" style="font-size:12px;padding:8px 20px;">🔍 Scan All Markets</button>
             </div>
         </div>
 
-        <!-- Professional Strategy Signals Ã¢â‚¬â€ PRIORITY -->
+        <!-- Professional Strategy Signals — PRIORITY -->
         <div id="best-signal-box" class="card" style="padding:16px;margin-bottom:14px;border-color:var(--teal);box-shadow:0 0 20px #00d2c822;">
-            <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:8px;">Ã°Å¸Å½Â¯ Professional Strategy Signals</div>
+            <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:8px;">🎯 Professional Strategy Signals</div>
             <div style="font-size:12px;color:var(--muted);">Click "Scan All Markets" to analyze strategy conditions.</div>
         </div>
 
         <!-- General best opportunity -->
         <div class="card" style="padding:14px;margin-bottom:14px;border-color:var(--border);">
-            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Ã°Å¸Â¥â€¡ Best General Opportunity</div>
+            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">🥇 Best General Opportunity</div>
             <div id="best-signal-content" style="font-size:12px;color:var(--muted);">Click "Scan All Markets" to find the best trading opportunity.</div>
         </div>
 
@@ -1066,17 +1265,17 @@ body{padding-bottom:60px;}
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ ACCUMULATORS Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── ACCUMULATORS ── -->
 <div id="accu-pane" class="tab-pane scroll">
     <div class="accu-wrap">
 
         <!-- Header -->
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
             <div>
-                <h2 style="font-size:18px;font-weight:900;">Ã°Å¸â€œË† Accumulator Trading</h2>
+                <h2 style="font-size:18px;font-weight:900;">📈 Accumulator Trading</h2>
                 <p style="font-size:11px;color:var(--muted);margin-top:3px;">Grow your stake tick by tick. AI analyzes volatility to find the safest entry.</p>
             </div>
-            <div class="badge badge-teal" style="font-size:11px;padding:6px 12px;">Ã°Å¸â€Â´ LIVE on Deriv API</div>
+            <div class="badge badge-teal" style="font-size:11px;padding:6px 12px;">🔴 LIVE on Deriv API</div>
         </div>
 
         <!-- Market + Settings row -->
@@ -1084,26 +1283,26 @@ body{padding-bottom:60px;}
 
             <!-- Left: Market selector + Analysis -->
             <div class="card accu-card">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Ã°Å¸â€œÅ  Market Analysis</div>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">📊 Market Analysis</div>
 
                 <div style="margin-bottom:10px;">
                     <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Select Market</div>
                     <select id="accu-market" onchange="onAccuMarketChange(this.value)" style="font-size:12px;">
                         <optgroup label="Recommended (Low Volatility)">
-                            <option value="R_10">Ã¢Å“â€¦ Volatility 10 Index</option>
-                            <option value="R_25">Ã¢Å“â€¦ Volatility 25 Index</option>
-                            <option value="R_50">Ã¢Å¡Â Ã¯Â¸Â Volatility 50 Index</option>
+                            <option value="R_10">✅ Volatility 10 Index</option>
+                            <option value="R_25">✅ Volatility 25 Index</option>
+                            <option value="R_50">⚠️ Volatility 50 Index</option>
                         </optgroup>
                         <optgroup label="High Risk">
-                            <option value="R_75">Ã¢ÂÅ’ Volatility 75 Index</option>
-                            <option value="R_100">Ã¢ÂÅ’ Volatility 100 Index</option>
+                            <option value="R_75">❌ Volatility 75 Index</option>
+                            <option value="R_100">❌ Volatility 100 Index</option>
                         </optgroup>
                         <optgroup label="1s Indices (Fast)">
-                            <option value="1HZ10V">Ã¢Å¡Â¡ Volatility 10 (1s)</option>
-                            <option value="1HZ25V">Ã¢Å¡Â¡ Volatility 25 (1s)</option>
-                            <option value="1HZ50V">Ã¢Å¡Â¡ Volatility 50 (1s)</option>
-                            <option value="1HZ75V">Ã¢Å¡Â¡ Volatility 75 (1s)</option>
-                            <option value="1HZ100V">Ã¢Å¡Â¡ Volatility 100 (1s)</option>
+                            <option value="1HZ10V">⚡ Volatility 10 (1s)</option>
+                            <option value="1HZ25V">⚡ Volatility 25 (1s)</option>
+                            <option value="1HZ50V">⚡ Volatility 50 (1s)</option>
+                            <option value="1HZ75V">⚡ Volatility 75 (1s)</option>
+                            <option value="1HZ100V">⚡ Volatility 100 (1s)</option>
                         </optgroup>
                         <optgroup label="Jump Indices">
                             <option value="jump_10">Jump 10 Index</option>
@@ -1122,7 +1321,7 @@ body{padding-bottom:60px;}
                 <div style="margin-bottom:10px;">
                     <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
                         <span style="font-size:10px;color:var(--muted);">Volatility Level</span>
-                        <span id="accu-vol-label" style="font-size:10px;font-weight:700;color:var(--green);">Low Ã¢Å“â€¦</span>
+                        <span id="accu-vol-label" style="font-size:10px;font-weight:700;color:var(--green);">Low ✅</span>
                     </div>
                     <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
                         <div id="accu-vol-bar" style="height:100%;border-radius:3px;width:20%;background:var(--green);transition:width .5s;"></div>
@@ -1133,46 +1332,46 @@ body{padding-bottom:60px;}
                 <div class="accu-row-3" style="margin-bottom:10px;">
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">RSI(14)</div>
-                        <div id="accu-rsi" style="font-size:16px;font-weight:900;color:#60a5fa;">Ã¢â‚¬â€</div>
-                        <div id="accu-rsi-label" style="font-size:9px;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-rsi" style="font-size:16px;font-weight:900;color:#60a5fa;">—</div>
+                        <div id="accu-rsi-label" style="font-size:9px;color:var(--muted);">—</div>
                     </div>
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">BB Width</div>
-                        <div id="accu-bb-width" style="font-size:16px;font-weight:900;color:#c4b5fd;">Ã¢â‚¬â€</div>
-                        <div id="accu-bb-label" style="font-size:9px;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-bb-width" style="font-size:16px;font-weight:900;color:#c4b5fd;">—</div>
+                        <div id="accu-bb-label" style="font-size:9px;color:var(--muted);">—</div>
                     </div>
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Tick Speed</div>
-                        <div id="accu-adx" style="font-size:16px;font-weight:900;color:var(--amber);">Ã¢â‚¬â€</div>
-                        <div id="accu-adx-label" style="font-size:9px;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-adx" style="font-size:16px;font-weight:900;color:var(--amber);">—</div>
+                        <div id="accu-adx-label" style="font-size:9px;color:var(--muted);">—</div>
                     </div>
                 </div>
                 <div class="accu-row-3" style="margin-bottom:10px;">
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">EMA Trend</div>
-                        <div id="accu-ema-trend" style="font-size:13px;font-weight:900;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-ema-trend" style="font-size:13px;font-weight:900;color:var(--muted);">—</div>
                     </div>
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">ATR</div>
-                        <div id="accu-atr" style="font-size:13px;font-weight:900;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-atr" style="font-size:13px;font-weight:900;color:var(--muted);">—</div>
                     </div>
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Tick Stability</div>
-                        <div id="accu-tick-stability" style="font-size:13px;font-weight:900;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-tick-stability" style="font-size:13px;font-weight:900;color:var(--muted);">—</div>
                     </div>
                 </div>
                 <div class="accu-row-3" style="margin-bottom:10px;">
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Market Regime</div>
-                        <div id="accu-regime" style="font-size:13px;font-weight:900;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-regime" style="font-size:13px;font-weight:900;color:var(--muted);">—</div>
                     </div>
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Spike Risk</div>
-                        <div id="accu-spike-risk" style="font-size:13px;font-weight:900;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-spike-risk" style="font-size:13px;font-weight:900;color:var(--muted);">—</div>
                     </div>
                     <div class="card-sm" style="padding:8px;text-align:center;">
                         <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Micro Trend</div>
-                        <div id="accu-micro-trend" style="font-size:13px;font-weight:900;color:var(--muted);">Ã¢â‚¬â€</div>
+                        <div id="accu-micro-trend" style="font-size:13px;font-weight:900;color:var(--muted);">—</div>
                     </div>
                 </div>
 
@@ -1184,7 +1383,7 @@ body{padding-bottom:60px;}
 
             <!-- Right: Trade settings -->
             <div class="card accu-card">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Ã¢Å¡â„¢Ã¯Â¸Â Trade Settings</div>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">⚙️ Trade Settings</div>
 
                 <div style="margin-bottom:10px;">
                     <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Growth Rate</div>
@@ -1223,7 +1422,7 @@ body{padding-bottom:60px;}
                 <div style="background:var(--bg);border:1px solid var(--teal);border-radius:8px;padding:10px;margin-bottom:10px;">
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                         <div>
-                            <div style="font-size:11px;font-weight:900;color:var(--teal);">Ã°Å¸Â¤â€“ Auto Mode</div>
+                            <div style="font-size:11px;font-weight:900;color:var(--teal);">🤖 Auto Mode</div>
                             <div style="font-size:9px;color:var(--muted);">Runs continuously until Take Profit, Stop Loss, or manual stop</div>
                         </div>
                         <div onclick="toggleAccuAuto()" id="accu-auto-track"
@@ -1240,7 +1439,7 @@ body{padding-bottom:60px;}
 
                 <!-- Profit calculator -->
                 <div class="card-sm" style="padding:10px;">
-                    <div style="font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:8px;">Ã°Å¸â€™Â° Profit Calculator</div>
+                    <div style="font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:8px;">💰 Profit Calculator</div>
                     <div id="accu-profit-table" style="display:flex;flex-direction:column;gap:4px;font-size:10px;"></div>
                 </div>
             </div>
@@ -1249,11 +1448,11 @@ body{padding-bottom:60px;}
         <!-- Live price + current contract -->
         <div class="accu-row-2">
             <div class="card accu-card">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Ã°Å¸â€œÂ¡ Live Price</div>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">📡 Live Price</div>
                 <div style="display:flex;align-items:center;justify-content:space-between;">
                     <div>
-                        <div id="accu-price" style="font-size:24px;font-weight:900;font-family:monospace;color:var(--teal);">Ã¢â‚¬â€</div>
-                        <div id="accu-last-digit" style="font-size:11px;color:var(--muted);">Last digit: Ã¢â‚¬â€</div>
+                        <div id="accu-price" style="font-size:24px;font-weight:900;font-family:monospace;color:var(--teal);">—</div>
+                        <div id="accu-last-digit" style="font-size:11px;color:var(--muted);">Last digit: —</div>
                     </div>
                     <div style="text-align:right;">
                         <div id="accu-tick-count" style="font-size:28px;font-weight:900;color:var(--green);">0</div>
@@ -1263,7 +1462,7 @@ body{padding-bottom:60px;}
             </div>
 
             <div class="card accu-card">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Ã°Å¸â€œâ€¹ Current Contract</div>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">📋 Current Contract</div>
                 <div id="accu-contract-info" style="font-size:12px;color:var(--muted);">No active contract</div>
                 <div style="margin-top:8px;">
                     <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Current Profit</div>
@@ -1275,35 +1474,894 @@ body{padding-bottom:60px;}
         <!-- Run/Stop/Reset buttons -->
         <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:10px;">
             <button id="accu-run-btn" onclick="toggleAccumulator()" class="btn btn-teal" style="padding:14px;font-size:15px;font-weight:900;border-radius:10px;box-shadow:0 4px 20px #00d2c844;">
-                Ã¢â€“Â¶ Start Accumulator
+                ▶ Start Accumulator
             </button>
             <button onclick="sellAccumulator()" id="accu-sell-btn" class="btn btn-ghost" style="padding:14px;font-size:13px;font-weight:900;border-radius:10px;display:none;">
-                Ã°Å¸â€™Â° Sell Now
+                💰 Sell Now
             </button>
-            <button onclick="resetAccumulator()" id="accu-reset-btn" class="btn btn-ghost" title="Reset accumulator session Ã¢â‚¬â€ clears stats, history and current contract without reloading the page" style="padding:14px 18px;font-size:13px;font-weight:900;border-radius:10px;">
-                Ã°Å¸â€â€ž Reset
+            <button onclick="resetAccumulator()" id="accu-reset-btn" class="btn btn-ghost" title="Reset accumulator session — clears stats, history and current contract without reloading the page" style="padding:14px 18px;font-size:13px;font-weight:900;border-radius:10px;">
+                🔄 Reset
             </button>
         </div>
         <!-- Auto mode status bar -->
         <div id="accu-auto-bar" style="display:none;background:#00d2c818;border:1px solid #00d2c844;border-radius:8px;padding:10px 14px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
             <div style="display:flex;align-items:center;gap:8px;">
                 <span style="width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse-dot 1s infinite;"></span>
-                <span style="font-size:12px;font-weight:700;color:var(--teal);">Ã°Å¸Â¤â€“ AUTO MODE RUNNING</span>
+                <span style="font-size:12px;font-weight:700;color:var(--teal);">🤖 AUTO MODE RUNNING</span>
             </div>
             <div style="display:flex;gap:14px;font-size:11px;color:var(--muted);">
                 <span>Sessions: <b id="accu-auto-sessions" style="color:var(--teal);">0</b></span>
                 <span>TP Hits: <b id="accu-tp-hits" style="color:var(--green);">0</b></span>
                 <span>Total P/L: <b id="accu-auto-pl" style="color:var(--green);">$0.00</b></span>
             </div>
-            <button onclick="stopAccuAuto()" class="btn btn-red" style="font-size:11px;padding:5px 14px;">Ã¢Â¬â€º Stop Auto</button>
+            <button onclick="stopAccuAuto()" class="btn btn-red" style="font-size:11px;padding:5px 14px;">⬛ Stop Auto</button>
         </div>
         <style>
             @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:.4;} }
-        </style>
+        
+/* ============================================================
+   DOLARHUNTER — PROFESSIONAL NAVIGATION
+   Clean UI — no emoji / broken Unicode symbols
+   ============================================================ */
+
+.dh-pro-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(10, 14, 22, 0.96);
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.dh-pro-nav .tab-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #8f9aaa;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .15px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background .18s ease,
+        color .18s ease,
+        border-color .18s ease,
+        transform .18s ease;
+}
+
+.dh-pro-nav .tab-btn:hover {
+    background: rgba(255,255,255,.045);
+    color: #e8edf4;
+    border-color: rgba(255,255,255,.08);
+    transform: translateY(-1px);
+}
+
+.dh-pro-nav .tab-btn.active {
+    color: #ffffff;
+    background: rgba(0, 210, 200, .10);
+    border-color: rgba(0, 210, 200, .24);
+    box-shadow: inset 0 0 18px rgba(0,210,200,.035);
+}
+
+.dh-pro-nav .tab-btn.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: -11px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--teal, #00d2c8);
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 18px;
+    opacity: .85;
+}
+
+.tab-btn.active .nav-icon {
+    opacity: 1;
+}
+
+/* Dashboard */
+.nav-dashboard::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    border: 1.7px solid currentColor;
+    border-radius: 3px;
+}
+
+/* Accumulators */
+.nav-accu::before {
+    content: "";
+    width: 13px;
+    height: 8px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: skewY(-28deg) rotate(-8deg);
+}
+
+/* Bulk Trading */
+.nav-bulk::before {
+    content: "";
+    width: 13px;
+    height: 11px;
+    border: 1.7px solid currentColor;
+    border-radius: 2px;
+    box-shadow: 3px 3px 0 -1px rgba(255,255,255,.35);
+}
+
+/* AI Scanner */
+.nav-scanner::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 1.7px solid currentColor;
+    border-radius: 50%;
+}
+
+.nav-scanner::after {
+    content: "";
+    width: 6px;
+    height: 1.7px;
+    background: currentColor;
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    transform: rotate(45deg);
+    transform-origin: left center;
+}
+
+/* DBot */
+.nav-bot::before {
+    content: "";
+    width: 13px;
+    height: 10px;
+    border: 1.7px solid currentColor;
+    border-radius: 3px;
+}
+
+.nav-bot::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-left: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    position: absolute;
+    bottom: 1px;
+    transform: rotate(-45deg);
+}
+
+/* Charts */
+.nav-chart::before {
+    content: "";
+    width: 13px;
+    height: 12px;
+    border-left: 1.7px solid currentColor;
+    border-bottom: 1.7px solid currentColor;
+    background:
+        linear-gradient(135deg,
+        transparent 42%,
+        currentColor 44%,
+        currentColor 56%,
+        transparent 58%);
+}
+
+/* D-Stats */
+.nav-digits::before {
+    content: "123";
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+/* MT5 */
+.nav-mt5::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    border: 1.7px solid currentColor;
+    border-radius: 50%;
+}
+
+.nav-mt5::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .dh-pro-nav {
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .dh-pro-nav .tab-btn {
+        min-height: 38px;
+        padding: 0 11px;
+        gap: 7px;
+        font-size: 11px;
+    }
+
+    .dh-pro-nav .tab-btn.active::after {
+        left: 10px;
+        right: 10px;
+        bottom: -9px;
+    }
+
+    .nav-icon {
+        width: 16px;
+        height: 16px;
+        flex-basis: 16px;
+    }
+}
+
+/* ============================================================
+   DOLARHUNTER — PROFESSIONAL AI TRADING NAVIGATION
+   ============================================================ */
+
+.dh-professional-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: rgba(10, 15, 22, .96);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 8px 30px rgba(0,0,0,.18);
+}
+
+.dh-professional-nav .tab-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #8f9baa;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .15px;
+    cursor: pointer;
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.dh-professional-nav .tab-btn:hover {
+    color: #e8f2f2;
+    background: rgba(255,255,255,.045);
+    border-color: rgba(255,255,255,.07);
+}
+
+.dh-professional-nav .tab-btn.active {
+    color: #00d2c8;
+    background: rgba(0,210,200,.075);
+    border-color: rgba(0,210,200,.16);
+}
+
+.dh-professional-nav .tab-btn.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: -9px;
+    height: 2px;
+    border-radius: 10px;
+    background: #00d2c8;
+    box-shadow: 0 0 10px rgba(0,210,200,.65);
+}
+
+.nav-svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .9;
+}
+
+.dh-professional-nav .tab-btn.active .nav-svg {
+    opacity: 1;
+    stroke-width: 1.9;
+}
+
+@media (max-width: 1100px) {
+    .dh-professional-nav {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .dh-professional-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .dh-professional-nav .tab-btn {
+        flex: 0 0 auto;
+        padding: 0 11px;
+    }
+}
+
+@media (max-width: 650px) {
+    .dh-professional-nav {
+        gap: 2px;
+        padding: 6px;
+    }
+
+    .dh-professional-nav .tab-btn {
+        min-height: 40px;
+        padding: 0 10px;
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .nav-svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .dh-professional-nav .tab-btn.active::after {
+        left: 10px;
+        right: 10px;
+        bottom: -7px;
+    }
+}
+
+/* ============================================================
+   DOLARHUNTER — PROFESSIONAL HEADER
+   ============================================================ */
+
+.dh-topbar {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 22px;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,22,31,.98),
+            rgba(9,14,21,.98)
+        );
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    box-shadow: 0 6px 25px rgba(0,0,0,.22);
+    position: relative;
+    z-index: 100;
+}
+
+/* Brand */
+
+.dh-brand-simple {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.dh-brand-simple span:first-child {
+    color: #f3f6f8;
+}
+
+.dh-brand-simple span:last-child {
+    color: #00d2c8;
+}
+
+.dh-brand-simple img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    margin: 0 1px;
+}
+
+/* Right side */
+
+.dh-topbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    min-width: 0;
+}
+
+/* Social buttons */
+
+.dh-social-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dh-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0 11px;
+    border-radius: 7px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.035);
+    color: #aab4bf;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+.dh-social-btn:hover {
+    color: #fff;
+    background: rgba(255,255,255,.07);
+    border-color: rgba(255,255,255,.14);
+    transform: translateY(-1px);
+}
+
+/* Theme */
+
+.dh-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 32px;
+    padding: 0 10px;
+    border-radius: 7px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.035);
+    color: #aab4bf;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dh-theme-toggle:hover {
+    color: #fff;
+    background: rgba(255,255,255,.07);
+}
+
+.dh-svg-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dh-svg-icon svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Account */
+
+.dh-account-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 0 10px;
+    border-radius: 7px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.035);
+}
+
+.dh-account-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #b7c0ca;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.dh-account-mode-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00d2c8;
+    box-shadow: 0 0 8px rgba(0,210,200,.7);
+}
+
+.dh-account-switch-arrow svg {
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+#dh-header-balance {
+    color: #f3f6f8;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* Live status */
+
+.dh-market-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 0 9px;
+    border-radius: 7px;
+    background: rgba(0,210,200,.06);
+    border: 1px solid rgba(0,210,200,.13);
+    color: #00d2c8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.dh-market-live > span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00d2c8;
+    box-shadow: 0 0 9px rgba(0,210,200,.8);
+}
+
+/* Login */
+
+.dh-btn-login,
+.dh-btn-signup {
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.dh-btn-login {
+    border: 1px solid rgba(0,210,200,.28);
+    background: rgba(0,210,200,.06);
+    color: #00d2c8;
+}
+
+.dh-btn-login:hover {
+    background: rgba(0,210,200,.12);
+}
+
+.dh-btn-signup {
+    border: 1px solid #00d2c8;
+    background: #00d2c8;
+    color: #071114;
+}
+
+.dh-btn-signup:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+
+    .dh-topbar {
+        padding: 9px 14px;
+        gap: 10px;
+    }
+
+    .dh-social-links {
+        display: none;
+    }
+
+    .dh-topbar-right {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .dh-topbar {
+        min-height: 56px;
+        padding: 8px 10px;
+    }
+
+    .dh-brand-simple {
+        font-size: 16px;
+    }
+
+    .dh-brand-simple img {
+        width: 21px;
+        height: 21px;
+    }
+
+    .dh-theme-toggle #theme-label,
+    .dh-account-status #dh-header-balance,
+    .dh-market-live {
+        display: none;
+    }
+
+    .dh-theme-toggle,
+    .dh-account-status {
+        min-height: 30px;
+    }
+
+    .dh-btn-login,
+    .dh-btn-signup {
+        min-height: 30px;
+        padding: 0 9px;
+        font-size: 10px;
+    }
+}
+
+/* ============================================================
+   DOLARHUNTER — PROFESSIONAL DASHBOARD THEME
+   Matches header + professional navigation
+   ============================================================ */
+
+:root {
+    --dh-bg-main: #071014;
+    --dh-bg-card: rgba(13, 25, 31, 0.92);
+    --dh-bg-card-soft: rgba(17, 32, 39, 0.78);
+    --dh-border: rgba(255,255,255,.08);
+    --dh-border-active: rgba(0,210,200,.28);
+    --dh-teal: #00d2c8;
+    --dh-teal-soft: rgba(0,210,200,.10);
+    --dh-text: #f2f7f8;
+    --dh-muted: #8fa5aa;
+    --dh-green: #22c55e;
+}
+
+/* Main background */
+
+body {
+    background:
+        radial-gradient(circle at 50% -10%, rgba(0,210,200,.08), transparent 35%),
+        linear-gradient(180deg, #071014 0%, #050b0e 100%) !important;
+    color: var(--dh-text);
+}
+
+/* Main content */
+
+main {
+    background: transparent !important;
+}
+
+/* Dashboard pane */
+
+#dashboard-pane {
+    background: transparent !important;
+    padding-top: 24px !important;
+}
+
+/* Dashboard cards */
+
+#dashboard-pane .card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,35,42,.96),
+            rgba(9,20,25,.94)
+        ) !important;
+
+    border: 1px solid var(--dh-border) !important;
+    border-radius: 14px !important;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+    transition:
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease !important;
+}
+
+#dashboard-pane .card:hover {
+    border-color: var(--dh-border-active) !important;
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.32),
+        0 0 25px rgba(0,210,200,.035) !important;
+}
+
+/* Welcome card */
+
+#auth-card {
+    position: relative;
+    overflow: hidden;
+}
+
+#auth-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--dh-teal),
+            transparent
+        );
+
+    opacity: .8;
+}
+
+#auth-card > div:first-child {
+    box-shadow:
+        0 0 25px rgba(0,210,200,.12);
+}
+
+/* Welcome heading */
+
+#auth-card h2 {
+    color: var(--dh-text) !important;
+    letter-spacing: -.3px;
+}
+
+.dh-welcome-dolar {
+    color: #ffffff !important;
+}
+
+.dh-welcome-hunter {
+    color: var(--dh-teal) !important;
+}
+
+/* Main dashboard buttons */
+
+#dashboard-pane .btn-teal {
+    background:
+        linear-gradient(
+            135deg,
+            #00d2c8,
+            #00aaa3
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.12) !important;
+    color: #031113 !important;
+
+    font-weight: 800 !important;
+
+    box-shadow:
+        0 8px 22px rgba(0,210,200,.16) !important;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease !important;
+}
+
+#dashboard-pane .btn-teal:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 12px 28px rgba(0,210,200,.24) !important;
+}
+
+#dashboard-pane .btn-ghost {
+    background: rgba(255,255,255,.025) !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    color: #cbd7d9 !important;
+
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        color .18s ease !important;
+}
+
+#dashboard-pane .btn-ghost:hover {
+    background: rgba(0,210,200,.06) !important;
+    border-color: rgba(0,210,200,.30) !important;
+    color: #ffffff !important;
+}
+
+/* Dashboard headings */
+
+#dashboard-pane h1,
+#dashboard-pane h2,
+#dashboard-pane h3,
+#dashboard-pane h4 {
+    letter-spacing: -.25px;
+}
+
+/* Muted text */
+
+#dashboard-pane p {
+    color: var(--dh-muted);
+}
+
+/* Status boxes */
+
+#dashboard-pane [style*="border"] {
+    border-color: rgba(255,255,255,.07);
+}
+
+/* Scrollbar */
+
+#dashboard-pane::-webkit-scrollbar {
+    width: 7px;
+}
+
+#dashboard-pane::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#dashboard-pane::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.10);
+    border-radius: 10px;
+}
+
+#dashboard-pane::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,210,200,.28);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    #dashboard-pane {
+        padding: 14px !important;
+    }
+
+    #dashboard-pane .card {
+        border-radius: 12px !important;
+    }
+
+    #auth-card {
+        padding: 28px 20px !important;
+    }
+
+}
+
+/* ============================================================
+   END PROFESSIONAL DASHBOARD THEME
+   ============================================================ */
+</style>
 
         <!-- Transaction history -->
         <div class="card accu-card">
-            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Ã°Å¸â€œâ€¹ Accumulator History</div>
+            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">📋 Accumulator History</div>
             <div style="display:flex;padding:6px 0;border-bottom:1px solid var(--border);font-size:10px;font-weight:700;color:var(--muted);">
                 <div style="width:70px;">Market</div>
                 <div style="flex:1;">Growth</div>
@@ -1319,20 +2377,20 @@ body{padding-bottom:60px;}
 
         <!-- Risk warning -->
         <div style="padding:12px;background:#ff444f14;border:1px solid #ff444f44;border-radius:8px;">
-            <p style="font-size:10px;color:#f87171;line-height:1.6;">Ã¢Å¡Â Ã¯Â¸Â <b>Accumulator Risk:</b> Your entire stake is lost if the price moves outside the barrier on ANY tick. The longer you hold, the higher the risk. Always use Take Profit and never hold indefinitely.</p>
+            <p style="font-size:10px;color:#f87171;line-height:1.6;">⚠️ <b>Accumulator Risk:</b> Your entire stake is lost if the price moves outside the barrier on ANY tick. The longer you hold, the higher the risk. Always use Take Profit and never hold indefinitely.</p>
         </div>
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ BULK TRADING Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── BULK TRADING ── -->
 <div id="bulk-pane" class="tab-pane scroll" style="padding:16px;">
     <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
 
         <!-- Header -->
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
             <div>
-                <h2 style="font-size:18px;font-weight:900;">Ã°Å¸â€œÂ¦ Bulk Trading</h2>
-                <p style="font-size:11px;color:var(--muted);margin-top:3px;">Configure a setup once and execute multiple trades from it Ã¢â‚¬â€ sequentially, safely, with no duplicates.</p>
+                <h2 style="font-size:18px;font-weight:900;">📦 Bulk Trading</h2>
+                <p style="font-size:11px;color:var(--muted);margin-top:3px;">Configure a setup once and execute multiple trades from it — sequentially, safely, with no duplicates.</p>
             </div>
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                 <span class="status-dot" id="bulk-status-dot"></span>
@@ -1344,7 +2402,7 @@ body{padding-bottom:60px;}
 
         <!-- Config: Market / Type / Direction -->
         <div class="card accu-card">
-            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Ã¢Å¡â„¢Ã¯Â¸Â Trade Setup</div>
+            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">⚙️ Trade Setup</div>
             <div class="accu-row-2" style="margin-bottom:10px;">
                 <div>
                     <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Market</div>
@@ -1390,7 +2448,7 @@ body{padding-bottom:60px;}
 
             <div class="accu-row-2">
                 <div id="bulk-pred-wrap">
-                    <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Prediction (0Ã¢â‚¬â€œ9)</div>
+                    <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Prediction (0–9)</div>
                     <input type="number" id="bulk-pred" value="5" min="0" max="9" onchange="updateBulkPreview()">
                 </div>
                 <div>
@@ -1404,7 +2462,7 @@ body{padding-bottom:60px;}
         <!-- Stake configuration -->
         <div class="card accu-card">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">Ã°Å¸â€™Â° Stake Configuration</div>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">💰 Stake Configuration</div>
                 <div style="display:flex;gap:4px;">
                     <button id="bulk-mode-per" onclick="setBulkStakeMode('per')" class="btn btn-teal" style="font-size:10px;padding:4px 10px;">Per Trade</button>
                     <button id="bulk-mode-total" onclick="setBulkStakeMode('total')" class="btn btn-ghost" style="font-size:10px;padding:4px 10px;">Total Budget</button>
@@ -1414,7 +2472,7 @@ body{padding-bottom:60px;}
             <div style="margin-bottom:10px;">
                 <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Number of Trades</div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <button onclick="stepBulkTrades(-1)" class="btn btn-ghost" style="padding:8px 14px;font-size:14px;">Ã¢Ë†â€™</button>
+                    <button onclick="stepBulkTrades(-1)" class="btn btn-ghost" style="padding:8px 14px;font-size:14px;">−</button>
                     <input type="number" id="bulk-trades" value="10" min="1" max="100" style="text-align:center;font-size:15px;font-weight:900;" onchange="updateBulkPreview()">
                     <button onclick="stepBulkTrades(1)" class="btn btn-ghost" style="padding:8px 14px;font-size:14px;">+</button>
                 </div>
@@ -1426,7 +2484,7 @@ body{padding-bottom:60px;}
                     <button onclick="setBulkTrades(50)" class="btn btn-ghost" style="font-size:10px;padding:4px 8px;">50</button>
                     <button onclick="setBulkTrades(100)" class="btn btn-ghost" style="font-size:10px;padding:4px 8px;">100</button>
                 </div>
-                <div style="font-size:9px;color:var(--dim);margin-top:4px;">Max 100 trades per batch Ã¢â‚¬â€ kept sequential to protect your connection and account.</div>
+                <div style="font-size:9px;color:var(--dim);margin-top:4px;">Max 100 trades per batch — kept sequential to protect your connection and account.</div>
             </div>
 
             <div id="bulk-stake-label-wrap">
@@ -1437,14 +2495,14 @@ body{padding-bottom:60px;}
 
         <!-- Preview + Execute -->
         <div class="card accu-card" style="border-color:var(--teal);">
-            <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:10px;">Ã°Å¸Â§Â¾ Bulk Trade Preview</div>
+            <div style="font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:10px;">🧾 Bulk Trade Preview</div>
             <div id="bulk-preview-body" style="display:flex;flex-direction:column;gap:4px;font-size:12px;margin-bottom:12px;"></div>
             <button id="bulk-execute-btn" onclick="startBulkExecution()" class="btn btn-teal" style="width:100%;padding:14px;font-size:15px;font-weight:900;border-radius:10px;">EXECUTE 10 TRADES</button>
         </div>
 
         <!-- Live progress -->
         <div class="card accu-card" id="bulk-progress-card" style="display:none;">
-            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Ã¢ÂÂ± Executing Bulk Trade</div>
+            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">⏱ Executing Bulk Trade</div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
                 <span style="font-size:13px;font-weight:900;" id="bulk-progress-label">0 / 0</span>
                 <span style="font-size:11px;color:var(--muted);" id="bulk-progress-status">Running...</span>
@@ -1468,8 +2526,8 @@ body{padding-bottom:60px;}
         <!-- Bulk Trade History -->
         <div class="card accu-card">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">Ã°Å¸â€œâ€¹ Bulk Trade History</div>
-                <button onclick="clearBulkHistory()" class="btn btn-ghost" style="font-size:10px;padding:4px 10px;">Ã°Å¸â€”â€˜ Clear</button>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">📋 Bulk Trade History</div>
+                <button onclick="clearBulkHistory()" class="btn btn-ghost" style="font-size:10px;padding:4px 10px;">🗑 Clear</button>
             </div>
             <div id="bulk-history-body" style="display:flex;flex-direction:column;gap:8px;">
                 <div style="font-size:11px;color:var(--dim);text-align:center;padding:16px;">No bulk trades executed yet.</div>
@@ -1478,22 +2536,22 @@ body{padding-bottom:60px;}
 
         <!-- Risk warning -->
         <div style="padding:12px;background:#ff444f14;border:1px solid #ff444f44;border-radius:8px;">
-            <p style="font-size:10px;color:#f87171;line-height:1.6;">Ã¢Å¡Â Ã¯Â¸Â <b>Bulk Trading Risk:</b> Each trade in a batch is a separate, independent contract Ã¢â‚¬â€ a losing streak multiplies across every trade in the batch. Trades execute one after another (never in parallel) to protect your connection; a batch of 50 can take a while to complete. History is stored in your browser only.</p>
+            <p style="font-size:10px;color:#f87171;line-height:1.6;">⚠️ <b>Bulk Trading Risk:</b> Each trade in a batch is a separate, independent contract — a losing streak multiplies across every trade in the batch. Trades execute one after another (never in parallel) to protect your connection; a batch of 50 can take a while to complete. History is stored in your browser only.</p>
         </div>
     </div>
 </div>
 
-<!-- Ã¢â€â‚¬Ã¢â€â‚¬ MT5 + ADVANCED PRICE ACTION TRADING Ã¢â€â‚¬Ã¢â€â‚¬ -->
+<!-- ── MT5 + ADVANCED PRICE ACTION TRADING ── -->
 <div id="mt5-pane" class="tab-pane scroll" style="padding:16px;">
     <div style="max-width:960px;margin:0 auto;">
 
         <!-- Header -->
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
             <div>
-                <h2 style="font-size:18px;font-weight:900;">Ã°Å¸â€œÅ  MT5 Signals Ã¢â‚¬â€ Advanced Price Action</h2>
-                <p style="font-size:11px;color:var(--muted);margin-top:3px;">Real multi-timeframe structure, liquidity &amp; displacement analysis. Signals stay visible until they expire Ã¢â‚¬â€ nothing disappears the moment a newer one appears.</p>
+                <h2 style="font-size:18px;font-weight:900;">📊 MT5 Signals — Advanced Price Action</h2>
+                <p style="font-size:11px;color:var(--muted);margin-top:3px;">Real multi-timeframe structure, liquidity &amp; displacement analysis. Signals stay visible until they expire — nothing disappears the moment a newer one appears.</p>
             </div>
-            <a href="https://app.deriv.com/mt5" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:7px 16px;text-decoration:none;">Open MT5 Ã¢â€ â€™</a>
+            <a href="https://app.deriv.com/mt5" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:7px 16px;text-decoration:none;">Open MT5 →</a>
         </div>
 
         <!-- Trading style selector -->
@@ -1501,16 +2559,16 @@ body{padding-bottom:60px;}
             <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">How do you trade? (drives on-demand analysis + the background scanner)</div>
             <div class="accu-row-3">
                 <button class="btn btn-ghost apa-style-btn" onclick="selectApaStyle('quick',this)" style="padding:12px;text-align:left;flex-direction:column;align-items:flex-start;gap:2px;">
-                    <span style="font-size:12px;font-weight:900;">Ã¢Å¡Â¡ Quick Profit</span>
+                    <span style="font-size:12px;font-weight:900;">⚡ Quick Profit</span>
                     <span style="font-size:9px;color:var(--muted);font-weight:400;">Short-term setups, closed relatively quickly</span>
                 </button>
                 <button class="btn btn-ghost apa-style-btn apa-style-active" onclick="selectApaStyle('day',this)" style="padding:12px;text-align:left;flex-direction:column;align-items:flex-start;gap:2px;">
-                    <span style="font-size:12px;font-weight:900;">Ã°Å¸â€œâ€¦ Day Trading</span>
+                    <span style="font-size:12px;font-weight:900;">📅 Day Trading</span>
                     <span style="font-size:9px;color:var(--muted);font-weight:400;">Intraday moves, closed within the session</span>
                 </button>
                 <button class="btn btn-ghost apa-style-btn" onclick="selectApaStyle('swing',this)" style="padding:12px;text-align:left;flex-direction:column;align-items:flex-start;gap:2px;">
-                    <span style="font-size:12px;font-weight:900;">Ã°Å¸â€œË† Swing Trading</span>
-                    <span style="font-size:9px;color:var(--muted);font-weight:400;">Fewer, larger setups Ã¢â‚¬â€ held longer</span>
+                    <span style="font-size:12px;font-weight:900;">📈 Swing Trading</span>
+                    <span style="font-size:9px;color:var(--muted);font-weight:400;">Fewer, larger setups — held longer</span>
                 </button>
             </div>
         </div>
@@ -1519,8 +2577,8 @@ body{padding-bottom:60px;}
             <!-- On-demand market analyzer -->
             <div class="card accu-card">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-                    <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">Ã°Å¸â€œË† Analyze a Market</div>
-                    <button onclick="runApaAnalysis()" class="btn btn-ghost" style="font-size:10px;padding:4px 10px;">Ã°Å¸â€â€ž Re-analyze</button>
+                    <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">📈 Analyze a Market</div>
+                    <button onclick="runApaAnalysis()" class="btn btn-ghost" style="font-size:10px;padding:4px 10px;">🔄 Re-analyze</button>
                 </div>
                 <select id="apa-market-select" onchange="onApaMarketChange(this.value)" style="font-size:12px;margin-bottom:10px;">
                     <optgroup label="Volatility Indices">
@@ -1563,7 +2621,7 @@ body{padding-bottom:60px;}
 
             <!-- Signal history filters -->
             <div class="card accu-card">
-                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">Ã°Å¸â€Â Signal Filters</div>
+                <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">🔍 Signal Filters</div>
                 <div style="margin-bottom:10px;">
                     <div style="font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Suggested Risk (included in Copy Signal)</div>
                     <select id="apa-risk" onchange="saveApaPrefs()" style="font-size:12px;">
@@ -1609,7 +2667,7 @@ body{padding-bottom:60px;}
                         </select>
                     </div>
                 </div>
-                <div style="font-size:9px;color:var(--muted);line-height:1.5;">Only Active/Expired are shown Ã¢â‚¬â€ this app can't automatically confirm a manually-placed trade's outcome, so Won/Lost/Invalidated status isn't tracked.</div>
+                <div style="font-size:9px;color:var(--muted);line-height:1.5;">Only Active/Expired are shown — this app can't automatically confirm a manually-placed trade's outcome, so Won/Lost/Invalidated status isn't tracked.</div>
             </div>
         </div>
 
@@ -1636,88 +2694,88 @@ body{padding-bottom:60px;}
 
         <!-- Disclaimer -->
         <div style="margin-top:14px;padding:12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;">
-            <p style="font-size:10px;color:var(--muted);line-height:1.6;">Ã¢Å¡Â Ã¯Â¸Â <b>Risk Warning:</b> This is a decision-support tool, not financial advice. Setups are generated by automated price-action analysis and can be wrong. Deriv's public API does not allow this site to place or manage MT5 orders directly Ã¢â‚¬â€ every signal offers <b>Copy Signal</b> so you can enter it manually in the real MT5 terminal. Signals stay in your browser (no server database exists for this app) and are cleared if you clear your browser storage. Always verify the market and current price before trading.</p>
+            <p style="font-size:10px;color:var(--muted);line-height:1.6;">⚠️ <b>Risk Warning:</b> This is a decision-support tool, not financial advice. Setups are generated by automated price-action analysis and can be wrong. Deriv's public API does not allow this site to place or manage MT5 orders directly — every signal offers <b>Copy Signal</b> so you can enter it manually in the real MT5 terminal. Signals stay in your browser (no server database exists for this app) and are cleared if you clear your browser storage. Always verify the market and current price before trading.</p>
         </div>
     </div>
 </div>
 
 </main>
 
-<!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â BOT BAR Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+<!-- ═══ BOT BAR ═══ -->
 <div id="bot-bar">
     <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
         <span class="status-dot" id="bar-dot"></span>
         <span id="bar-status" style="font-size:11px;font-weight:700;color:var(--muted);">OFFLINE</span>
         <div id="bar-info" style="display:none;align-items:center;gap:10px;font-size:10px;color:var(--muted);">
-            <span>Bot: <b id="bar-bot" style="color:var(--teal);">Ã¢â‚¬â€</b></span>
+            <span>Bot: <b id="bar-bot" style="color:var(--teal);">—</b></span>
             <span>Runs: <b id="bar-runs" style="color:var(--text);font-family:monospace;">0</b></span>
             <span>P/L: <b id="bar-pl" style="color:var(--text);font-family:monospace;">$0.00</b></span>
             <span>Win: <b id="bar-wr" style="color:var(--text);font-family:monospace;">0%</b></span>
         </div>
     </div>
-    <button id="run-btn" onclick="toggleBot()" class="btn btn-run" style="font-size:13px;font-weight:900;padding:10px 28px;">Ã¢â€“Â¶ Run</button>
+    <button id="run-btn" onclick="toggleBot()" class="btn btn-run" style="font-size:13px;font-weight:900;padding:10px 28px;">▶ Run</button>
 </div>
 
 <!-- Strategy Guide Modal -->
 <div id="strategy-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:#000000cc;align-items:center;justify-content:center;padding:16px;">
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;width:100%;max-width:720px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;">
         <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
-            <h2 style="font-size:16px;font-weight:900;">Ã°Å¸â€œâ€“ AI Scanner Strategy Guide</h2>
-            <button onclick="closeStrategyGuide()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;">Ã¢Å“â€¢</button>
+            <h2 style="font-size:16px;font-weight:900;">📖 AI Scanner Strategy Guide</h2>
+            <button onclick="closeStrategyGuide()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;">✕</button>
         </div>
         <div style="flex:1;overflow-y:auto;padding:20px;font-size:12px;line-height:1.7;color:var(--muted);">
 
-            <h3 style="color:var(--teal);font-size:14px;margin-bottom:8px;">Ã°Å¸Â§Â  How the AI Scanner Works</h3>
+            <h3 style="color:var(--teal);font-size:14px;margin-bottom:8px;">🧠 How the AI Scanner Works</h3>
             <p style="margin-bottom:12px;">The AI Scanner analyses real Deriv tick data (last 1000 ticks per market) and calculates probabilities for each trade type. It uses Bollinger Bands, RSI, digit frequency analysis and price momentum to generate signals.</p>
 
             <div style="background:var(--bg);border-radius:8px;padding:14px;margin-bottom:14px;">
-                <h4 style="color:var(--blue);margin-bottom:6px;">Ã°Å¸â€œÅ  OVER/UNDER STRATEGIES</h4>
+                <h4 style="color:var(--blue);margin-bottom:6px;">📊 OVER/UNDER STRATEGIES</h4>
 
                 <p style="color:#e2e8f0;font-weight:700;margin-bottom:4px;">Over 1,2,3 Strategy:</p>
                 <ul style="margin:0 0 10px 16px;">
                     <li>Digits 0,1,2,3 should all be below 10% (red/yellow bars among them)</li>
                     <li>At least 2 of digits 4-9 should be above 11% (green/blue bars)</li>
-                    <li><b style="color:var(--teal);">Entry:</b> Wait for the least appearing digit among 1,2,3 to appear Ã¢â€ â€™ next tick enters if digit 4-9 appears</li>
+                    <li><b style="color:var(--teal);">Entry:</b> Wait for the least appearing digit among 1,2,3 to appear → next tick enters if digit 4-9 appears</li>
                 </ul>
 
                 <p style="color:#e2e8f0;font-weight:700;margin-bottom:4px;">Under 8,7,6 Strategy:</p>
                 <ul style="margin:0 0 10px 16px;">
                     <li>Digits 6,7,8,9 should all be below 10% (red/yellow bars among them)</li>
                     <li>At least 2 of digits 0-5 should be above 11% (green/blue bars)</li>
-                    <li><b style="color:var(--teal);">Entry:</b> Wait for the least appearing among 6,7,8 Ã¢â€ â€™ next tick enter if digit 0-4 appears</li>
+                    <li><b style="color:var(--teal);">Entry:</b> Wait for the least appearing among 6,7,8 → next tick enter if digit 0-4 appears</li>
                 </ul>
             </div>
 
             <div style="background:var(--bg);border-radius:8px;padding:14px;margin-bottom:14px;">
-                <h4 style="color:var(--purple);margin-bottom:6px;">Ã°Å¸â€Âµ EVEN/ODD STRATEGIES</h4>
+                <h4 style="color:var(--purple);margin-bottom:6px;">🔵 EVEN/ODD STRATEGIES</h4>
 
                 <p style="color:#e2e8f0;font-weight:700;margin-bottom:4px;">Odd Strategy:</p>
                 <ul style="margin:0 0 10px 16px;">
-                    <li>Ã°Å¸Å¸Â¢ Green bar + Ã°Å¸â€Âµ Blue bar both on ODD digits (1,3,5,7,9) at 11%+</li>
-                    <li>Ã°Å¸â€Â´ Red bar Ã¢â€°Â¤ 8.6% + Ã°Å¸Å¸Â¡ Yellow bar Ã¢â€°Â¤ 9.5% both on EVEN digits</li>
-                    <li><b style="color:var(--teal);">Entry:</b> Wait for least even digit (R/Y) to appear Ã¢â€ â€™ then 2 consecutive odds in next 5 ticks Ã¢â€ â€™ enter</li>
-                    <li>Ã¢Å¡Â Ã¯Â¸Â Stop after 3-7 wins and re-check market conditions</li>
+                    <li>🟢 Green bar + 🔵 Blue bar both on ODD digits (1,3,5,7,9) at 11%+</li>
+                    <li>🔴 Red bar ≤ 8.6% + 🟡 Yellow bar ≤ 9.5% both on EVEN digits</li>
+                    <li><b style="color:var(--teal);">Entry:</b> Wait for least even digit (R/Y) to appear → then 2 consecutive odds in next 5 ticks → enter</li>
+                    <li>⚠️ Stop after 3-7 wins and re-check market conditions</li>
                 </ul>
 
                 <p style="color:#e2e8f0;font-weight:700;margin-bottom:4px;">Even Strategy:</p>
                 <ul style="margin:0 0 10px 16px;">
-                    <li>Ã°Å¸Å¸Â¢ Green bar + Ã°Å¸â€Âµ Blue bar both on EVEN digits (0,2,4,6,8) at 11%+</li>
-                    <li>Ã°Å¸â€Â´ Red bar Ã¢â€°Â¤ 8.6% + Ã°Å¸Å¸Â¡ Yellow bar Ã¢â€°Â¤ 9.5%</li>
-                    <li><b style="color:var(--teal);">Entry:</b> Wait for odd digit among R/Y to appear Ã¢â€ â€™ even digit within next 3 ticks Ã¢â€ â€™ enter</li>
-                    <li>Ã¢Å¡Â Ã¯Â¸Â Stop after 3-7 wins and re-check market conditions</li>
+                    <li>🟢 Green bar + 🔵 Blue bar both on EVEN digits (0,2,4,6,8) at 11%+</li>
+                    <li>🔴 Red bar ≤ 8.6% + 🟡 Yellow bar ≤ 9.5%</li>
+                    <li><b style="color:var(--teal);">Entry:</b> Wait for odd digit among R/Y to appear → even digit within next 3 ticks → enter</li>
+                    <li>⚠️ Stop after 3-7 wins and re-check market conditions</li>
                 </ul>
             </div>
 
             <div style="background:var(--bg);border-radius:8px;padding:14px;margin-bottom:14px;">
-                <h4 style="color:var(--green);margin-bottom:6px;">Ã°Å¸â€œË† ONLY UPS / ONLY DOWNS (BB + RSI)</h4>
+                <h4 style="color:var(--green);margin-bottom:6px;">📈 ONLY UPS / ONLY DOWNS (BB + RSI)</h4>
                 <ul style="margin:0 0 8px 16px;">
-                    <li><b style="color:var(--green);">Only Ups:</b> RSI 48-68 + price above BB middle + bands expanding + 60%+ upward momentum Ã¢â€ â€™ 2-3 ticks</li>
-                    <li><b style="color:var(--red);">Only Downs:</b> RSI 32-52 + price below BB middle + bands expanding + 60%+ downward momentum Ã¢â€ â€™ 2-3 ticks</li>
+                    <li><b style="color:var(--green);">Only Ups:</b> RSI 48-68 + price above BB middle + bands expanding + 60%+ upward momentum → 2-3 ticks</li>
+                    <li><b style="color:var(--red);">Only Downs:</b> RSI 32-52 + price below BB middle + bands expanding + 60%+ downward momentum → 2-3 ticks</li>
                 </ul>
             </div>
 
             <div style="background:var(--bg);border-radius:8px;padding:14px;margin-bottom:14px;">
-                <h4 style="color:var(--amber);margin-bottom:6px;">Ã°Å¸Å½Â¨ BAR COLOR KEY</h4>
+                <h4 style="color:var(--amber);margin-bottom:6px;">🎨 BAR COLOR KEY</h4>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
                     <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--green);display:inline-block;"></span> <span>GREEN = Most appearing digit</span></div>
                     <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--blue);display:inline-block;"></span> <span>BLUE = 2nd most appearing</span></div>
@@ -1727,25 +2785,25 @@ body{padding-bottom:60px;}
             </div>
 
             <div style="background:var(--bg);border-radius:8px;padding:14px;">
-                <h4 style="color:var(--teal);margin-bottom:6px;">Ã¢Å¡Â Ã¯Â¸Â DIFFERS &amp; MATCHES (Coming from AI)</h4>
-                <p style="margin-bottom:6px;"><b style="color:var(--red);">Differs [Red Bar]:</b> Trade when the last digit DIFFERS from your prediction. Best when red bar digit is consistently appearing Ã¢â‚¬â€ fade it by choosing Differs.</p>
-                <p><b style="color:var(--green);">Matches [Green Bar]:</b> Trade when the last digit MATCHES your prediction. Best when green bar digit is appearing 14%+ (well above expected 10%) Ã¢â‚¬â€ ride the hot digit.</p>
+                <h4 style="color:var(--teal);margin-bottom:6px;">⚠️ DIFFERS &amp; MATCHES (Coming from AI)</h4>
+                <p style="margin-bottom:6px;"><b style="color:var(--red);">Differs [Red Bar]:</b> Trade when the last digit DIFFERS from your prediction. Best when red bar digit is consistently appearing — fade it by choosing Differs.</p>
+                <p><b style="color:var(--green);">Matches [Green Bar]:</b> Trade when the last digit MATCHES your prediction. Best when green bar digit is appearing 14%+ (well above expected 10%) — ride the hot digit.</p>
             </div>
         </div>
         <div style="padding:14px 20px;border-top:1px solid var(--border);flex-shrink:0;">
-            <button onclick="closeStrategyGuide()" class="btn btn-teal" style="width:100%;padding:10px;font-size:13px;font-weight:700;">Got it! Ã¢Å“â€¦</button>
+            <button onclick="closeStrategyGuide()" class="btn btn-teal" style="width:100%;padding:10px;font-size:13px;font-weight:700;">Got it! ✅</button>
         </div>
     </div>
 </div>
 
 <script src="app.js"></script>
 
-<!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â LEGAL MODAL Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+<!-- ═══ LEGAL MODAL ═══ -->
 <div id="legal-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:#000000bb;align-items:center;justify-content:center;padding:16px;">
     <div style="background:#161b27;border:1px solid #2d3748;border-radius:14px;width:100%;max-width:680px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;">
         <div style="padding:16px 20px;border-bottom:1px solid #2d3748;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
             <h2 id="legal-title" style="font-size:16px;font-weight:900;color:#e2e8f0;">Legal</h2>
-            <button onclick="closeLegal()" style="background:none;border:none;color:#718096;cursor:pointer;font-size:20px;padding:0;">Ã¢Å“â€¢</button>
+            <button onclick="closeLegal()" style="background:none;border:none;color:#718096;cursor:pointer;font-size:20px;padding:0;">✕</button>
         </div>
         <div id="legal-content" style="flex:1;overflow-y:auto;padding:20px;font-size:13px;line-height:1.7;color:#a0aec0;"></div>
         <div style="padding:14px 20px;border-top:1px solid #2d3748;flex-shrink:0;">
@@ -1754,15 +2812,15 @@ body{padding-bottom:60px;}
     </div>
 </div>
 
-<!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â FOOTER Ã¢â‚¬â€ normal document flow, sits after all page content Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+<!-- ═══ FOOTER — normal document flow, sits after all page content ═══ -->
 <footer style="background:#0e1118;border-top:1px solid #1a2035;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;flex-shrink:0;">
-    <div style="font-size:10px;color:#4a5568;">Ã‚Â© 2026 DOLARHUNTER. All rights reserved. Trading involves significant risk of loss.</div>
+    <div style="font-size:10px;color:#4a5568;">© 2026 DOLARHUNTER. All rights reserved. Trading involves significant risk of loss.</div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-        <a href="https://whatsapp.com/channel/0029Vb8RepJDeON2hcLhah2c" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:4px;color:#25D366;font-size:10px;text-decoration:none;font-weight:700;">Ã°Å¸â€œÂ± WhatsApp Channel</a>
-        <a href="https://t.me/DOLARHUNTER" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:4px;color:#29b6f6;font-size:10px;text-decoration:none;font-weight:700;">Ã¢Å“Ë†Ã¯Â¸Â Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb8RepJDeON2hcLhah2c" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:4px;color:#25D366;font-size:10px;text-decoration:none;font-weight:700;">📱 WhatsApp Channel</a>
+        <a href="https://t.me/DOLARHUNTER" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:4px;color:#29b6f6;font-size:10px;text-decoration:none;font-weight:700;">✈️ Telegram</a>
         <button onclick="showLegal('terms')"   style="background:none;border:none;color:#4a5568;font-size:10px;cursor:pointer;text-decoration:underline;padding:0;">Terms of Service</button>
         <button onclick="showLegal('privacy')" style="background:none;border:none;color:#4a5568;font-size:10px;cursor:pointer;text-decoration:underline;padding:0;">Privacy Policy</button>
-        <button onclick="showLegal('risk')"    style="background:none;border:none;color:#ff444f;font-size:10px;cursor:pointer;text-decoration:underline;padding:0;font-weight:700;">Ã¢Å¡Â Ã¯Â¸Â Risk Disclaimer</button>
+        <button onclick="showLegal('risk')"    style="background:none;border:none;color:#ff444f;font-size:10px;cursor:pointer;text-decoration:underline;padding:0;font-weight:700;">⚠️ Risk Disclaimer</button>
     </div>
 </footer>
 <script>
@@ -1801,10 +2859,10 @@ body{padding-bottom:60px;}
         if (!icon || !label) return;
 
         if (document.documentElement.getAttribute("data-theme") === "light") {
-            icon.textContent = "ðŸŒ™";
+            icon.textContent = "??";
             label.textContent = "Dark";
         } else {
-            icon.textContent = "â˜€";
+            icon.textContent = "?";
             label.textContent = "Light";
         }
     }

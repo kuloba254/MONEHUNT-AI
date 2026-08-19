@@ -1,5 +1,5 @@
 ﻿// /api/oauth-start â€” PKCE encoded in state (no shared storage needed)
-import { createCipheriv, randomBytes } from 'crypto';
+import { createCipheriv, randomBytes, createHash } from 'crypto';
 
 const SECRET = process.env.PKCE_SECRET;
 if (!SECRET) throw new Error("PKCE_SECRET is not configured");
@@ -22,11 +22,11 @@ export default async function handler(req, res) {
     const code_verifier = Array.from(cvBytes, b => charset[b % charset.length]).join('');
     const stateRaw      = base64url(randomBytes(16));
 
-    const hashBuf       = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(code_verifier));
-    const code_challenge = base64url(new Uint8Array(hashBuf));
+    const hashBuf = createHash('sha256')
+        .update(code_verifier)
+        .digest();
 
-    // Encrypt code_verifier and store in state token
-    // state = stateRaw + "." + encrypted(code_verifier + "|" + redirectUri)
+    const code_challenge = base64url(hashBuf);
     const iv         = randomBytes(12);
     const cipher     = createCipheriv('aes-256-gcm', KEY, iv);
     const payload    = Buffer.from(JSON.stringify({ cv: code_verifier, ru: redirectUri, ts: Date.now() }));
@@ -45,3 +45,5 @@ export default async function handler(req, res) {
         scope:                  'trade'
     });
 }
+
+
