@@ -608,10 +608,6 @@ async function toggleHeaderAccount() {
 
     try {
         await switchAccount(target.account_id);
-        updateHeaderAccountStatus(
-            liveBalance,
-            target.currency || "USD"
-        );
     } catch (err) {
         console.error("Account switch failed:", err);
         showStatus("Failed to switch account.", "err");
