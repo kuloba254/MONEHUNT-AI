@@ -636,6 +636,8 @@ function startKeepAlivePing() {
 }
 
 async function toggleHeaderAccount() {
+    console.log("DOLARHUNTER HEADER SWITCH CLICKED");
+
     if (!Array.isArray(allAccounts) || allAccounts.length === 0) {
         showStatus("No Deriv accounts available.", "err");
         return;
@@ -658,15 +660,36 @@ async function toggleHeaderAccount() {
     }
 
     const modeEl = document.getElementById("dh-account-mode");
+    const button = document.getElementById("dh-account-switch");
+
+    if (button) button.disabled = true;
     if (modeEl) modeEl.textContent = "CONNECTING";
 
     try {
         await switchAccount(target.account_id);
+
+        const active = allAccounts.find(a => a.account_id === accountId);
+        const isReal = active?.account_type === "real";
+
+        if (modeEl) {
+            modeEl.textContent = isReal ? "REAL" : "DEMO";
+        }
+
+        const wrap = document.getElementById("dh-account-status");
+        if (wrap) {
+            wrap.classList.toggle("real", isReal);
+            wrap.classList.toggle("demo", !isReal);
+        }
+
+        log(`Header account switched to ${isReal ? "REAL" : "DEMO"}.`, "i");
     } catch (err) {
-        console.error("Account switch failed:", err);
+        console.error("Header account switch failed:", err);
         showStatus("Failed to switch account.", "err");
+    } finally {
+        if (button) button.disabled = false;
     }
 }
+
 function updateHeaderAccountStatus(balanceValue, currency) {
     const wrap = document.getElementById('dh-account-status');
     const modeEl = document.getElementById('dh-account-mode');
