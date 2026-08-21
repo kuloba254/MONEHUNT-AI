@@ -452,13 +452,60 @@ async function loadAccounts() {
 }
 
 async function switchAccount(newId) {
-    if (newId === accountId) return;
-    accountId = newId;
-    localStorage.setItem('bth_account_id', newId);
-    log("Switching account...", 'i');
-    if (derivWS) { derivWS.close(); derivWS = null; }
+    if (!newId || newId === accountId) return;
+
+    const targetAccount = Array.isArray(allAccounts)
+        ? allAccounts.find(a => a.account_id === newId)
+        : null;
+
+    if (!targetAccount) {
+        showStatus("Selected Deriv account was not found.", "err");
+        return;
+    }
+
+    const targetType = targetAccount.account_type === "real" ? "LIVE" : "DEMO";
+
+    window.__manualAccountSwitch = true;
+    clearTimeout(reconnectTimer);
+    reconnectTimer = null;
+    isReconnecting = false;
+
+    const modeEl = document.getElementById("dh-account-mode");
+    if (modeEl) modeEl.textContent = "CONNECTING";
+
+    log(`Switching ${targetType} account...`, "i");
+
     activeTickSubs.clear();
-    await openWS();
+
+    if (derivWS) {
+        const oldWS = derivWS;
+        derivWS = null;
+
+        try {
+            oldWS.onclose = null;
+            oldWS.onerror = null;
+            oldWS.close();
+        } catch (e) {
+            console.warn("Previous WebSocket close error:", e);
+        }
+    }
+
+    accountId = newId;
+    localStorage.setItem("bth_account_id", newId);
+
+    try {
+        await openWS();
+
+        const sw = document.getElementById("acct-switcher");
+        if (sw) sw.value = newId;
+
+        log(`Account switched to ${targetType}.`, "i");
+    } catch (err) {
+        console.error("Account switch failed:", err);
+        showStatus(`Failed to switch to ${targetType} account.`, "err");
+    } finally {
+        window.__manualAccountSwitch = false;
+    }
 }
 
 // ================================================================
@@ -494,6 +541,13 @@ async function openWS() {
         derivWS.onclose = () => {
             updateConnStatus(false);
             clearInterval(pingInterval);
+
+            // Account switching intentionally closes the old WebSocket.
+            // Do not start the normal reconnect loop for that closure.
+            if (window.__manualAccountSwitch) {
+                log("WebSocket closed for account switch.", "i");
+                return;
+            }
             log("WS closed. Will reconnect...", 'x');
             // If Auto Mode was running, pause it (do not lose settings) and notify 
             // per spec, connection loss should stop Auto Mode automatically.
