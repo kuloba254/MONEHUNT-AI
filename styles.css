@@ -1,4 +1,4 @@
-/* ✨ DOLARHUNTER — Bright Girly Scrollbar & Base Styles */
+﻿/* âœ¨ DOLARHUNTER â€” Bright Girly Scrollbar & Base Styles */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -23,7 +23,7 @@ body {
   accent-color: #ec4899; /* pink focus rings on inputs */
 }
 
-/* ✨ Optional: pink selection highlight */
+/* âœ¨ Optional: pink selection highlight */
 ::selection {
   background: #f9a8d4;
   color: #831843;
@@ -46,22 +46,30 @@ body {
 #dolarhunter-splash {
     position: fixed;
     inset: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background: #050b12;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     z-index: 2147483647;
 }
 
 #dolarhunter-splash img {
     display: block;
-    width: 80px;
+    width: clamp(180px, 28vw, 360px);
     height: auto;
-    max-width: 25vw;
-    max-height: 20vh;
+    max-width: 75vw;
+    max-height: 55vh;
     object-fit: contain;
+    flex-shrink: 0;
 }
 /* DOLARHUNTER - CLEAN PREMIUM HEADER */
 
@@ -576,7 +584,7 @@ body {
 
 
 /* ============================================================
-   DOLARHUNTER � PREMIUM HEADER
+   DOLARHUNTER ï¿½ PREMIUM HEADER
    ============================================================ */
 
 .dh-topbar {
@@ -1324,7 +1332,7 @@ html[data-theme="light"] {
 }
 
 /* ============================================================
-   EXISTING NAVIGATION � KEEP IT
+   EXISTING NAVIGATION ï¿½ KEEP IT
    ============================================================ */
 
 nav {
@@ -1809,7 +1817,7 @@ select {
 
 /* ============================================================
    DOLARHUNTER PREMIUM DASHBOARD V2
-   Header-matched � Dark/Light aware � Safe visual overrides
+   Header-matched ï¿½ Dark/Light aware ï¿½ Safe visual overrides
    ============================================================ */
 
 /* ---------- THEME VARIABLES ---------- */
@@ -2447,7 +2455,7 @@ textarea {
 
 
 /* ============================================================
-   DOLARHUNTER � FINAL PREMIUM DASHBOARD OVERRIDES
+   DOLARHUNTER ï¿½ FINAL PREMIUM DASHBOARD OVERRIDES
    Blends with premium header + full dark/light support
    ============================================================ */
 
@@ -2861,7 +2869,7 @@ html[data-theme="light"] nav .tab-btn.active {
 
 
 /* ============================================================
-   DOLARHUNTER � WELCOME BRAND MATCHES HEADER
+   DOLARHUNTER ï¿½ WELCOME BRAND MATCHES HEADER
    ============================================================ */
 
 #auth-card h2 {
@@ -3627,8 +3635,8 @@ html[data-theme="light"] #accu-signal-box {
 
 
 /* =========================================================
-   DOLARHUNTER — PREMIUM BULK TRADER
-   Visual layer only — does not modify trading logic
+   DOLARHUNTER â€” PREMIUM BULK TRADER
+   Visual layer only â€” does not modify trading logic
    ========================================================= */
 
 #bulk-pane {
@@ -3971,7 +3979,7 @@ html[data-theme="light"] #bulk-history-body {
 
 
 /* ============================================================
-   DOLARHUNTER � FINAL GLOBAL DARK / LIGHT THEME SYSTEM
+   DOLARHUNTER ï¿½ FINAL GLOBAL DARK / LIGHT THEME SYSTEM
    2026-08-18
    This layer intentionally comes LAST so it wins over older
    theme overrides without modifying application logic.
@@ -4352,7 +4360,7 @@ html[data-theme="light"] #auth-card {
 
 
 /* ============================================================
-   BUTTONS � PRESERVE BRAND COLORS
+   BUTTONS ï¿½ PRESERVE BRAND COLORS
    ============================================================ */
 
 button {
@@ -4470,7 +4478,7 @@ textarea,
 }
 
 /* ============================================================
-   SIGNAL DURATION � DARK / LIGHT MODE
+   SIGNAL DURATION ï¿½ DARK / LIGHT MODE
    ============================================================ */
 
 .dh-signal-duration {
@@ -4523,7 +4531,7 @@ html[data-theme="light"] .dh-signal-duration-label {
 }
 
 /* ============================================================
-   DOLARHUNTER � SIGNAL AGE UI
+   DOLARHUNTER ï¿½ SIGNAL AGE UI
    ============================================================ */
 
 .dh-signal-age {
@@ -4659,4 +4667,118 @@ html[data-theme="light"] .dh-signal-age {
 .dh-account-status.demo #dh-account-mode-dot {
     background: #00d2c8;
     box-shadow: 0 0 8px rgba(0, 210, 200, 0.8);
+}
+
+
+/* DOLARHUNTER: Full-screen logo intro */
+#dolarhunter-splash {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    z-index: 2147483647 !important;
+}
+
+#dolarhunter-splash img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* FINAL OVERRIDE: DOLARHUNTER LOGO FILLS ENTIRE SCREEN */
+html body #dolarhunter-splash {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    background: #000 !important;
+    z-index: 2147483647 !important;
+}
+
+html body #dolarhunter-splash img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: fill !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* DOLARHUNTER animated loading percentage */
+#dolarhunter-loading-ui {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    width: min(340px, 82vw);
+    box-sizing: border-box;
+    padding: 18px 20px;
+    color: #ffffff;
+    background: rgba(3, 7, 15, 0.88);
+    border: 1px solid rgba(54, 211, 153, 0.35);
+    border-radius: 14px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.4);
+}
+#dolarhunter-loading-ui .dh-loading-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+#dolarhunter-loading-percent {
+    color: #36D399;
+    font-size: 20px;
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+}
+#dolarhunter-loading-ui .dh-loading-track {
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    background: #253041;
+    border-radius: 20px;
+}
+#dolarhunter-loading-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: #36D399;
+    box-shadow: 0 0 12px rgba(54, 211, 153, 0.65);
+    transition: width 100ms linear;
+}
+#dolarhunter-loading-ui .dh-loading-caption {
+    margin-top: 10px;
+    color: #aab6c7;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1.5px;
 }
